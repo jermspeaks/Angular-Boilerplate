@@ -11,8 +11,16 @@
         <script src="/js/app.js" type="text/javascript"></script>
     </head>
     <body ng-controller="MainController">
-        <h1>TEST</h1>
+        <header>
+            <span>Topic Graph Editor</span>
+        </header>
 
-        {{1 + 1}}
+        <section>
+            <ul>
+                <li ng-repeat="edit in model.editors">
+                    {{edit.displayName}}
+                </li>
+            </ul>
+        </section>
     </body>
 </html>

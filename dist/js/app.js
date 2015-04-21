@@ -24,10 +24,24 @@ require('templates');
 },{}],3:[function(require,module,exports){
 'use strict';
 
-module.exports = function($log, $scope, $location, $route, $window, AuthService, PartnerService, RootScopeService) {
+module.exports = function($log, $scope) {
     // _______________
     // Scope Variables
-    $scope.model = {};
+    $scope.model = {
+        editors: [{
+            name: 'create',
+            displayName: 'Create a Concept'
+        }, {
+            name: 'read',
+            displayName: 'Search for a Concept'
+        }, {
+            name: 'update',
+            displayName: 'Edit a Concept'
+        }, {
+            name: 'delete',
+            displayName: 'Delete a Concept'
+        }]
+    };
 
 };
 
