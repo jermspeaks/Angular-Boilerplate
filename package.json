@@ -1,0 +1,30 @@
+{
+  "name": "topic-graph-editor",
+  "version": "1.0.0",
+  "description": "UI to edit topic graph",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reverb/topic-graph-editor.git"
+  },
+  "keywords": [
+    "editor"
+  ],
+  "author": "Jeremy Wong (jeremy@helloreverb.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reverb/topic-graph-editor/issues"
+  },
+  "homepage": "https://github.com/reverb/topic-graph-editor",
+  "dependencies": {
+    "browserify": "^9.0.8",
+    "gulp": "^3.8.11",
+    "gulp-angular-templatecache": "^1.6.0",
+    "gulp-concat": "^2.5.2",
+    "main-bower-files": "^2.7.0",
+    "watchify": "^3.1.2"
+  }
+}

@@ -3,6 +3,12 @@
 
 UI to edit topic graph
 
+### Installation:
+```shell
+npm install
+bower install
+```
+
 ### Requirements:
 
 * User should be able to create, read, update, and delete a concept or form
@@ -31,3 +37,4 @@ UI to edit topic graph
     - [ ] Edit Concept Name
         - [ ] Include warning of the risk of changing a concept name can alter concept graph results (and we don't want this). Instead, divert their attention to Display Name
     - [ ] Change Display Name
+    - [ ]

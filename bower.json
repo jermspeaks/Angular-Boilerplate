@@ -1,0 +1,21 @@
+{
+  "name": "topic-graph-editor",
+  "version": "1.0.0",
+  "homepage": "https://github.com/reverb/topic-graph-editor",
+  "authors": [
+    "Jeremy Wong <jermspeaks@gmail.com>"
+  ],
+  "description": "UI to edit topic graph",
+  "main": "index.js",
+  "keywords": [
+    "editor"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
