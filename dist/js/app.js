@@ -6,12 +6,13 @@ angular.module('topicGraphEditor', [/* Dependencies */])
     // Customize
     // .run(require('./plugins'))
     // .run(require('./boot'))
+    .controller('MainController', require('./src/common/MainController'))
 
 ;
 
 require('templates');
 
-},{"templates":2}],2:[function(require,module,exports){
+},{"./src/common/MainController":3,"templates":2}],2:[function(require,module,exports){
 (function (global){
 ; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 
@@ -20,4 +21,14 @@ require('templates');
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],3:[function(require,module,exports){
+'use strict';
+
+module.exports = function($log, $scope, $location, $route, $window, AuthService, PartnerService, RootScopeService) {
+    // _______________
+    // Scope Variables
+    $scope.model = {};
+
+};
+
 },{}]},{},[1]);

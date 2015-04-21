@@ -5,9 +5,14 @@ UI to edit topic graph
 
 ### Installation:
 ```shell
-npm install
+npm install # May need sudo here
 bower install
+gulp dist
+cd dist
+python -m HTTPSimpleServer 8080
 ```
+
+Open browser to `port 8080`.
 
 ### Requirements:
 
@@ -23,6 +28,14 @@ bower install
     * Search for a Concept or Form and have the ability to edit its attributes, which as the same as the ones you see in Create
 
 ### Tasks:
+- [ ] Project Set-up
+    - [x] .gitignore
+    - [x] App Set-up
+        - [x] npm installations
+        - [x] gulp tasks
+    - [ ] Library Set-up
+        - [ ] Bower installations
+        - [x] .bowerrc
 - [ ] Create Concept Form
     - [ ] Concept Name
     - [ ] Display Name
@@ -37,4 +50,22 @@ bower install
     - [ ] Edit Concept Name
         - [ ] Include warning of the risk of changing a concept name can alter concept graph results (and we don't want this). Instead, divert their attention to Display Name
     - [ ] Change Display Name
-    - [ ]
+    - [ ] Change Entity type (?)
+
+### App Dependencies
+#### Development
+* gulp
+    * brfs
+    * browserify
+    * browserify-shim
+    * debowerify
+    * gulp-angular-templatecache
+    * gulp-concat
+    * gulp-util
+    * main-bower-files
+    * vinyl-source-stream
+    * watchify
+
+#### Production
+* angular
+* lodash
