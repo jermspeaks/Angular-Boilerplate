@@ -33,13 +33,15 @@ Open browser to `localhost:8080`.
     - [x] App Set-up
         - [x] npm installations
         - [x] gulp tasks
-    - [ ] Library Set-up
-        - [ ] Bower installations
+    - [x] Library Set-up
+        - [x] Bower installations
         - [x] .bowerrc
-        - [ ] Routing (UI Router)
+        - [x] Routing (UI Router)
+        - [x] Sass
+        - [ ] Bourbon / Neat
     - [ ] Test Set-up
-        - E2E w/ Selenium & Protractor
-        - Unit w/ Jasmine
+        - [ ] E2E w/ Selenium & Protractor
+        - [ ] Unit w/ Jasmine
 - [ ] Create Concept Form
     - [ ] Concept Name
     - [ ] Display Name
