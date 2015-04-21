@@ -1,5 +1,5 @@
-# Topic Graph Editor
-====================
+Topic Graph Editor
+==================
 
 UI to edit topic graph
 
@@ -12,7 +12,7 @@ cd dist
 python -m HTTPSimpleServer 8080
 ```
 
-Open browser to `port 8080`.
+Open browser to `localhost:8080`.
 
 ### Requirements:
 
@@ -69,3 +69,4 @@ Open browser to `port 8080`.
 #### Production
 * angular
 * lodash
+* UI-router
