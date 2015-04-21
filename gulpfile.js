@@ -10,8 +10,12 @@ var templateCache = require('gulp-angular-templatecache');
 var debowerify = require('debowerify');
 var source = require('vinyl-source-stream');
 var filter = require('gulp-filter');
+var sass = require('gulp-ruby-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var minifycss = require('gulp-minify-css');
+var rename = require('gulp-rename');
 
-gulp.task('dist', ['templates', 'library', 'build']);
+gulp.task('dist', ['templates', 'styles', 'library', 'build']);
 
 gulp.task('watch', function() {
 	return process(true);
@@ -29,6 +33,10 @@ gulp.task('library', function() {
 	return processLibraries();
 });
 
+gulp.task('styles', function() {
+    return processStyleSheets();
+});
+
 function process(watch) {
 	console.log('process');
 	processTemplates();
@@ -44,6 +52,7 @@ function process(watch) {
 		});
 
 		gulp.watch('./build/templates/**/*.html', ['templates']);
+		gulp.watch('./build/stylesheets/main.scss', ['styles']);
 	} else {
 		bundler = browserify('./build/index.js');
 		bundler.transform(debowerify);
@@ -77,7 +86,7 @@ function filterByExtension(extension) {
 }
 
 function processLibraries() {
-	console.log('processLibraries :: Vendor JS Libraries');
+	// console.log('processLibraries :: Vendor JS Libraries');
 	var mainFiles = mainBowerFiles({
 		checkExistence: true
 	});
@@ -91,4 +100,13 @@ function processLibraries() {
 		.pipe(jsFilter)
 		.pipe(concat('lib.js'))
 		.pipe(gulp.dest('./dist/js'));
+}
+
+function processStyleSheets() {
+	return sass('./build/stylesheets/main.scss', { style: 'expanded' })
+		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
+		.pipe(gulp.dest('./dist/css'))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(minifycss())
+		.pipe(gulp.dest('./dist/css'));
 }

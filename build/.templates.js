@@ -1,0 +1,1 @@
+angular.module("topicGraphEditor").run(["$templateCache", function($templateCache) {$templateCache.put("main.html","<header id=\"main-header\">\n    <span>Topic Graph Editor</span>\n</header>\n\n<section id=\"main-menu\">\n    <ul>\n        <li ng-repeat=\"edit in model.editors\">\n            {{edit.displayName}}\n        </li>\n    </ul>\n</section>\n");}]);
