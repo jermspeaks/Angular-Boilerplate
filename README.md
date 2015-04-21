@@ -60,19 +60,30 @@ Open browser to `localhost:8080`.
 
 ### App Dependencies
 #### Development
+
+For development packages, we are using npm
+
+* brfs
 * gulp
-    * brfs
     * browserify
     * browserify-shim
     * debowerify
     * gulp-angular-templatecache
+    * gulp-autoprefixer
     * gulp-concat
+    * gulp-filter
+    * gulp-minify-css
+    * gulp-rename
+    * gulp-ruby-sass
     * gulp-util
     * main-bower-files
     * vinyl-source-stream
     * watchify
 
 #### Production
+
+For 3rd party libraries, we are using bower for package management
+
 * angular
 * lodash
-* UI-router
+* ui-router

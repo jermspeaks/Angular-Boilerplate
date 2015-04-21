@@ -10,10 +10,11 @@ var templateCache = require('gulp-angular-templatecache');
 var debowerify = require('debowerify');
 var source = require('vinyl-source-stream');
 var filter = require('gulp-filter');
-var sass = require('gulp-ruby-sass');
+var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 var rename = require('gulp-rename');
+var bourbon = require('node-bourbon');
 
 gulp.task('dist', ['templates', 'styles', 'library', 'build']);
 
@@ -103,7 +104,12 @@ function processLibraries() {
 }
 
 function processStyleSheets() {
-	return sass('./build/stylesheets/main.scss', { style: 'expanded' })
+	var stylesheets = './build/stylesheets/*.scss';
+	return gulp.src(stylesheets)
+		.pipe(sass({
+			style: 'expanded',
+			includePaths: bourbon.includePaths
+		}))
 		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
 		.pipe(gulp.dest('./dist/css'))
 		.pipe(rename({suffix: '.min'}))
