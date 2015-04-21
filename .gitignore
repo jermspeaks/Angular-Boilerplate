@@ -36,5 +36,7 @@ bower_components
 .bower-registry
 .bower-tmp
 
+dist/js/lib.js
+
 ### Mac Files ###
 .DS_Store

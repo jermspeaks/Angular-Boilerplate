@@ -9,9 +9,9 @@ var concat = require('gulp-concat');
 var templateCache = require('gulp-angular-templatecache');
 var debowerify = require('debowerify');
 var source = require('vinyl-source-stream');
+var filter = require('gulp-filter');
 
-
-gulp.task('dist', ['templates', 'build']);
+gulp.task('dist', ['templates', 'library', 'build']);
 
 gulp.task('watch', function() {
 	return process(true);
@@ -23,6 +23,10 @@ gulp.task('build', function() {
 
 gulp.task('templates', function() {
 	return processTemplates();
+});
+
+gulp.task('library', function() {
+	return processLibraries();
 });
 
 function process(watch) {
@@ -63,5 +67,28 @@ function processJavascript(bundler) {
 		// log errors if they happen
 		.on('error', gutil.log.bind(gutil, 'Browserify Error'))
 		.pipe(source('app.js'))
+		.pipe(gulp.dest('./dist/js'));
+}
+
+function filterByExtension(extension) {
+	return filter(function(file) {
+		return file.path.match(new RegExp('.' + extension + '$'));
+	});
+}
+
+function processLibraries() {
+	console.log('processLibraries :: Vendor JS Libraries');
+	var mainFiles = mainBowerFiles({
+		checkExistence: true
+	});
+	var jsFilter = filterByExtension('js');
+
+	if (!mainFiles.length) {
+		// No files found
+		return;
+	}
+	return gulp.src(mainFiles)
+		.pipe(jsFilter)
+		.pipe(concat('lib.js'))
 		.pipe(gulp.dest('./dist/js'));
 }

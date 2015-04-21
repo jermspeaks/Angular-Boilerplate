@@ -36,6 +36,10 @@ Open browser to `localhost:8080`.
     - [ ] Library Set-up
         - [ ] Bower installations
         - [x] .bowerrc
+        - [ ] Routing (UI Router)
+    - [ ] Test Set-up
+        - E2E w/ Selenium & Protractor
+        - Unit w/ Jasmine
 - [ ] Create Concept Form
     - [ ] Concept Name
     - [ ] Display Name
