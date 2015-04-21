@@ -17,13 +17,17 @@ UI to edit topic graph
     * Search for a Concept or Form and have the ability to edit its attributes, which as the same as the ones you see in Create
 
 ### Tasks:
-[ ] Create Concept Form
-    [ ] Concept Name
-    [ ] Display Name
-    [ ] Entity Type (?)
-    [ ] Search for Related Concepts
-    [ ] Field to add multiple related concepts
-        [ ] Ability to autocomplete this field
-    [ ] Field to add multiple forms
-        [ ] Ability to autocomplete this field
-        [ ] Autofill first form to include the concept display name as a form
+- [ ] Create Concept Form
+    - [ ] Concept Name
+    - [ ] Display Name
+    - [ ] Entity Type (?)
+    - [ ] Search for Related Concepts
+    - [ ] Field to add multiple related concepts
+        - [ ] Ability to autocomplete this field
+    - [ ] Field to add multiple forms
+        - [ ] Ability to autocomplete this field
+        - [ ] Autofill first form to include the concept display name as a form
+- [ ] Edit Concept Form
+    - [ ] Edit Concept Name
+        - [ ] Include warning of the risk of changing a concept name can alter concept graph results (and we don't want this). Instead, divert their attention to Display Name
+    - [ ] Change Display Name
