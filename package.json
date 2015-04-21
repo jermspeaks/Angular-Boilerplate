@@ -13,14 +13,28 @@
   "keywords": [
     "editor"
   ],
+  "browser": {
+    "templates": "./build/.templates.js"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "templates": "templates"
+  },
   "author": "Jeremy Wong (jeremy@helloreverb.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/reverb/topic-graph-editor/issues"
   },
   "homepage": "https://github.com/reverb/topic-graph-editor",
-  "dependencies": {
+  "devDependencies": {
+    "brfs": "^1.4.0",
     "browserify": "^9.0.8",
+    "browserify-shim": "^3.8.5",
+    "debowerify": "^1.2.1",
     "gulp": "^3.8.11",
     "gulp-angular-templatecache": "^1.6.0",
     "gulp-concat": "^2.5.2",
