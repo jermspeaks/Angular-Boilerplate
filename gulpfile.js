@@ -8,6 +8,7 @@ var mainBowerFiles = require('main-bower-files');
 var concat = require('gulp-concat');
 var templateCache = require('gulp-angular-templatecache');
 var debowerify = require('debowerify');
+var source = require('vinyl-source-stream');
 
 
 gulp.task('dist', ['templates', 'build']);
@@ -61,6 +62,6 @@ function processJavascript(bundler) {
 	return bundler.bundle()
 		// log errors if they happen
 		.on('error', gutil.log.bind(gutil, 'Browserify Error'))
-		// .pipe(source('app.js'))
-		.pipe(gulp.dest('./dist/app.js'));
+		.pipe(source('app.js'))
+		.pipe(gulp.dest('./dist/js'));
 }
