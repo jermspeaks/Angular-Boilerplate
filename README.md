@@ -46,7 +46,7 @@ ___
     - [ ] Test Set-up
         - [ ] E2E w/ Selenium & Protractor
         - [x] Unit w/ Jasmine
-        - [ ] JSLint
+        - [x] JSHint
     - [x] Serve App With Gulp (better than `python -m SimpleHTTPServer`)
 - [ ] Create Concept Form
     - [x] Concept Name

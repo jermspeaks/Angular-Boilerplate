@@ -2,7 +2,7 @@
 		Gulp Tasks
 	=============================== */
 
-/*
+/* // TODO: Add description of what each task does
 	Welcome to Gulp
 	List of Gulp tasks:
 		- dist
@@ -29,10 +29,14 @@ var watchify = require('watchify'),
 	// File Compilation
 	browserify = require('browserify'),
 	mainBowerFiles = require('main-bower-files'),
-	concat = require('gulp-concat'),
 	debowerify = require('debowerify'),
 	source = require('vinyl-source-stream'),
-	filter = require('gulp-filter'),
+	concat = require('gulp-concat'), // Concat an existing file
+	filter = require('gulp-filter'), // Filter by filename
+
+	// Javascript
+	jshint = require('gulp-jshint'), // Run jshint on files
+	stylish = require('jshint-stylish'),
 
 	// Templates
 	templateCache = require('gulp-angular-templatecache'),
@@ -60,6 +64,7 @@ function process(watch) {
 
 		gulp.watch('./build/templates/**/*.html', ['templates']);
 		gulp.watch('./build/stylesheets/main.scss', ['styles']);
+		gulp.watch('./build/src/**/*.js', ['lint']);
 	} else {
 		bundler = browserify('./build/index.js');
 		bundler.transform(debowerify);
@@ -125,7 +130,13 @@ function processStyleSheets() {
 		.pipe(gulp.dest('./dist/css'));
 }
 
-gulp.task('dist', ['templates', 'styles', 'library', 'build']);
+function jsHint() {
+	return gulp.src(['./build/src/**/*.js', './build/index.js', './build/routes.js'])
+		.pipe(jshint())
+		.pipe(jshint.reporter(stylish));
+}
+
+gulp.task('dist', ['templates', 'styles', 'library', 'lint', 'build']);
 
 gulp.task('watch', function() {
 	return process(true);
@@ -133,6 +144,11 @@ gulp.task('watch', function() {
 
 gulp.task('build', function() {
 	return process(false);
+});
+
+// JSHint task
+gulp.task('lint', function() {
+	return jsHint();
 });
 
 gulp.task('templates', function() {

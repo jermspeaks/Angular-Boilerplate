@@ -13,6 +13,17 @@ module.exports = function($log, $scope) {
         name: 'Location'
     }];
 
+    // _______________
+    // Scope Functions
+
+    $scope.addConcept = function() {
+
+    };
+
+    $scope.deleteConcept = function() {
+
+    };
+
     $scope.submitNewConcept = function() {
         $log.debug('Scope form data');
         $log.debug($scope.form);

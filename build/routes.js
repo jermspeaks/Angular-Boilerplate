@@ -34,7 +34,7 @@ module.exports =
             }
         };
 
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise('/');
 
         $stateProvider
             .state('concept', pages.concept.main)
