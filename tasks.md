@@ -1,0 +1,64 @@
+# Tasks
+
+- [ ] Project Set-up
+    - [x] .gitignore
+    - [x] App Set-up
+        - [x] npm installations
+        - [x] gulp tasks
+    - [x] Library Set-up
+        - [x] Bower installations
+        - [x] .bowerrc
+        - [x] Routing (UI Router)
+        - [x] Sass
+        - [x] Bourbon / Neat
+    - [ ] Test Set-up
+        - [ ] E2E w/ Selenium & Protractor
+        - [x] Unit w/ Jasmine
+        - [x] JSHint
+    - [x] Serve App With Gulp (better than `python -m SimpleHTTPServer`)
+- [ ] Create Concept Form
+    - [x] Concept Name
+    - [x] Display Name
+    - [x] Entity Type (?)
+    - [ ] Search for Related Concepts
+    - [ ] Field to add multiple related concepts
+        - [x] field
+        - [ ] addConcept()
+        - [ ] Ability to autocomplete this field
+    - [ ] Field to add multiple forms
+        - [x] field
+        - [ ] addForm()
+        - [ ] Ability to autocomplete this field
+        - [ ] Autofill first form to include the concept display name as a form
+- [ ] Search Concept
+    - [ ] Search Box
+    - [ ] View Concept attributes
+        - [ ] View associated forms
+    - [ ] Options:
+        - [ ] Edit
+        - [ ] Delete
+    - [ ] View Articles associated with concept
+    - [ ] View Associated Concepts --> Graphical Visualization?
+    - [ ] View forms of the associated concepts
+- [ ] Edit Concept Form --> combine with Search Concept?
+    - [ ] View A: Search
+    - [ ] View B: Edit Form
+        - [ ] Edit Concept Name
+            - [ ] Include warning of the risk of changing a concept name can alter concept graph results (and we don't want this). Instead, divert their attention to Display Name
+        - [ ] Change Display Name
+        - [ ] Change Entity type (?)
+        - [ ] Change existing related concepts
+            - [ ] Options
+                - [ ] add
+                    - [ ] Ability to autocomplete this field
+                - [ ] edit
+                - [ ] delete
+        - [ ] Field to add multiple forms
+            - [ ] Options
+                - [ ] add
+                    - [ ] Ability to autocomplete this field
+                - [ ] edit
+                - [ ] delete
+- [ ] Delete Concept --> This may not be a necessary feature
+    - [ ] View A: Search
+    - [ ] View B: Results with option to delete

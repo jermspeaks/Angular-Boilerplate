@@ -30,6 +30,7 @@ describe('MainController', function() {
 
   it('should give 4 different editor settings', function() {
     expect($scope.model.editors.length).toEqual(4);
+    expect($scope.model.editors[0].name).toEqual('create');
   });
 
 });

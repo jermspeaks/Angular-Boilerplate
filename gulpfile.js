@@ -65,6 +65,7 @@ function process(watch) {
 		gulp.watch('./build/templates/**/*.html', ['templates']);
 		gulp.watch('./build/stylesheets/main.scss', ['styles']);
 		gulp.watch('./build/src/**/*.js', ['lint']);
+		gulp.watch(['./tests/spec/*.js', './dist/js/*.js'], ['test']);
 	} else {
 		bundler = browserify('./build/index.js');
 		bundler.transform(debowerify);
@@ -136,12 +137,15 @@ function jsHint() {
 		.pipe(jshint.reporter(stylish));
 }
 
+// Build entire project
 gulp.task('dist', ['templates', 'styles', 'library', 'lint', 'build']);
 
+// Watch build
 gulp.task('watch', function() {
 	return process(true);
 });
 
+// One time build javascript
 gulp.task('build', function() {
 	return process(false);
 });
@@ -151,14 +155,17 @@ gulp.task('lint', function() {
 	return jsHint();
 });
 
+// Build templates
 gulp.task('templates', function() {
 	return processTemplates();
 });
 
+// Consolidate vendor libraries
 gulp.task('library', function() {
 	return processLibraries();
 });
 
+// Build styles
 gulp.task('styles', function() {
 	return processStyleSheets();
 });
@@ -187,7 +194,7 @@ gulp.task('test', function() {
 });
 
 gulp.task('autotest', function() {
-	return gulp.watch(['dist/js/app.js', 'tests/spec/*.js'], ['test']);
+	return gulp.watch(['./dist/js/app.js', './tests/spec/*.js'], ['test']);
 });
 
 /*	===============================
