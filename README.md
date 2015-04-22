@@ -1,7 +1,23 @@
 Topic Graph Editor
 ==================
 
-UI to edit topic graph
+UI to edit topic graph. To get started, install following the directions below.
+
+___
+
+### For Development:
+
+All development is in the `build` folder, and results are built in the `dist` folder.
+
+Styles are served via the `build/stylesheets` with Sass. It is combined with the `Bourbon/Neat/Bitters` plugin. Go to the [Bourbon Docs](http://bourbon.io/) to see what mixins and features are available to use. `Bourbon` is the Sass mixin library, `Neat` is the grid library, and `Bitters` is the scaffolds, variables, and structure library.
+
+You can watch the app via gulp with `gulp watch`, and make changes.
+
+You can serve the app via gulp with `gulp serve` on the open a browser to `localhost:5000`.
+
+You can autoload tests via gulp with `gulp autotest`, which updates every time a file is changed in the build.
+
+___
 
 ### Installation:
 ```shell
@@ -11,7 +27,9 @@ gulp dist
 gulp serve
 ```
 
-Open browser to `localhost:8080`.
+Open browser to `localhost:5000`.
+
+___
 
 ### Tasks:
 - [ ] Project Set-up
@@ -77,8 +95,9 @@ Open browser to `localhost:8080`.
     - [ ] View A: Search
     - [ ] View B: Results with option to delete
 
-### App Dependencies
-#### Development
+___
+
+### App Development
 
 For development packages, we are using npm
 
@@ -106,11 +125,13 @@ For development packages, we are using npm
     * vinyl-source-stream
     * watchify
 
-#### Testing
+___
 
-##### Unit
+### App Testing
 
-###### Installation
+#### Unit Testing
+
+##### Installation
 
 ```shell
 npm install -g karma
@@ -120,16 +141,16 @@ bower install # For Angular-mocks
 npm install
 ```
 
-###### Testing Packages:
+##### Testing Packages:
 
 * karma
 * jasmine
 
-###### Bower Packages:
+##### Bower Packages:
 
 * angular-mocks
 
-###### npm Packages:
+##### npm Packages:
 
 * jasmine-core
 * karma
@@ -137,14 +158,14 @@ npm install
 * karma-phantomjs-launcher
 * karma-spec-reporter
 
-###### Load Tests
+##### Load Tests
 
 ```shell
 # Main Folder
 gulp karma
 ```
 
-##### E2E
+#### E2E Testing
 
 Testing Packages:
 
@@ -161,6 +182,8 @@ npm Packages:
 gulp protractor
 ```
 
+___
+
 #### Production
 
 For 3rd party libraries, we are using bower for package management
@@ -169,6 +192,8 @@ For 3rd party libraries, we are using bower for package management
 * lodash
 * ui-router
 * jQuery
+
+___
 
 ### Requirements:
 
