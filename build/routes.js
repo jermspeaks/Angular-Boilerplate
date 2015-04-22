@@ -18,7 +18,7 @@ module.exports =
                 },
                 read: {
                     url: 'concept/find',
-                    templateUrl: 'concept/concept.edit.html',
+                    templateUrl: 'concept/concept.search.html',
                     // controller: 'MainController'
                 },
                 update: {

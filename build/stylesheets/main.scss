@@ -36,6 +36,9 @@ a {
   Main
 ============================================ */
 
+// Menu Breakpoint
+$mobile-menu-item: new-breakpoint(max-width 960px);
+
 // Header
 #main-header {
   // @include linear-gradient(#1e5799, #2989d8);
@@ -63,6 +66,11 @@ a {
         text-align: center;
         background: #f0efec;
         cursor: pointer;
+        // Breakpoint
+        @include media($mobile-menu-item) {
+          @include span-columns(12);
+          margin: 10px 0;
+        }
         span {
           vertical-align: middle;
         }
@@ -91,14 +99,13 @@ div.field {
   @include row();
 }
 
-.related-concepts {
-  input.related-concepts-item {
+.related-concepts, .related-forms {
+  input[type=text] {
     @include span-columns(10);
   }
 
   button {
     @include span-columns(2);
-    @include omega();
   }
 }
 

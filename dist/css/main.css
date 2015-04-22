@@ -229,6 +229,15 @@ a {
       cursor: pointer; }
       #main-menu ul li .main-menu-item:last-child {
         margin-right: 0; }
+      @media screen and (max-width: 960px)  {
+        #main-menu ul li .main-menu-item {
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 100%;
+          margin: 10px 0; }
+          #main-menu ul li .main-menu-item:last-child {
+            margin-right: 0; } }
       #main-menu ul li .main-menu-item span {
         vertical-align: middle; }
     #main-menu ul li .main-menu-item:hover {
@@ -253,20 +262,19 @@ div.field {
     content: "";
     display: table; }
 
-.related-concepts input.related-concepts-item {
+.related-concepts input[type=text], .related-forms input[type=text] {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 82.94039%; }
-  .related-concepts input.related-concepts-item:last-child {
+  .related-concepts input[type=text]:last-child, .related-forms input[type=text]:last-child {
     margin-right: 0; }
-.related-concepts button {
+.related-concepts button, .related-forms button {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 14.70196%;
-  margin-right: 0; }
-  .related-concepts button:last-child {
+  width: 14.70196%; }
+  .related-concepts button:last-child, .related-forms button:last-child {
     margin-right: 0; }
 
 /* ============================================
