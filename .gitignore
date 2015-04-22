@@ -40,3 +40,7 @@ dist/js/lib.js
 
 ### Mac Files ###
 .DS_Store
+
+### Sass ###
+.sass-cache
+*.css.map

@@ -28,6 +28,7 @@ Open browser to `localhost:8080`.
     - [ ] Test Set-up
         - [ ] E2E w/ Selenium & Protractor
         - [ ] Unit w/ Jasmine
+        - [ ] JSLint
     - [x] Serve App With Gulp (better than `python -m SimpleHTTPServer`)
 - [ ] Create Concept Form
     - [x] Concept Name
