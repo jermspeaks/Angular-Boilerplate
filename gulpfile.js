@@ -1,42 +1,46 @@
+/*	===============================
+		Gulp Tasks
+	=============================== */
+
+/*
+	Welcome to Gulp
+	List of Gulp tasks:
+		- dist
+		- watch
+		- build
+		- templates
+		- library
+		- styles
+		- serve
+*/
+
 'use strict';
 
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var watchify = require('watchify');
-var browserify = require('browserify');
-var mainBowerFiles = require('main-bower-files');
-var concat = require('gulp-concat');
-var templateCache = require('gulp-angular-templatecache');
-var debowerify = require('debowerify');
-var source = require('vinyl-source-stream');
-var filter = require('gulp-filter');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var minifycss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var bourbon = require('node-bourbon');
+var gulp = require('gulp'),
+	gutil = require('gulp-util');
 
-gulp.task('dist', ['templates', 'styles', 'library', 'build']);
+/*	===============================
+		Build
+	=============================== */
 
-gulp.task('watch', function() {
-	return process(true);
-});
+var watchify = require('watchify'),
+	// File Compilation
+	browserify = require('browserify'),
+	mainBowerFiles = require('main-bower-files'),
+	concat = require('gulp-concat'),
+	debowerify = require('debowerify'),
+	source = require('vinyl-source-stream'),
+	filter = require('gulp-filter'),
 
-gulp.task('build', function() {
-	return process(false);
-});
+	// Templates
+	templateCache = require('gulp-angular-templatecache'),
 
-gulp.task('templates', function() {
-	return processTemplates();
-});
-
-gulp.task('library', function() {
-	return processLibraries();
-});
-
-gulp.task('styles', function() {
-    return processStyleSheets();
-});
+	// SASS/CSS
+	sass = require('gulp-sass'),
+	autoprefixer = require('gulp-autoprefixer'),
+	minifycss = require('gulp-minify-css'),
+	rename = require('gulp-rename'),
+	bourbon = require('node-bourbon');
 
 function process(watch) {
 	console.log('process');
@@ -112,7 +116,67 @@ function processStyleSheets() {
 		}))
 		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
 		.pipe(gulp.dest('./dist/css'))
-		.pipe(rename({suffix: '.min'}))
+		.pipe(rename({
+			suffix: '.min'
+		}))
 		.pipe(minifycss())
 		.pipe(gulp.dest('./dist/css'));
 }
+
+gulp.task('dist', ['templates', 'styles', 'library', 'build']);
+
+gulp.task('watch', function() {
+	return process(true);
+});
+
+gulp.task('build', function() {
+	return process(false);
+});
+
+gulp.task('templates', function() {
+	return processTemplates();
+});
+
+gulp.task('library', function() {
+	return processLibraries();
+});
+
+gulp.task('styles', function() {
+	return processStyleSheets();
+});
+
+/*	===============================
+		Server
+	=============================== */
+var embedlr = require('gulp-embedlr'),
+	refresh = require('gulp-livereload'),
+	lrserver = require('tiny-lr')(),
+	express = require('express'),
+	livereload = require('connect-livereload'),
+	livereloadport = 35729,
+	serverport = 5000;
+
+// Set up an express server (but not starting it yet)
+var server = express();
+// Add live reload
+server.use(livereload({
+	port: livereloadport
+}));
+// Use our 'dist' folder as rootfolder
+server.use(express.static('./dist'));
+// Because I like HTML5 pushstate .. this redirects everything back to our index.html
+server.all('/*', function(req, res) {
+	res.sendfile('index.html', {
+		root: 'dist'
+	});
+});
+
+// Dev task
+gulp.task('serve', function() {
+	// Start webserver
+	server.listen(serverport);
+	// Start live reload
+	lrserver.listen(livereloadport);
+	// Run the watch task, to keep taps on changes
+	// gulp.watch('watch');
+});

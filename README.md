@@ -8,8 +8,7 @@ UI to edit topic graph
 npm install # May need sudo here
 bower install
 gulp dist
-cd dist
-python -m HTTPSimpleServer 8080
+gulp serve
 ```
 
 Open browser to `localhost:8080`.
@@ -29,7 +28,7 @@ Open browser to `localhost:8080`.
     - [ ] Test Set-up
         - [ ] E2E w/ Selenium & Protractor
         - [ ] Unit w/ Jasmine
-    - [ ] Serve App With Gulp (better than `python -m SimpleHTTPServer`)
+    - [x] Serve App With Gulp (better than `python -m SimpleHTTPServer`)
 - [ ] Create Concept Form
     - [x] Concept Name
     - [x] Display Name
@@ -87,17 +86,22 @@ For development packages, we are using npm
 * gulp
     * browserify
     * browserify-shim
+    * connect-livereload
     * debowerify
+    * express
     * gulp-angular-templatecache
     * gulp-autoprefixer
     * gulp-concat
+    * gulp-embedlr
     * gulp-filter
+    * gulp-livereload
     * gulp-minify-css
     * gulp-rename
     * gulp-sass
     * gulp-util
     * main-bower-files
     * node-bourbon
+    * tiny-lr
     * vinyl-source-stream
     * watchify
 
