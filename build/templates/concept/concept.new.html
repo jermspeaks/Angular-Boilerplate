@@ -1,0 +1,73 @@
+<div>
+</div>
+
+<header class="concept-header">
+    <span>Create a new concept</span>
+</header>
+
+<section>
+    <form name="loginForm" ng-submit="login(loginForm.$valid)" novalidate>
+        <fieldset class="stacked login">
+
+            <div class="field">
+                <label for="email">Email</label>
+                <input
+                    name="email"
+                    type="email"
+                    id="email"
+                    placeholder="me@corp.com"
+                    ng-model="email"
+                    autocapitalize="off"
+                    autocorrect="off"
+                    autofocus="autofocus"
+                    required
+                />
+                <div ng-messages="loginForm.email.$error" ng-if="loginForm.email.$dirty">
+                    <small ng-message="required" class="error">Your email is required.</small>
+                    <small ng-message="email" class="error">Email is not valid.</small>
+                </div>
+            </div> <!-- /.field -->
+
+            <div class="field">
+                <label for="password">Password</label>
+                <input
+                    name="password"
+                    type="password"
+                    id="password"
+                    ng-model="password"
+                    required
+                />
+                <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$dirty">
+                    <small ng-message="required" class="error">Your password is required.</small>
+                </div>
+            </div> <!-- /.field -->
+
+            <div class="button-bar group">
+
+                <div class="small-6">
+                    <div class="row">
+                        <div class="large-3 medium-5 columns">
+                            <input
+                                id="btn-login"
+                                type="submit"
+                                value="Log in"
+                                ng-disabled="loginForm.$invalid"
+                                class="button"
+                            >
+                        </div>
+                        <div class="large-5 medium-7 columns">
+                            <a href="http://helloreverb.com" id="learn-more" class="button secondary">Learn More</a>
+                        </div>
+                        <div id="forgot-password" class="large-4 columns">
+                            <label for="forgot-password" class="left inline">
+                                <a href="/forgot_password">Forgot password?</a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </fieldset> <!-- /.login -->
+    </form>
+</section>

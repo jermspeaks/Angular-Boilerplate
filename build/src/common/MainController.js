@@ -6,16 +6,20 @@ module.exports = function($log, $scope) {
     $scope.model = {
         editors: [{
             name: 'create',
-            displayName: 'Create a Concept'
+            displayName: 'Create a Concept',
+            link: 'concept.new'
         }, {
             name: 'read',
-            displayName: 'Search for a Concept'
+            displayName: 'Search for a Concept',
+            link: 'concept.find'
         }, {
             name: 'update',
-            displayName: 'Edit a Concept'
+            displayName: 'Edit a Concept',
+            link: 'concept.edit'
         }, {
             name: 'delete',
-            displayName: 'Delete a Concept'
+            displayName: 'Delete a Concept',
+            link: 'concept.delete'
         }]
     };
 

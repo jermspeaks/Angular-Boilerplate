@@ -3,14 +3,33 @@
 ============================================ */
 
 @import "bourbon";
+@import "assets/neat/neat";
+@import "assets/neat/neat-helpers";
+@import "assets/base/base";
 
 /* ============================================
   Globals
 ============================================ */
 
 body {
+  font-family: 'Lato', sans-serif;
+  line-height: 1;
   font-size: 16px;
   font-style: 400;
+  max-width: 1024px;
+  margin: auto;
+  background: #e7e5e0;
+}
+
+#container {
+  background: white;
+  overflow: hidden;
+  padding: 0 30px 30px 30px;
+}
+
+a {
+  color:inherit;
+  text-decoration: none;
 }
 
 /* ============================================
@@ -20,14 +39,50 @@ body {
 // Header
 #main-header {
   // @include linear-gradient(#1e5799, #2989d8);
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin: 30px 0;
 }
 
 // Navigation
 #main-menu {
   ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
     li {
       font-size: 20px;
+      .main-menu-item {
+        @include span-columns(6);
+        display: inline;
+        margin: 10px 10px;
+        padding: 25px 0;
+        border: 1px solid black;
+        border-radius: 10px;
+        text-align: center;
+        background: #f0efec;
+        cursor: pointer;
+        span {
+          vertical-align: middle;
+        }
+      }
+      .main-menu-item:hover {
+        color: white;
+        background: #484746;
+        @include transition(color 0.3s ease-in 0s, background 0.3s ease-in 0s);
+      }
     }
   }
+}
+
+/* ============================================
+  Concept Forms
+============================================ */
+
+.concept-header {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  margin: 30px 0;
 }

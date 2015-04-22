@@ -1,0 +1,13 @@
+<header id="main-header">
+    <span><a ui-sref="concept">Reverb Topic Graph Editor</a></span>
+</header>
+
+<div ui-view>
+    <section id="main-menu">
+        <ul>
+            <li ng-repeat="edit in model.editors">
+                <a ui-sref="{{edit.link}}"><div class="main-menu-item"><span>{{edit.displayName}}</span></div></a>
+            </li>
+        </ul>
+    </section>
+</div>
