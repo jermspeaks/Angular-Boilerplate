@@ -106,6 +106,47 @@ For development packages, we are using npm
     * vinyl-source-stream
     * watchify
 
+##### Testing
+
+###### Unit
+
+Testing Packages:
+
+* karma
+* jasmine
+
+npm Packages:
+
+* jasmine-core
+* karma
+* karma-jasmine
+* karma-phantomjs-launcher
+* karma-spec-reporter
+
+*Load Tests*
+
+```
+# Main Folder
+gulp karma
+```
+
+###### E2E
+
+Testing Packages:
+
+* protractor
+* selenium
+* cucumber
+* chai
+* chai-as-expected
+
+npm Packages:
+
+```
+# Main Folder
+gulp protractor
+```
+
 #### Production
 
 For 3rd party libraries, we are using bower for package management
