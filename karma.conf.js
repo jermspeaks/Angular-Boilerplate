@@ -15,8 +15,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/karma/*.js',
-      // 'tests/karma/spec.js'
+      'dist/js/lib.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+      'dist/js/app.js', // Final Files
+      'tests/karma/*.js',
     ],
 
 
@@ -34,7 +36,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
 
 
     // web server port
@@ -56,7 +58,11 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['PhantomJS'
+      // , 'Chrome'
+      // , 'Firefox'
+      // , 'Safari'
+      ],
 
 
     // Continuous Integration mode

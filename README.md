@@ -27,7 +27,7 @@ Open browser to `localhost:8080`.
         - [x] Bourbon / Neat
     - [ ] Test Set-up
         - [ ] E2E w/ Selenium & Protractor
-        - [ ] Unit w/ Jasmine
+        - [x] Unit w/ Jasmine
         - [ ] JSLint
     - [x] Serve App With Gulp (better than `python -m SimpleHTTPServer`)
 - [ ] Create Concept Form
@@ -106,16 +106,30 @@ For development packages, we are using npm
     * vinyl-source-stream
     * watchify
 
-##### Testing
+#### Testing
 
-###### Unit
+##### Unit
 
-Testing Packages:
+###### Installation
+
+```shell
+npm install -g karma
+npm install -g jasmine
+# Skip these two steps if you ran the installation at the top
+bower install # For Angular-mocks
+npm install
+```
+
+###### Testing Packages:
 
 * karma
 * jasmine
 
-npm Packages:
+###### Bower Packages:
+
+* angular-mocks
+
+###### npm Packages:
 
 * jasmine-core
 * karma
@@ -123,14 +137,14 @@ npm Packages:
 * karma-phantomjs-launcher
 * karma-spec-reporter
 
-*Load Tests*
+###### Load Tests
 
-```
+```shell
 # Main Folder
 gulp karma
 ```
 
-###### E2E
+##### E2E
 
 Testing Packages:
 
@@ -142,7 +156,7 @@ Testing Packages:
 
 npm Packages:
 
-```
+```shell
 # Main Folder
 gulp protractor
 ```
