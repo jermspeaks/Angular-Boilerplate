@@ -14,19 +14,6 @@ python -m HTTPSimpleServer 8080
 
 Open browser to `localhost:8080`.
 
-### Requirements:
-
-* User should be able to create, read, update, and delete a concept or form
-* When relating forms to concepts, there should be a way to give equal or custom weights to the forms
-* Should show related concepts
-* Should show related forms
-* Should be able to add connections to related concepts
-* Should be able to add forms to this concept after shown the related forms
-* User should be able to search for other concepts or forms, and come back with their respective relations to other concepts and forms
-    * e.g. Search Furious 7 should return forms such as "Fast and the Furious", "Fast and Furious", etc. as well as concepts such as "Vin Diesel", "Paul Walker", etc.
-* Editor
-    * Search for a Concept or Form and have the ability to edit its attributes, which as the same as the ones you see in Create
-
 ### Tasks:
 - [ ] Project Set-up
     - [x] .gitignore
@@ -42,7 +29,7 @@ Open browser to `localhost:8080`.
     - [ ] Test Set-up
         - [ ] E2E w/ Selenium & Protractor
         - [ ] Unit w/ Jasmine
-    - [ ] Serve App (better than `python -m SimpleHTTPServer`)
+    - [ ] Serve App With Gulp (better than `python -m SimpleHTTPServer`)
 - [ ] Create Concept Form
     - [x] Concept Name
     - [x] Display Name
@@ -121,3 +108,17 @@ For 3rd party libraries, we are using bower for package management
 * angular
 * lodash
 * ui-router
+* jQuery
+
+### Requirements:
+
+* User should be able to create, read, update, and delete a concept or form
+* When relating forms to concepts, there should be a way to give equal or custom weights to the forms
+* Should show related concepts
+* Should show related forms
+* Should be able to add connections to related concepts
+* Should be able to add forms to this concept after shown the related forms
+* User should be able to search for other concepts or forms, and come back with their respective relations to other concepts and forms
+    * e.g. Search Furious 7 should return forms such as "Fast and the Furious", "Fast and Furious", etc. as well as concepts such as "Vin Diesel", "Paul Walker", etc.
+* Editor
+    * Search for a Concept or Form and have the ability to edit its attributes, which as the same as the ones you see in Create
