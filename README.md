@@ -5,7 +5,7 @@ UI to edit topic graph. To get started, install following the directions below.
 
 ___
 
-### For Development:
+### Local Development:
 
 All development is in the `build` folder, and results are built in the `dist` folder.
 
