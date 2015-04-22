@@ -38,7 +38,7 @@ Open browser to `localhost:8080`.
         - [x] .bowerrc
         - [x] Routing (UI Router)
         - [x] Sass
-        - [ ] Bourbon / Neat
+        - [x] Bourbon / Neat
     - [ ] Test Set-up
         - [ ] E2E w/ Selenium & Protractor
         - [ ] Unit w/ Jasmine

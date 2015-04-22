@@ -6,27 +6,66 @@
 </header>
 
 <section>
-    <form name="loginForm" ng-submit="login(loginForm.$valid)" novalidate>
-        <fieldset class="stacked login">
+    <form name="conceptNewForm" ng-submit="submitNewConcept(loginForm.$valid)" novalidate>
+        <fieldset class="conceptNewForm">
 
             <div class="field">
-                <label for="email">Email</label>
+                <label for="conceptName">Concept Name</label>
                 <input
-                    name="email"
-                    type="email"
-                    id="email"
-                    placeholder="me@corp.com"
-                    ng-model="email"
+                    name="conceptName"
+                    type="text"
+                    id="conceptName"
+                    placeholder="Enter a concept name"
+                    ng-model="conceptName"
                     autocapitalize="off"
                     autocorrect="off"
                     autofocus="autofocus"
                     required
                 />
-                <div ng-messages="loginForm.email.$error" ng-if="loginForm.email.$dirty">
-                    <small ng-message="required" class="error">Your email is required.</small>
-                    <small ng-message="email" class="error">Email is not valid.</small>
-                </div>
+                <!-- <div ng-messages="conceptNewForm.conceptName.$error" ng-if="conceptNewForm.conceptName.$dirty">
+                    <small ng-message="required" class="error">A concept name is required.</small>
+                </div> -->
             </div> <!-- /.field -->
+
+            <div class="field">
+                <label for="DisplayName">Concept Display Name</label>
+                <input
+                    name="DisplayName"
+                    type="text"
+                    id="DisplayName"
+                    placeholder="Enter the concept display name"
+                    ng-model="displayName"
+                    autocapitalize="off"
+                    autocorrect="off"
+                    autofocus="autofocus"
+                    required
+                />
+            </div> <!-- /.field -->
+
+            <div class="field related-concepts">
+                <label for="RelatedConcepts">Related Concepts</label>
+                <input
+                    class="related-concepts-item"
+                    name="RelatedConcepts"
+                    type="text"
+                    id="RelatedConcepts"
+                    placeholder="Enter the concept display name"
+                    ng-model="relatedConcepts"
+                    autocapitalize="off"
+                    autocorrect="off"
+                    autofocus="autofocus"
+                    required
+                />
+                <button>+</button>
+            </div> <!-- /.field -->
+
+            <div class="field">
+                <label for="select">Entity Type</label>
+                <select class="global-date-selector custom"
+                    ng-model="entity"
+                    ng-options="entityType.name for entityType in supportedEntities"
+                    ></select>
+            </div>
 
             <div class="field">
                 <label for="password">Password</label>
@@ -48,20 +87,12 @@
                     <div class="row">
                         <div class="large-3 medium-5 columns">
                             <input
-                                id="btn-login"
+                                id="btn-submit"
                                 type="submit"
-                                value="Log in"
+                                value="Submit"
                                 ng-disabled="loginForm.$invalid"
                                 class="button"
                             >
-                        </div>
-                        <div class="large-5 medium-7 columns">
-                            <a href="http://helloreverb.com" id="learn-more" class="button secondary">Learn More</a>
-                        </div>
-                        <div id="forgot-password" class="large-4 columns">
-                            <label for="forgot-password" class="left inline">
-                                <a href="/forgot_password">Forgot password?</a>
-                            </label>
                         </div>
                     </div>
                 </div>

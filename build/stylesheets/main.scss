@@ -86,3 +86,22 @@ a {
   text-align: center;
   margin: 30px 0;
 }
+
+div.field {
+  @include row();
+}
+
+.related-concepts {
+  input.related-concepts-item {
+    @include span-columns(10);
+  }
+
+  button {
+    @include span-columns(2);
+    @include omega();
+  }
+}
+
+/* ============================================
+  Vendor: Refills
+  ============================================ */
