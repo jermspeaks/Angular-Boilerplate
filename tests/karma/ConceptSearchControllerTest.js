@@ -37,7 +37,7 @@ describe('ConceptSearchController', function() {
     expect(state.params.id).toBe('1');
   });
 
-  it('should route to a edit page', function() {
+  it('should route to an edit page', function() {
     $scope.editConcept('1');
     $scope.$digest();
     expect(state.current.name).toBe('concept.edit');

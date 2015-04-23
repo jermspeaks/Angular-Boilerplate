@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($log, $scope, $state) {
+module.exports = function($log, $scope, $state, $stateParams) {
     // _______________
     // Scope Variables
     $scope.model = {};
@@ -14,7 +14,7 @@ module.exports = function($log, $scope, $state) {
 
         // Loading Bar
         // Defer until search goes through
-        $state.go('concept.find.list'); // TODO add search query
+        $state.go('concept.find.list', {q: $scope.searchQuery});
     };
 
     $scope.viewConcept = function(id) {
@@ -49,5 +49,7 @@ module.exports = function($log, $scope, $state) {
         var response = findSearchQuery();
         $scope.model.searchList = response;
     }
+
+    $log.debug($stateParams);
 
 };
