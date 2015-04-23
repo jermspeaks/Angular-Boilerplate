@@ -9,6 +9,7 @@ angular.module('topicGraphEditor', ['ui.router'])
 
     // Concept Controllers
     .controller('ConceptNewController', require('./src/concept/ConceptNewController'))
+    .controller('ConceptSearchController', require('./src/concept/ConceptSearchController'))
 
     // Customize
     // .run(require('./plugins'))

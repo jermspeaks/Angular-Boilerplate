@@ -41,7 +41,8 @@ Next Milestone:
 
 - [ ] Project Set-up
     - [ ] Test Set-up
-        - [ ] E2E w/ Selenium & Protractor
+        - [ ] E2E w/ Selenium & Protractor -> Not running
+    - [ ] Sprite generator
 - [ ] Create Concept Form
     - [ ] Search for Related Concepts
     - [ ] Field to add multiple related concepts

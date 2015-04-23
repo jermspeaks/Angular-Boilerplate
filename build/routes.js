@@ -19,7 +19,7 @@ module.exports =
                 read: {
                     url: 'concept/find',
                     templateUrl: 'concept/concept.search.html',
-                    // controller: 'MainController'
+                    controller: 'ConceptSearchController'
                 },
                 update: {
                     url: 'concept/edit',
