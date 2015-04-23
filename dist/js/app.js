@@ -26,7 +26,8 @@ $templateCache.put("concept/concept.html","<header id=\"main-header\">\n    <spa
 $templateCache.put("concept/concept.new.html","<header class=\"concept-header\">\n    <span>Create a new concept</span>\n</header>\n\n<section>\n    <form name=\"conceptNewForm\" ng-submit=\"submitNewConcept(conceptNewForm.$valid)\" novalidate>\n        <fieldset class=\"conceptNewForm\">\n\n            <div class=\"field\">\n                <label for=\"conceptName\">Concept Name</label>\n                <input\n                    name=\"conceptName\"\n                    type=\"text\"\n                    id=\"conceptName\"\n                    placeholder=\"Enter a concept name\"\n                    ng-model=\"form.conceptName\"\n                    autocapitalize=\"off\"\n                    autocorrect=\"off\"\n                    autofocus=\"autofocus\"\n                    required\n                />\n                <!-- <div ng-messages=\"conceptNewForm.conceptName.$error\" ng-if=\"conceptNewForm.conceptName.$dirty\">\n                    <small ng-message=\"required\" class=\"error\">A concept name is required.</small>\n                </div> -->\n            </div> <!-- /.field -->\n\n            <div class=\"field\">\n                <label for=\"DisplayName\">Concept Display Name</label>\n                <input\n                    name=\"DisplayName\"\n                    type=\"text\"\n                    id=\"DisplayName\"\n                    placeholder=\"Enter the concept display name\"\n                    ng-model=\"form.displayName\"\n                    autocapitalize=\"off\"\n                    autocorrect=\"off\"\n                    autofocus=\"autofocus\"\n                    required\n                />\n            </div> <!-- /.field -->\n\n            <div class=\"field related-forms\"> <!-- The default form is the concept name. TODO include an extra field to start with an additional form -->\n                <label for=\"relatedForms\">Related Forms</label>\n                <input\n                    class=\"related-concepts-item\"\n                    name=\"relatedForms\"\n                    type=\"text\"\n                    id=\"relatedForms\"\n                    placeholder=\"\"\n                    ng-model=\"form.conceptName\"\n                    autocapitalize=\"off\"\n                    autocorrect=\"off\"\n                    autofocus=\"autofocus\"\n                    required\n                />\n                <button>+</button> <!-- TODO ng-click=\"addForm()\" -->\n            </div> <!-- /.field -->\n\n            <div class=\"field related-concepts\"> <!-- Duplicate this as a directive. TODO Make autocomplete -->\n                <label for=\"RelatedConcepts\">Related Concepts</label>\n                <input\n                    class=\"related-concepts-item\"\n                    name=\"RelatedConcepts\"\n                    type=\"text\"\n                    id=\"RelatedConcepts\"\n                    placeholder=\"Enter the concept display name\"\n                    ng-model=\"form.relatedConcepts\"\n                    autocapitalize=\"off\"\n                    autocorrect=\"off\"\n                    autofocus=\"autofocus\"\n                    required\n                />\n                <button>+</button> <!-- TODO ng-click=\"addConcept()\" -->\n            </div> <!-- /.field -->\n\n            <div class=\"field\">\n                <label for=\"select\">Entity Type</label>\n                <select class=\"global-date-selector custom\"\n                    ng-model=\"form.entity\"\n                    ng-options=\"entityType.name for entityType in supportedEntities\"\n                    required\n                    ></select>\n            </div>\n\n            <div class=\"button-bar group\">\n\n                <div class=\"small-6\">\n                    <div class=\"row\">\n                        <div class=\"large-3 medium-5 columns\">\n                            <input\n                                id=\"btn-submit\"\n                                type=\"submit\"\n                                value=\"Submit\"\n                                ng-disabled=\"conceptNewForm.$invalid\"\n                                class=\"button\"\n                            >\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n\n        </fieldset> <!-- /.login -->\n    </form>\n</section>\n");
 $templateCache.put("concept/concept.search.html","<header class=\"concept-header\">\n    <span>Search for a concept</span>\n</header>\n\n<section class=\"concept-search-bar\">\n  <form name=\"conceptSearchForm\" class=\"search-bar\" role=\"search\" ng-submit=\"search(conceptSearchForm.$valid)\" novalidate>\n    <input type=\"search\" placeholder=\"Enter Search\" ng-model=\"searchQuery\" required/>\n    <button class=\"search-submit\" type=\"submit\">\n      <img src=\"https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png\" alt=\"Search Icon\">\n    </button>\n  </form>\n</section>\n\n<section>\n  <div ui-view></div>\n</section>\n");
 $templateCache.put("concept/concept.search.list.html","<header class=\"concept-header\">\n    <span>Search Results</span>\n</header>\n\n<table class=\"tables\">\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Options</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr ng-repeat=\"concept in model.searchList\">\n      <td>{{concept.name}}</td>\n      <td><button ng-click=\"viewConcept(concept.id)\">View</button><button ng-click=\"editConcept(concept.id)\">Edit</button><button ng-click=\"deleteConcept(concept.id)\">Delete</button></td>\n    </tr>\n  </tbody>\n</table>\n");
-$templateCache.put("concept/concept.update.html","<header class=\"concept-header\">\n    <span>Update for a concept</span>\n</header>\n\n\n<p>FORM PENDING</p>\n");}]);
+$templateCache.put("concept/concept.update.html","<header class=\"concept-header\">\n    <span>Update for a concept</span>\n</header>\n\n\n<p>FORM PENDING</p>\n");
+$templateCache.put("concept/concept.view.html","");}]);
 ; browserify_shim__define__module__export__(typeof templates != "undefined" ? templates : window.templates);
 
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
@@ -161,24 +162,13 @@ module.exports = function($log, $scope, $state) {
     // Scope Variables
     $scope.model = {};
 
-    $scope.model.searchList = [{
-        name: 'One',
-        id: "1"
-    }, {
-        name: 'Two',
-        id: "2"
-    }, {
-        name: 'Three',
-        id: "3"
-    }];
-
     // Return search
     $scope.search = function() {
         $log.debug('Search: ');
         $log.debug($scope.searchQuery);
 
         // Send Search to back and wait for response
-        // fetchSearchResults();
+        fetchSearchResults();
 
         // Loading Bar
         // Defer until search goes through
@@ -187,39 +177,36 @@ module.exports = function($log, $scope, $state) {
 
     $scope.viewConcept = function(id) {
         $log.debug('View %s', id);
-        $state.transitionTo("contact.view", { id: id });
-    }
+        $state.transitionTo('contact.view', { id: id });
+    };
 
     $scope.editConcept = function(id) {
         $log.debug('Edit %s', id);
-        $state.transitionTo("contact.edit", { id: id });
-    }
+        $state.transitionTo('contact.edit', { id: id });
+    };
 
     $scope.deleteConcept = function(id) {
         $log.debug('Delete %s', id);
-        $state.transitionTo("contact.delete", { id: id });
-    }
+        $state.transitionTo('contact.delete', { id: id });
+    };
 
-    // function fetchSearchResults() {
-    //     // function findSearchQuery() {
-    //     //     return [{
-    //     //         name: 'One'
-    //     //     }, {
-    //     //         name: 'Two'
-    //     //     }, {
-    //     //         name: 'Three'
-    //     //     }];
-    //     // }
-    //
-    //     // var response = findSearchQuery();
-    //     $scope.model.searchList = [{
-    //         name: 'One'
-    //     }, {
-    //         name: 'Two'
-    //     }, {
-    //         name: 'Three'
-    //     }];
-    // }
+    function fetchSearchResults() {
+        function findSearchQuery() {
+            return [{
+                name: 'One',
+                id: '1'
+            }, {
+                name: 'Two',
+                id: '2'
+            }, {
+                name: 'Three',
+                id: '3'
+            }];
+        }
+
+        var response = findSearchQuery();
+        $scope.model.searchList = response;
+    }
 
 };
 

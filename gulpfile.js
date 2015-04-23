@@ -65,7 +65,7 @@ function process(watch) {
 		gulp.watch('./build/templates/**/*.html', ['templates']);
 		gulp.watch('./build/stylesheets/main.scss', ['styles']);
 		gulp.watch('./build/src/**/*.js', ['lint']);
-		gulp.watch(['./tests/spec/*.js', './dist/js/*.js'], ['test']);
+		gulp.watch(['./tests/karma/*.js', './dist/js/*.js'], ['test']);
 	} else {
 		bundler = browserify('./build/index.js');
 		bundler.transform(debowerify);
