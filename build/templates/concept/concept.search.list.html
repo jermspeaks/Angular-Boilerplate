@@ -1,0 +1,20 @@
+<header class="concept-header">
+    <span>Search Results</span>
+</header>
+
+<table id="search-list-table">
+  <!-- <thead id="search-list-table-head">
+    <th id="search-list-table-head-name">Name</th>
+    <th class="search-list-table-button">View</th>
+    <th class="search-list-table-button">Edit</th>
+    <th class="search-list-table-button">Delete</th>
+  </thead> -->
+  <tbody id="search-list-table-body">
+    <tr ng-repeat="term in model.searchList">
+       <td id="search-list-table-body-name"><span>{{term.name}}</span></td>
+       <td class="search-list-table-button"><button value="View">View</button></td>
+       <td class="search-list-table-button"><button value="Edit">Edit</button></td>
+       <td class="search-list-table-button"><button value="Delete">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

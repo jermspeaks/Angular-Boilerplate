@@ -277,6 +277,39 @@ div.field {
   .related-concepts button:last-child, .related-forms button:last-child {
     margin-right: 0; }
 
+.concept-search-bar {
+  margin: 20px 0; }
+
+table#search-list-table {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  table#search-list-table::after {
+    clear: both;
+    content: "";
+    display: table; }
+  table#search-list-table #search-list-table-head, table#search-list-table #search-list-table-body {
+    width: 100%;
+    display: table;
+    width: 100%;
+    table-layout: fixed; }
+  table#search-list-table #search-list-table-head-name, table#search-list-table #search-list-table-body-name {
+    display: table-cell;
+    width: 50%;
+    padding: 2.35765%; }
+  table#search-list-table .search-list-table-button {
+    display: table-cell;
+    width: 16.66667%;
+    padding: 2.35765%; }
+  table#search-list-table #search-list-table-body {
+    width: 100%;
+    display: table;
+    width: 100%;
+    table-layout: fixed; }
+  table#search-list-table #search-list-table-body-name span {
+    font-size: 18px;
+    font-weight: 600; }
+
 /* ============================================
   Vendor: Refills
   ============================================ */

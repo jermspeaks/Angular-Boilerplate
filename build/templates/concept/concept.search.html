@@ -2,11 +2,15 @@
     <span>Search for a concept</span>
 </header>
 
-<section>
-  <form class="search-bar" role="search">
-    <input type="search" placeholder="Enter Search" />
-    <button type="submit">
+<section class="concept-search-bar">
+  <form name="conceptSearchForm" class="search-bar" role="search" ng-submit="search(conceptSearchForm.$valid)" novalidate>
+    <input type="search" placeholder="Enter Search" ng-model="searchQuery" required/>
+    <button class="search-submit" type="submit">
       <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
     </button>
   </form>
+</section>
+
+<section>
+  <div ui-view></div>
 </section>

@@ -109,6 +109,37 @@ div.field {
   }
 }
 
+.concept-search-bar {
+  margin: 20px 0;
+}
+
+table#search-list-table {
+  @include outer-container;
+  #search-list-table-head, #search-list-table-body {
+    @include fill-parent();
+    @include row(table);
+  }
+  #search-list-table-head-name, #search-list-table-body-name {
+    @include span-columns(6);
+    @include pad();
+  }
+  .search-list-table-button {
+    @include span-columns(2);
+    @include reset-display;
+    @include pad();
+  }
+
+  #search-list-table-body {
+    @include fill-parent();
+    @include row(table);
+  }
+
+  #search-list-table-body-name span {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
 /* ============================================
   Vendor: Refills
   ============================================ */

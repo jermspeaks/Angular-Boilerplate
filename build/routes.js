@@ -16,10 +16,13 @@ module.exports =
                     templateUrl: 'concept/concept.new.html',
                     controller: 'ConceptNewController'
                 },
-                read: {
+                search: {
                     url: 'concept/find',
                     templateUrl: 'concept/concept.search.html',
                     controller: 'ConceptSearchController'
+                },
+                list: {
+                    templateUrl: 'concept/concept.search.list.html',
                 },
                 update: {
                     url: 'concept/edit',
@@ -39,7 +42,8 @@ module.exports =
         $stateProvider
             .state('concept', pages.concept.main)
             .state('concept.new', pages.concept.new)
-            .state('concept.find', pages.concept.read)
+            .state('concept.find', pages.concept.search)
+            .state('concept.find.list', pages.concept.list)
             .state('concept.edit', pages.concept.update)
             .state('concept.delete', pages.concept.delete)
         ;
