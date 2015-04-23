@@ -2,19 +2,17 @@
     <span>Search Results</span>
 </header>
 
-<table id="search-list-table">
-  <!-- <thead id="search-list-table-head">
-    <th id="search-list-table-head-name">Name</th>
-    <th class="search-list-table-button">View</th>
-    <th class="search-list-table-button">Edit</th>
-    <th class="search-list-table-button">Delete</th>
-  </thead> -->
-  <tbody id="search-list-table-body">
-    <tr ng-repeat="term in model.searchList">
-       <td id="search-list-table-body-name"><span>{{term.name}}</span></td>
-       <td class="search-list-table-button"><button value="View">View</button></td>
-       <td class="search-list-table-button"><button value="Edit">Edit</button></td>
-       <td class="search-list-table-button"><button value="Delete">Delete</button></td>
+<table class="tables">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="concept in model.searchList">
+      <td>{{concept.name}}</td>
+      <td><button ng-click="viewConcept(concept.id)">View</button><button ng-click="editConcept(concept.id)">Edit</button><button ng-click="deleteConcept(concept.id)">Delete</button></td>
     </tr>
   </tbody>
 </table>

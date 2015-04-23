@@ -7,13 +7,13 @@ module.exports = function($log, $scope, $state) {
 
     $scope.model.searchList = [{
         name: 'One',
-        id: 1
+        id: "1"
     }, {
         name: 'Two',
-        id: 2
+        id: "2"
     }, {
         name: 'Three',
-        id: 3
+        id: "3"
     }];
 
     // Return search
@@ -28,6 +28,21 @@ module.exports = function($log, $scope, $state) {
         // Defer until search goes through
         $state.go('concept.find.list');
     };
+
+    $scope.viewConcept = function(id) {
+        $log.debug('View %s', id);
+        $state.transitionTo("contact.view", { id: id });
+    }
+
+    $scope.editConcept = function(id) {
+        $log.debug('Edit %s', id);
+        $state.transitionTo("contact.edit", { id: id });
+    }
+
+    $scope.deleteConcept = function(id) {
+        $log.debug('Delete %s', id);
+        $state.transitionTo("contact.delete", { id: id });
+    }
 
     // function fetchSearchResults() {
     //     // function findSearchQuery() {

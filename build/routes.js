@@ -24,13 +24,17 @@ module.exports =
                 list: {
                     templateUrl: 'concept/concept.search.list.html',
                 },
+                read: {
+                    url: 'concept/view/:id',
+                    templateUrl: 'concept/concept.view.html',
+                },
                 update: {
-                    url: 'concept/edit',
+                    url: 'concept/view/:id/edit',
                     templateUrl: 'concept/concept.update.html',
                     // controller: 'MainController'
                 },
                 delete: {
-                    url: 'concept/delete',
+                    url: 'concept/view/:id/delete',
                     templateUrl: 'concept/concept.delete.html',
                     // controller: 'MainController'
                 }
@@ -44,6 +48,7 @@ module.exports =
             .state('concept.new', pages.concept.new)
             .state('concept.find', pages.concept.search)
             .state('concept.find.list', pages.concept.list)
+            .state('concept.view', pages.concept.read)
             .state('concept.edit', pages.concept.update)
             .state('concept.delete', pages.concept.delete)
         ;
