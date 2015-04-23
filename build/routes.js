@@ -9,7 +9,7 @@ module.exports =
                 main: {
                     url: '/',
                     templateUrl: 'concept/concept.html',
-                    controller: 'MainController'
+                    controller: 'ConceptOverviewController'
                 },
                 new: {
                     url: 'concept/new',

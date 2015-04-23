@@ -5,10 +5,8 @@ angular.module('topicGraphEditor', ['ui.router'])
     // Configuration
     .config(require('./routes'))
 
-    // Controllers
-    .controller('MainController', require('./src/common/MainController'))
-
     // Concept Controllers
+    .controller('ConceptOverviewController', require('./src/concept/ConceptOverviewController'))
     .controller('ConceptNewController', require('./src/concept/ConceptNewController'))
     .controller('ConceptSearchController', require('./src/concept/ConceptSearchController'))
 
@@ -20,7 +18,7 @@ angular.module('topicGraphEditor', ['ui.router'])
 
 require('templates');
 
-},{"./routes":3,"./src/common/MainController":4,"./src/concept/ConceptNewController":5,"./src/concept/ConceptSearchController":6,"templates":2}],2:[function(require,module,exports){
+},{"./routes":3,"./src/concept/ConceptNewController":4,"./src/concept/ConceptOverviewController":5,"./src/concept/ConceptSearchController":6,"templates":2}],2:[function(require,module,exports){
 (function (global){
 ; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 angular.module("topicGraphEditor").run(["$templateCache", function($templateCache) {$templateCache.put("concept/concept.delete.html","<header class=\"concept-header\">\n    <span>Delete a concept</span>\n</header>\n\n\n<p>FORM PENDING</p>\n");
@@ -46,7 +44,7 @@ module.exports =
                 main: {
                     url: '/',
                     templateUrl: 'concept/concept.html',
-                    controller: 'MainController'
+                    controller: 'ConceptOverviewController'
                 },
                 new: {
                     url: 'concept/new',
@@ -98,34 +96,6 @@ module.exports =
 module.exports = function($log, $scope) {
     // _______________
     // Scope Variables
-    $scope.model = {
-        editors: [{
-            name: 'create',
-            displayName: 'Create a Concept',
-            link: 'concept.new'
-        }, {
-            name: 'read',
-            displayName: 'Search for a Concept',
-            link: 'concept.find'
-        }, {
-            name: 'update',
-            displayName: 'Edit a Concept',
-            link: 'concept.edit'
-        }, {
-            name: 'delete',
-            displayName: 'Delete a Concept',
-            link: 'concept.delete'
-        }]
-    };
-
-};
-
-},{}],5:[function(require,module,exports){
-'use strict';
-
-module.exports = function($log, $scope) {
-    // _______________
-    // Scope Variables
     $scope.form = {};
 
     $scope.supportedEntities = [{
@@ -150,6 +120,35 @@ module.exports = function($log, $scope) {
     $scope.submitNewConcept = function() {
         $log.debug('Scope form data');
         $log.debug($scope.form);
+    };
+
+};
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
+module.exports = function($log, $scope) {
+    // _______________
+    // Scope Variables
+    $scope.model = {
+        editors: [{
+            name: 'create',
+            displayName: 'Create a Concept',
+            link: 'concept.new'
+        }, {
+            name: 'read',
+            displayName: 'Search for a Concept',
+            link: 'concept.find'
+        }]
+        // {
+        //     name: 'update',
+        //     displayName: 'Edit a Concept',
+        //     link: 'concept.edit'
+        // }, {
+        //     name: 'delete',
+        //     displayName: 'Delete a Concept',
+        //     link: 'concept.delete'
+        // }]
     };
 
 };

@@ -1,4 +1,4 @@
-describe('MainController', function() {
+describe('ConceptOverviewController', function() {
   var $scope, ctrl;
 
 
@@ -22,15 +22,16 @@ describe('MainController', function() {
       // **NOTE**: this is the only time the controller function
       // will be run, so anything that occurs inside of that
       // will already be done before the first spec.
-      ctrl = $controller('MainController', {
+      ctrl = $controller('ConceptOverviewController', {
         $scope: $scope
       });
     });
   });
 
-  it('should give 4 different editor settings', function() {
-    expect($scope.model.editors.length).toEqual(4);
+  it('should give 2 different editor settings', function() {
+    expect($scope.model.editors.length).toEqual(2);
     expect($scope.model.editors[0].name).toEqual('create');
+    expect($scope.model.editors[0].link).toEqual('concept.new');
   });
 
 });

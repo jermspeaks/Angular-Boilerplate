@@ -12,15 +12,16 @@ module.exports = function($log, $scope) {
             name: 'read',
             displayName: 'Search for a Concept',
             link: 'concept.find'
-        }, {
-            name: 'update',
-            displayName: 'Edit a Concept',
-            link: 'concept.edit'
-        }, {
-            name: 'delete',
-            displayName: 'Delete a Concept',
-            link: 'concept.delete'
         }]
+        // {
+        //     name: 'update',
+        //     displayName: 'Edit a Concept',
+        //     link: 'concept.edit'
+        // }, {
+        //     name: 'delete',
+        //     displayName: 'Delete a Concept',
+        //     link: 'concept.delete'
+        // }]
     };
 
 };
