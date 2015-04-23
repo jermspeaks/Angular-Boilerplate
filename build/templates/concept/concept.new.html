@@ -47,13 +47,31 @@
                     type="text"
                     id="relatedForms"
                     placeholder=""
-                    ng-model="form.conceptName"
+                    ng-model="form.forms"
                     autocapitalize="off"
                     autocorrect="off"
                     autofocus="autofocus"
                     required
                 />
-                <button>+</button> <!-- TODO ng-click="addForm()" -->
+                <button ng-click="removeConcept()" style="background:#FF6666;">-</button> <!-- TODO ng-click="addForm()" -->
+            </div> <!-- /.field -->
+
+            <div class="field related-forms"> <!-- The default form is the concept name. TODO include an extra field to start with an additional form -->
+                <!-- <label for="relatedForms">Related Forms</label> -->
+                <input
+                    class="related-concepts-item"
+                    name="relatedForms"
+                    type="text"
+                    id="relatedForms"
+                    placeholder="Same as concept name"
+                    ng-model="form.conceptName"
+                    autocapitalize="off"
+                    autocorrect="off"
+                    autofocus="autofocus"
+                    required
+                    disabled
+                />
+                <button ng-click="addConcept()">+</button> <!-- TODO ng-click="addForm()" -->
             </div> <!-- /.field -->
 
             <div class="field related-concepts"> <!-- Duplicate this as a directive. TODO Make autocomplete -->
@@ -100,6 +118,6 @@
 
             </div>
 
-        </fieldset> <!-- /.login -->
+        </fieldset>
     </form>
 </section>

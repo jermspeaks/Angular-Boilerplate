@@ -30,4 +30,25 @@ describe('ConceptSearchController', function() {
     expect(state.current.name).toBe('concept.find.list');
   });
 
+  it('should route to a view page', function() {
+    $scope.viewConcept('1');
+    $scope.$digest();
+    expect(state.current.name).toBe('concept.view');
+    expect(state.params.id).toBe('1');
+  });
+
+  it('should route to a edit page', function() {
+    $scope.editConcept('1');
+    $scope.$digest();
+    expect(state.current.name).toBe('concept.edit');
+    expect(state.params.id).toBe('1');
+  });
+
+  it('should route to a delete page', function() {
+    $scope.deleteConcept('1');
+    $scope.$digest();
+    expect(state.current.name).toBe('concept.delete');
+    expect(state.params.id).toBe('1');
+  });
+
 });

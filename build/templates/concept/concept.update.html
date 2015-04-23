@@ -2,5 +2,104 @@
     <span>Update for a concept</span>
 </header>
 
+<section>
+    <form name="conceptEditForm" ng-submit="submitNewConcept(conceptEditForm.$valid)" novalidate>
+        <fieldset class="conceptEditForm">
 
-<p>FORM PENDING</p>
+            <div class="field">
+                <label for="conceptName">Concept Name</label>
+                <input
+                    name="conceptName"
+                    type="text"
+                    id="conceptName"
+                    placeholder="Enter a concept name"
+                    ng-model="form.conceptName"
+                    autocapitalize="off"
+                    autocorrect="off"
+                    autofocus="autofocus"
+                    required
+                />
+                <!-- <div ng-messages="conceptEditForm.conceptName.$error" ng-if="conceptEditForm.conceptName.$dirty">
+                    <small ng-message="required" class="error">A concept name is required.</small>
+                </div> -->
+            </div> <!-- /.field -->
+
+            <div class="field">
+                <label for="DisplayName">Concept Display Name</label>
+                <input
+                    name="DisplayName"
+                    type="text"
+                    id="DisplayName"
+                    placeholder="Enter the concept display name"
+                    ng-model="form.displayName"
+                    autocapitalize="off"
+                    autocorrect="off"
+                    autofocus="autofocus"
+                    required
+                />
+            </div> <!-- /.field -->
+
+            <div class="field related-forms"> <!-- The default form is the concept name. TODO include an extra field to start with an additional form -->
+                <label for="relatedForms">Related Forms</label>
+                <input
+                    class="related-concepts-item"
+                    name="relatedForms"
+                    type="text"
+                    id="relatedForms"
+                    placeholder=""
+                    ng-model="form.conceptName"
+                    autocapitalize="off"
+                    autocorrect="off"
+                    autofocus="autofocus"
+                    required
+                />
+                <button>+</button> <!-- TODO ng-click="addForm()" -->
+            </div> <!-- /.field -->
+
+            <div class="field related-concepts"> <!-- Duplicate this as a directive. TODO Make autocomplete -->
+                <label for="RelatedConcepts">Related Concepts</label>
+                <input
+                    class="related-concepts-item"
+                    name="RelatedConcepts"
+                    type="text"
+                    id="RelatedConcepts"
+                    placeholder="Enter the concept display name"
+                    ng-model="form.relatedConcepts"
+                    autocapitalize="off"
+                    autocorrect="off"
+                    autofocus="autofocus"
+                    required
+                />
+                <button>+</button> <!-- TODO ng-click="addConcept()" -->
+            </div> <!-- /.field -->
+
+            <div class="field">
+                <label for="select">Entity Type</label>
+                <select class="global-date-selector custom"
+                    ng-model="form.entity"
+                    ng-options="entityType.name for entityType in supportedEntities"
+                    required
+                    ></select>
+            </div>
+
+            <div class="button-bar group">
+
+                <div class="small-6">
+                    <div class="row">
+                        <div class="large-3 medium-5 columns">
+                            <input
+                                id="btn-submit"
+                                type="submit"
+                                value="Submit"
+                                ng-disabled="conceptEditForm.$invalid"
+                                class="button"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </fieldset>
+    </form>
+</section>

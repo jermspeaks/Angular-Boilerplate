@@ -17,7 +17,7 @@ module.exports = function($log, $scope) {
     // Scope Functions
 
     $scope.addConcept = function() {
-
+      $log.debug('Adding Form Field');
     };
 
     $scope.deleteConcept = function() {

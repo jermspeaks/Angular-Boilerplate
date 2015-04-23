@@ -53,12 +53,11 @@ Next Milestone:
         - [ ] Ability to autocomplete this field
         - [ ] Autofill first form to include the concept display name as a form
 - [ ] Search Concept
-    - [ ] Search Box
-    - [ ] View Concept attributes
-        - [ ] View associated forms
-    - [ ] Options:
-        - [ ] Edit
-        - [ ] Delete
+    - [x] Search Box
+    - [x] Options:
+        - [x] View
+        - [x] Edit
+        - [x] Delete
     - [ ] View Articles associated with concept
     - [ ] View Associated Concepts --> Graphical Visualization?
     - [ ] View forms of the associated concepts
