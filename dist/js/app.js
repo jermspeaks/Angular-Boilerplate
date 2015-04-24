@@ -9,6 +9,11 @@ angular.module('topicGraphEditor', ['ui.router'])
     .controller('ConceptOverviewController', require('./src/concept/ConceptOverviewController'))
     .controller('ConceptNewController', require('./src/concept/ConceptNewController'))
     .controller('ConceptSearchController', require('./src/concept/ConceptSearchController'))
+    .controller('ConceptViewController', require('./src/concept/ConceptViewController'))
+    .controller('ConceptEditController', require('./src/concept/ConceptEditController'))
+
+    // Common Services
+    .factory('RootScopeService', require('./src/common/RootScopeService'))
 
     // Customize
     // .run(require('./plugins'))
@@ -18,7 +23,7 @@ angular.module('topicGraphEditor', ['ui.router'])
 
 require('templates');
 
-},{"./routes":3,"./src/concept/ConceptNewController":4,"./src/concept/ConceptOverviewController":5,"./src/concept/ConceptSearchController":6,"templates":2}],2:[function(require,module,exports){
+},{"./routes":3,"./src/common/RootScopeService":4,"./src/concept/ConceptEditController":5,"./src/concept/ConceptNewController":6,"./src/concept/ConceptOverviewController":7,"./src/concept/ConceptSearchController":8,"./src/concept/ConceptViewController":9,"templates":2}],2:[function(require,module,exports){
 (function (global){
 ; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 angular.module("topicGraphEditor").run(["$templateCache", function($templateCache) {$templateCache.put("concept/concept.delete.html","<header class=\"concept-header\">\n    <span>Delete a concept</span>\n</header>\n\n\n<p>FORM PENDING</p>\n");
@@ -27,7 +32,7 @@ $templateCache.put("concept/concept.new.html","<header class=\"concept-header\">
 $templateCache.put("concept/concept.search.html","<header class=\"concept-header\">\n    <span>Search for a concept</span>\n</header>\n\n<section class=\"concept-search-bar\">\n  <form name=\"conceptSearchForm\" class=\"search-bar\" role=\"search\" ng-submit=\"search(conceptSearchForm.$valid)\" novalidate>\n    <input type=\"search\" placeholder=\"Enter Search\" ng-model=\"searchQuery\" required/>\n    <button class=\"search-submit\" type=\"submit\">\n      <img src=\"https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png\" alt=\"Search Icon\">\n    </button>\n  </form>\n</section>\n\n<section>\n  <div ui-view></div>\n</section>\n");
 $templateCache.put("concept/concept.search.list.html","<header class=\"concept-header\">\n    <span>Search Results</span>\n</header>\n\n<table class=\"tables\">\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Options</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr ng-repeat=\"concept in model.searchList\">\n      <td>{{concept.name}}</td>\n      <td><button ng-click=\"viewConcept(concept.id)\">View</button><button ng-click=\"editConcept(concept.id)\">Edit</button><button ng-click=\"deleteConcept(concept.id)\">Delete</button></td>\n    </tr>\n  </tbody>\n</table>\n");
 $templateCache.put("concept/concept.update.html","<header class=\"concept-header\">\n    <span>Update for a concept</span>\n</header>\n\n<section>\n    <form name=\"conceptEditForm\" ng-submit=\"submitNewConcept(conceptEditForm.$valid)\" novalidate>\n        <fieldset class=\"conceptEditForm\">\n\n            <div class=\"field\">\n                <label for=\"conceptName\">Concept Name</label>\n                <input\n                    name=\"conceptName\"\n                    type=\"text\"\n                    id=\"conceptName\"\n                    placeholder=\"Enter a concept name\"\n                    ng-model=\"form.conceptName\"\n                    autocapitalize=\"off\"\n                    autocorrect=\"off\"\n                    autofocus=\"autofocus\"\n                    required\n                />\n                <!-- <div ng-messages=\"conceptEditForm.conceptName.$error\" ng-if=\"conceptEditForm.conceptName.$dirty\">\n                    <small ng-message=\"required\" class=\"error\">A concept name is required.</small>\n                </div> -->\n            </div> <!-- /.field -->\n\n            <div class=\"field\">\n                <label for=\"DisplayName\">Concept Display Name</label>\n                <input\n                    name=\"DisplayName\"\n                    type=\"text\"\n                    id=\"DisplayName\"\n                    placeholder=\"Enter the concept display name\"\n                    ng-model=\"form.displayName\"\n                    autocapitalize=\"off\"\n                    autocorrect=\"off\"\n                    autofocus=\"autofocus\"\n                    required\n                />\n            </div> <!-- /.field -->\n\n            <div class=\"field related-forms\"> <!-- The default form is the concept name. TODO include an extra field to start with an additional form -->\n                <label for=\"relatedForms\">Related Forms</label>\n                <input\n                    class=\"related-concepts-item\"\n                    name=\"relatedForms\"\n                    type=\"text\"\n                    id=\"relatedForms\"\n                    placeholder=\"\"\n                    ng-model=\"form.conceptName\"\n                    autocapitalize=\"off\"\n                    autocorrect=\"off\"\n                    autofocus=\"autofocus\"\n                    required\n                />\n                <button>+</button> <!-- TODO ng-click=\"addForm()\" -->\n            </div> <!-- /.field -->\n\n            <div class=\"field related-concepts\"> <!-- Duplicate this as a directive. TODO Make autocomplete -->\n                <label for=\"RelatedConcepts\">Related Concepts</label>\n                <input\n                    class=\"related-concepts-item\"\n                    name=\"RelatedConcepts\"\n                    type=\"text\"\n                    id=\"RelatedConcepts\"\n                    placeholder=\"Enter the concept display name\"\n                    ng-model=\"form.relatedConcepts\"\n                    autocapitalize=\"off\"\n                    autocorrect=\"off\"\n                    autofocus=\"autofocus\"\n                    required\n                />\n                <button>+</button> <!-- TODO ng-click=\"addConcept()\" -->\n            </div> <!-- /.field -->\n\n            <div class=\"field\">\n                <label for=\"select\">Entity Type</label>\n                <select class=\"global-date-selector custom\"\n                    ng-model=\"form.entity\"\n                    ng-options=\"entityType.name for entityType in supportedEntities\"\n                    required\n                    ></select>\n            </div>\n\n            <div class=\"button-bar group\">\n\n                <div class=\"small-6\">\n                    <div class=\"row\">\n                        <div class=\"large-3 medium-5 columns\">\n                            <input\n                                id=\"btn-submit\"\n                                type=\"submit\"\n                                value=\"Submit\"\n                                ng-disabled=\"conceptEditForm.$invalid\"\n                                class=\"button\"\n                            >\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n\n        </fieldset>\n    </form>\n</section>\n");
-$templateCache.put("concept/concept.view.html","<header class=\"concept-header\">\n    <span>View Concept</span>\n</header>\n\n<p>Pending</p>\n\n<p>Back To Search</p>\n<p>Include: View Attributes</p>\n<p>Include: Show Forms</p>\n<p>Include: Show Related Concepts (This is where we will have a d3.js Graphic)</p>\n<p>Include: Show Forms of Related Concepts</p>\n");}]);
+$templateCache.put("concept/concept.view.html","<header class=\"concept-header\">\n    <span>View Concept</span>\n</header>\n\n<section>\n  <div><button ng-click=\"backToSearch()\">Back To Search</button>\n  </div>\n</section>\n\n<section><p>Pending:</p>\n\n  <p>Back To Search</p>\n  <p>Include: View Attributes</p>\n  <p>Include: Show Forms</p>\n  <p>Include: Show Related Concepts (This is where we will have a d3.js Graphic)</p>\n  <p>Include: Show Forms of Related Concepts</p>\n</section>\n");}]);
 ; browserify_shim__define__module__export__(typeof templates != "undefined" ? templates : window.templates);
 
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
@@ -64,11 +69,12 @@ module.exports =
                 read: {
                     url: 'concept/view/:id',
                     templateUrl: 'concept/concept.view.html',
+                    controller: 'ConceptViewController'
                 },
                 update: {
                     url: 'concept/view/:id/edit',
                     templateUrl: 'concept/concept.update.html',
-                    // controller: 'MainController'
+                    controller: 'ConceptEditController'
                 },
                 delete: {
                     url: 'concept/view/:id/delete',
@@ -93,6 +99,44 @@ module.exports =
     }];
 
 },{}],4:[function(require,module,exports){
+'use strict';
+
+module.exports = function($log, $rootScope) {
+    // List of things kept in root scope which constitute the application context
+    //
+    // search: Saves the search object for concept search
+
+    // _____________________________________
+    // Configuration Settings for $rootScope
+
+    // ___________________________________
+    // Exposed RootScopeServices Functions
+
+    return {
+        saveSearch: function(searchObj) {
+            $rootScope.search = searchObj;
+        },
+        getSearch: function() {
+            return $rootScope.search;
+        },
+        resetSearch: function() {
+            $rootScope.search = undefined;
+        }
+    };
+};
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
+module.exports = function($log, $scope) {
+    $log.log('ConceptEditController');
+    // _______________
+    // Scope Variables
+    $scope.model = {};
+
+};
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 module.exports = function($log, $scope) {
@@ -126,7 +170,7 @@ module.exports = function($log, $scope) {
 
 };
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 module.exports = function($log, $scope) {
@@ -155,10 +199,11 @@ module.exports = function($log, $scope) {
 
 };
 
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
-module.exports = function($log, $scope, $state, $stateParams) {
+module.exports = function($log, $scope, $state, $stateParams, RootScopeService) {
+    $log.log('ConceptSearchController');
     // _______________
     // Scope Variables
     $scope.model = {};
@@ -169,8 +214,9 @@ module.exports = function($log, $scope, $state, $stateParams) {
 
         // Send Search to back and wait for response
         fetchSearchResults();
+        RootScopeService.saveSearch($scope.searchQuery);
 
-        // Loading Bar
+        // TODO Loading Bar
         // Defer until search goes through
         $state.go('concept.find.list', {q: $scope.searchQuery});
     };
@@ -209,6 +255,21 @@ module.exports = function($log, $scope, $state, $stateParams) {
     }
 
     $log.debug($stateParams);
+
+};
+
+},{}],9:[function(require,module,exports){
+'use strict';
+
+module.exports = function($log, $scope) {
+    $log.log('ConceptViewController');
+    // _______________
+    // Scope Variables
+    $scope.model = {};
+
+    $scope.backToSearch = function() {
+      $log.log('Going back to search');
+    };
 
 };
 

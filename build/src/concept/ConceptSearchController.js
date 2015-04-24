@@ -1,6 +1,7 @@
 'use strict';
 
-module.exports = function($log, $scope, $state, $stateParams) {
+module.exports = function($log, $scope, $state, $stateParams, RootScopeService) {
+    $log.log('ConceptSearchController');
     // _______________
     // Scope Variables
     $scope.model = {};
@@ -11,8 +12,9 @@ module.exports = function($log, $scope, $state, $stateParams) {
 
         // Send Search to back and wait for response
         fetchSearchResults();
+        RootScopeService.saveSearch($scope.searchQuery);
 
-        // Loading Bar
+        // TODO Loading Bar
         // Defer until search goes through
         $state.go('concept.find.list', {q: $scope.searchQuery});
     };

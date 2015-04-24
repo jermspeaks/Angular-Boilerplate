@@ -31,7 +31,7 @@ a {
   color:inherit;
   text-decoration: none;
 }
-
+// TODO Components Section: Need small, medium, and large buttons
 /* ============================================
   Main
 ============================================ */
@@ -134,7 +134,7 @@ form.search-bar {
 
   input[type=search] {
     @include appearance(none);
-    @include box-sizing(border-box);
+    // @include box-sizing(border-box);
     @include transition(border-color);
     background-color: white;
     border-radius: $base-border-radius;
@@ -150,7 +150,7 @@ form.search-bar {
   }
 
   button[type=submit] {
-    @include button(flat, $action-color);
+    // @include button(flat, $action-color);
     @include position(absolute, 0em 0em 0em null);
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
@@ -254,7 +254,7 @@ form.search-bar {
       }
 
       button {
-        @include button(flat, $action-color);
+        // @include button(flat, $action-color);
         display: inline-block;
         font-size: 0.7em;
         line-height: $base-line-height;

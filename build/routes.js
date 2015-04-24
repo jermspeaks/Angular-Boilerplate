@@ -28,11 +28,12 @@ module.exports =
                 read: {
                     url: 'concept/view/:id',
                     templateUrl: 'concept/concept.view.html',
+                    controller: 'ConceptViewController'
                 },
                 update: {
                     url: 'concept/view/:id/edit',
                     templateUrl: 'concept/concept.update.html',
-                    // controller: 'MainController'
+                    controller: 'ConceptEditController'
                 },
                 delete: {
                     url: 'concept/view/:id/delete',
