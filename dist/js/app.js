@@ -205,7 +205,7 @@ module.exports = function($log, $scope) {
 },{}],8:[function(require,module,exports){
 'use strict';
 
-module.exports = function($log, $scope, $state, $location, $stateParams, RootScopeService) {
+module.exports = function($log, $scope, $state, $location, RootScopeService) {
     $log.log('ConceptSearchController');
     // _______________
     // Scope Variables
@@ -258,14 +258,21 @@ module.exports = function($log, $scope, $state, $location, $stateParams, RootSco
     // }
 
 
+    if ($location.search().q) {
+        $scope.searchQuery = $location.search().q;
+        RootScopeService.saveSearch($scope.searchQuery);
+        $state.go('concept.find.list', {
+            q: $scope.searchQuery
+        });
+    }
 
 };
 
 },{}],9:[function(require,module,exports){
 'use strict';
 
-module.exports = function($log, $scope, $state, $location, $stateParams, RootScopeService) {
-    $log.log('ConceptSearchController');
+module.exports = function($log, $scope, $state, $stateParams) {
+    $log.log('ConceptSearchResultsController');
     // _______________
     // Scope Variables
     $scope.model = {};
@@ -303,9 +310,11 @@ module.exports = function($log, $scope, $state, $location, $stateParams, RootSco
         $scope.model.searchList = response;
     }
 
-    fetchSearchResults();
-
-
+    if ($stateParams.q) {
+        fetchSearchResults($stateParams.q);
+    } else {
+        $state.transitionTo('concept.find');
+    }
 
 };
 

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($log, $scope, $state, $location, $stateParams, RootScopeService) {
+module.exports = function($log, $scope, $state, $location, RootScopeService) {
     $log.log('ConceptSearchController');
     // _______________
     // Scope Variables
@@ -53,5 +53,12 @@ module.exports = function($log, $scope, $state, $location, $stateParams, RootSco
     // }
 
 
+    if ($location.search().q) {
+        $scope.searchQuery = $location.search().q;
+        RootScopeService.saveSearch($scope.searchQuery);
+        $state.go('concept.find.list', {
+            q: $scope.searchQuery
+        });
+    }
 
 };
