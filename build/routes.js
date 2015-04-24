@@ -22,8 +22,9 @@ module.exports =
                     controller: 'ConceptSearchController'
                 },
                 list: {
-                    url: 'concept/find?q',
+                    url: '?q',
                     templateUrl: 'concept/concept.search.list.html',
+                    controller: 'ConceptSearchResultsController'
                 },
                 read: {
                     url: 'concept/view/:id',

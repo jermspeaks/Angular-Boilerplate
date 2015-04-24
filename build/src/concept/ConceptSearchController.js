@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($log, $scope, $state, $stateParams, RootScopeService) {
+module.exports = function($log, $scope, $state, $location, $stateParams, RootScopeService) {
     $log.log('ConceptSearchController');
     // _______________
     // Scope Variables
@@ -11,7 +11,7 @@ module.exports = function($log, $scope, $state, $stateParams, RootScopeService) 
         $log.debug('Search: %s', $scope.searchQuery);
 
         // Send Search to back and wait for response
-        fetchSearchResults();
+        // fetchSearchResults();
         RootScopeService.saveSearch($scope.searchQuery);
 
         // TODO Loading Bar
@@ -19,39 +19,39 @@ module.exports = function($log, $scope, $state, $stateParams, RootScopeService) 
         $state.go('concept.find.list', {q: $scope.searchQuery});
     };
 
-    $scope.viewConcept = function(id) {
-        $log.debug('View %s', id);
-        $state.transitionTo('concept.view', { id: id });
-    };
+    // $scope.viewConcept = function(id) {
+    //     $log.debug('View %s', id);
+    //     $state.transitionTo('concept.view', { id: id });
+    // };
+    //
+    // $scope.editConcept = function(id) {
+    //     $log.debug('Edit %s', id);
+    //     $state.transitionTo('concept.edit', { id: id });
+    // };
+    //
+    // $scope.deleteConcept = function(id) {
+    //     $log.debug('Delete %s', id);
+    //     $state.transitionTo('concept.delete', { id: id });
+    // };
+    //
+    // function fetchSearchResults() {
+    //     function findSearchQuery() {
+    //         return [{
+    //             name: 'One',
+    //             id: '1'
+    //         }, {
+    //             name: 'Two',
+    //             id: '2'
+    //         }, {
+    //             name: 'Three',
+    //             id: '3'
+    //         }];
+    //     }
+    //
+    //     var response = findSearchQuery();
+    //     $scope.model.searchList = response;
+    // }
 
-    $scope.editConcept = function(id) {
-        $log.debug('Edit %s', id);
-        $state.transitionTo('concept.edit', { id: id });
-    };
 
-    $scope.deleteConcept = function(id) {
-        $log.debug('Delete %s', id);
-        $state.transitionTo('concept.delete', { id: id });
-    };
-
-    function fetchSearchResults() {
-        function findSearchQuery() {
-            return [{
-                name: 'One',
-                id: '1'
-            }, {
-                name: 'Two',
-                id: '2'
-            }, {
-                name: 'Three',
-                id: '3'
-            }];
-        }
-
-        var response = findSearchQuery();
-        $scope.model.searchList = response;
-    }
-
-    $log.debug($stateParams);
 
 };

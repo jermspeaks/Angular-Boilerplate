@@ -9,8 +9,10 @@ angular.module('topicGraphEditor', ['ui.router'])
     .controller('ConceptOverviewController', require('./src/concept/ConceptOverviewController'))
     .controller('ConceptNewController', require('./src/concept/ConceptNewController'))
     .controller('ConceptSearchController', require('./src/concept/ConceptSearchController'))
+    .controller('ConceptSearchResultsController', require('./src/concept/ConceptSearchResultsController'))
     .controller('ConceptViewController', require('./src/concept/ConceptViewController'))
     .controller('ConceptEditController', require('./src/concept/ConceptEditController'))
+
 
     // Common Services
     .factory('RootScopeService', require('./src/common/RootScopeService'))
@@ -23,7 +25,7 @@ angular.module('topicGraphEditor', ['ui.router'])
 
 require('templates');
 
-},{"./routes":3,"./src/common/RootScopeService":4,"./src/concept/ConceptEditController":5,"./src/concept/ConceptNewController":6,"./src/concept/ConceptOverviewController":7,"./src/concept/ConceptSearchController":8,"./src/concept/ConceptViewController":9,"templates":2}],2:[function(require,module,exports){
+},{"./routes":3,"./src/common/RootScopeService":4,"./src/concept/ConceptEditController":5,"./src/concept/ConceptNewController":6,"./src/concept/ConceptOverviewController":7,"./src/concept/ConceptSearchController":8,"./src/concept/ConceptSearchResultsController":9,"./src/concept/ConceptViewController":10,"templates":2}],2:[function(require,module,exports){
 (function (global){
 ; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 angular.module("topicGraphEditor").run(["$templateCache", function($templateCache) {$templateCache.put("concept/concept.delete.html","<header class=\"concept-header\">\n    <span>Delete a concept</span>\n</header>\n\n\n<p>FORM PENDING</p>\n");
@@ -63,8 +65,9 @@ module.exports =
                     controller: 'ConceptSearchController'
                 },
                 list: {
-                    url: 'concept/find?q',
+                    url: '?q',
                     templateUrl: 'concept/concept.search.list.html',
+                    controller: 'ConceptSearchResultsController'
                 },
                 read: {
                     url: 'concept/view/:id',
@@ -202,7 +205,7 @@ module.exports = function($log, $scope) {
 },{}],8:[function(require,module,exports){
 'use strict';
 
-module.exports = function($log, $scope, $state, $stateParams, RootScopeService) {
+module.exports = function($log, $scope, $state, $location, $stateParams, RootScopeService) {
     $log.log('ConceptSearchController');
     // _______________
     // Scope Variables
@@ -213,13 +216,59 @@ module.exports = function($log, $scope, $state, $stateParams, RootScopeService) 
         $log.debug('Search: %s', $scope.searchQuery);
 
         // Send Search to back and wait for response
-        fetchSearchResults();
+        // fetchSearchResults();
         RootScopeService.saveSearch($scope.searchQuery);
 
         // TODO Loading Bar
         // Defer until search goes through
         $state.go('concept.find.list', {q: $scope.searchQuery});
     };
+
+    // $scope.viewConcept = function(id) {
+    //     $log.debug('View %s', id);
+    //     $state.transitionTo('concept.view', { id: id });
+    // };
+    //
+    // $scope.editConcept = function(id) {
+    //     $log.debug('Edit %s', id);
+    //     $state.transitionTo('concept.edit', { id: id });
+    // };
+    //
+    // $scope.deleteConcept = function(id) {
+    //     $log.debug('Delete %s', id);
+    //     $state.transitionTo('concept.delete', { id: id });
+    // };
+    //
+    // function fetchSearchResults() {
+    //     function findSearchQuery() {
+    //         return [{
+    //             name: 'One',
+    //             id: '1'
+    //         }, {
+    //             name: 'Two',
+    //             id: '2'
+    //         }, {
+    //             name: 'Three',
+    //             id: '3'
+    //         }];
+    //     }
+    //
+    //     var response = findSearchQuery();
+    //     $scope.model.searchList = response;
+    // }
+
+
+
+};
+
+},{}],9:[function(require,module,exports){
+'use strict';
+
+module.exports = function($log, $scope, $state, $location, $stateParams, RootScopeService) {
+    $log.log('ConceptSearchController');
+    // _______________
+    // Scope Variables
+    $scope.model = {};
 
     $scope.viewConcept = function(id) {
         $log.debug('View %s', id);
@@ -254,11 +303,13 @@ module.exports = function($log, $scope, $state, $stateParams, RootScopeService) 
         $scope.model.searchList = response;
     }
 
-    $log.debug($stateParams);
+    fetchSearchResults();
+
+
 
 };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 module.exports = function($log, $scope) {
