@@ -273,9 +273,14 @@ div.field {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 14.70196%; }
+  width: 14.70196%;
+  margin-right: 0; }
   .related-concepts button:last-child, .related-forms button:last-child {
     margin-right: 0; }
+.related-concepts button.delete-button, .related-forms button.delete-button {
+  background: #FF6666; }
+.related-concepts button.delete-button:hover, .related-forms button.delete-button:hover {
+  background: red; }
 
 .concept-search-bar {
   margin: 20px 0; }

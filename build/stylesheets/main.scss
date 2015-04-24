@@ -106,6 +106,15 @@ div.field {
 
   button {
     @include span-columns(2);
+    margin-right: 0;
+  }
+
+  button.delete-button {
+    background: #FF6666;
+  }
+
+  button.delete-button:hover {
+    background: darken(#FF6666, 20%);
   }
 }
 
