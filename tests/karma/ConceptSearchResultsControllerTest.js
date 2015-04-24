@@ -22,7 +22,7 @@ describe('ConceptSearchResultsController', function() {
     // $scope.search('Question');
     expect($scope.model.searchList).toBeDefined();
     expect($scope.model.searchList.length > 3).toBeTruthy();
-    expect($scope.model.searchList[1].id).toEqual('2');
+    expect($scope.model.searchList[0].id).toEqual('1');
   });
 
   it('should route to a view page', function() {

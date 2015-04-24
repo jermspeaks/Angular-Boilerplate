@@ -306,10 +306,9 @@ module.exports = function($log, $scope, $state, $stateParams) {
 
         var response = findSearchQuery();
         for (var i = 0; i < getRandomInt(4, 7); i++) {
-            var index = i + 2;
             response.push({
                 name: chance.word(),
-                id: index.toString()
+                id: chance.integer({min: 2, max: 200}).toString()
             });
         }
 
