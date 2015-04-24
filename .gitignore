@@ -36,11 +36,13 @@ bower_components
 .bower-registry
 .bower-tmp
 
-dist/js/lib.js
-
 ### Mac Files ###
 .DS_Store
 
 ### Sass ###
 .sass-cache
 *.css.map
+
+### Project Files ###
+dist/js/app.js
+dist/js/lib.js
