@@ -20,6 +20,7 @@
   "smarttabs": true,
   "globals"   : {
     "$"                    : true,
-    "angular"              : true
+    "angular"              : true,
+    "chance"               : true
   }
 }

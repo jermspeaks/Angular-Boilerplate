@@ -297,16 +297,22 @@ module.exports = function($log, $scope, $state, $stateParams) {
             return [{
                 name: 'One',
                 id: '1'
-            }, {
-                name: 'Two',
-                id: '2'
-            }, {
-                name: 'Three',
-                id: '3'
             }];
         }
 
+        function getRandomInt(min, max) {
+          return Math.floor(Math.random() * (max - min)) + min;
+        }
+
         var response = findSearchQuery();
+        for (var i = 0; i < getRandomInt(4, 7); i++) {
+            var index = i + 2;
+            response.push({
+                name: chance.word(),
+                id: index.toString()
+            });
+        }
+
         $scope.model.searchList = response;
     }
 
