@@ -3,7 +3,7 @@
 </header>
 
 <section>
-    <form name="conceptEditForm" ng-submit="submitNewConcept(conceptEditForm.$valid)" novalidate>
+    <form name="conceptEditForm" ng-submit="submitEditedConcept(conceptEditForm.$valid)" novalidate>
         <fieldset class="conceptEditForm">
 
             <div class="field">
@@ -39,38 +39,54 @@
                 />
             </div> <!-- /.field -->
 
+            <div class="field related-forms" data-ng-repeat="associatedform in form.associatedForms"> <!-- TODO Make these into form directives -->
+                <label for="associatedform" ng-show="$first">Associated Forms</label>
+                <!-- <section>
+                    <span>Last entry for the form is always the same as the concept name. Disabled for editing.</span>
+                </section> -->
+                <input type="text"
+                    class="related-forms-item"
+                    ng-model="associatedform.name"
+                    name="associatedForm"
+                    placeholder="Enter a form"
+                    autocapitalize="off"
+                    autocorrect="off"
+                    autofocus="autofocus"
+                    required>
+                <button class="delete-button" type="button" type="value" ng-click="deleteForm(associatedform)">-</button>
+            </div> <!-- /.field -->
+
             <div class="field related-forms"> <!-- The default form is the concept name. TODO include an extra field to start with an additional form -->
-                <label for="relatedForms">Related Forms</label>
+                <label for="associatedform" ng-show="form.associatedForms.length === 0">Associated Forms</label>
                 <input
-                    class="related-concepts-item"
+                    class="related-forms-item"
                     name="relatedForms"
                     type="text"
                     id="relatedForms"
-                    placeholder=""
+                    placeholder="Disabled: same as concept name"
                     ng-model="form.conceptName"
                     autocapitalize="off"
                     autocorrect="off"
                     autofocus="autofocus"
                     required
+                    disabled
                 />
-                <button>+</button> <!-- TODO ng-click="addForm()" -->
+                <button type="button" ng-click="addForm()">+</button> <!-- TODO ng-click="addForm()" -->
             </div> <!-- /.field -->
 
-            <div class="field related-concepts"> <!-- Duplicate this as a directive. TODO Make autocomplete -->
-                <label for="RelatedConcepts">Related Concepts</label>
-                <input
+            <div class="field related-concepts" data-ng-repeat="relatedConcept in form.relatedConcepts">
+                <label for="relatedConcept" ng-show="$first">Related Concepts</label>
+                <input type="text"
                     class="related-concepts-item"
-                    name="RelatedConcepts"
-                    type="text"
-                    id="RelatedConcepts"
+                    ng-model="relatedConcept.name"
+                    name="relatedConcept"
                     placeholder="Enter the concept display name"
-                    ng-model="form.relatedConcepts"
                     autocapitalize="off"
                     autocorrect="off"
                     autofocus="autofocus"
-                    required
-                />
-                <button>+</button> <!-- TODO ng-click="addConcept()" -->
+                    required>
+                <button class="delete-button" type="button" type="value" ng-show="!$last" ng-click="deleteConcept(relatedConcept)">-</button>
+                <button type="button" type="value" ng-show="$last" ng-click="addConcept(relatedConcept)">+</button>
             </div> <!-- /.field -->
 
             <div class="field">
