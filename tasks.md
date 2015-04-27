@@ -23,42 +23,39 @@
     - [ ] Search for Related Concepts
     - [ ] Field to add multiple related concepts
         - [x] field
-        - [ ] addConcept()
+        - [x] addConcept()
         - [ ] Ability to autocomplete this field
     - [ ] Field to add multiple forms
         - [x] field
-        - [ ] addForm()
+        - [x] addForm()
         - [ ] Ability to autocomplete this field
         - [ ] Autofill first form to include the concept display name as a form
 - [ ] Search Concept
-    - [ ] Search Box
+    - [x] Search Box
     - [ ] View Concept attributes
         - [ ] View associated forms
-    - [ ] Options:
-        - [ ] Edit
-        - [ ] Delete
+    - [x] Options:
+        - [x] View
+        - [x] Edit
+        - [x] Delete
+            - [ ] Include deleting all associated pointers message to this concept
     - [ ] View Articles associated with concept
     - [ ] View Associated Concepts --> Graphical Visualization?
     - [ ] View forms of the associated concepts
-- [ ] Edit Concept Form --> combine with Search Concept?
-    - [ ] View A: Search
-    - [ ] View B: Edit Form
-        - [ ] Edit Concept Name
-            - [ ] Include warning of the risk of changing a concept name can alter concept graph results (and we don't want this). Instead, divert their attention to Display Name
-        - [ ] Change Display Name
-        - [ ] Change Entity type (?)
-        - [ ] Change existing related concepts
-            - [ ] Options
-                - [ ] add
-                    - [ ] Ability to autocomplete this field
-                - [ ] edit
-                - [ ] delete
-        - [ ] Field to add multiple forms
-            - [ ] Options
-                - [ ] add
-                    - [ ] Ability to autocomplete this field
-                - [ ] edit
-                - [ ] delete
-- [ ] Delete Concept --> This may not be a necessary feature
-    - [ ] View A: Search
-    - [ ] View B: Results with option to delete
+- [ ] Edit Concept Form
+    - [x] Edit Concept Name
+        - [ ] Include warning of the risk of changing a concept name can alter concept graph results (and we don't want this). Instead, divert their attention to Display Name
+    - [x] Change Display Name
+    - [x] Change Entity type (?)
+    - [x] Field to add/edit/delete existing, related concepts
+        - [ ] Options
+            - [x] addConcept()
+                - [ ] Ability to autocomplete this field
+            - [x] edit
+            - [x] delete
+    - [ ] Field to add/edit/delete existing, multiple forms
+        - [ ] Options
+            - [x] addForm()
+                - [ ] Ability to autocomplete this field
+            - [x] edit
+            - [x] delete

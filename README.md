@@ -37,7 +37,7 @@ See the full [master task list here](./tasks.md).
 
 Next Milestone:
 
-4/18/15
+5/1/14
 
 - [ ] Project Set-up
     - [ ] Test Set-up
@@ -46,18 +46,13 @@ Next Milestone:
 - [ ] Create Concept Form
     - [ ] Search for Related Concepts
     - [ ] Field to add multiple related concepts
-        - [ ] addConcept()
+        - [x] addConcept()
         - [ ] Ability to autocomplete this field
     - [ ] Field to add multiple forms
-        - [ ] addForm()
+        - [x] addForm()
         - [ ] Ability to autocomplete this field
         - [ ] Autofill first form to include the concept display name as a form
 - [ ] Search Concept
-    - [x] Search Box
-    - [x] Options:
-        - [x] View
-        - [x] Edit
-        - [x] Delete
     - [ ] View Articles associated with concept
     - [ ] View Associated Concepts --> Graphical Visualization?
     - [ ] View forms of the associated concepts
