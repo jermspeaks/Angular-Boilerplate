@@ -3,15 +3,55 @@
 </header>
 
 <section>
-  <div><button ng-click="backToSearch()">Back To Search</button>
+  <div><button class="sm-button" ng-click="backToSearch()">Back To Search</button>
   </div>
 </section>
 
-<section><p>Pending:</p>
 
-  <p>Back To Search</p>
-  <p>Include: View Attributes</p>
-  <p>Include: Show Forms</p>
-  <p>Include: Show Related Concepts (This is where we will have a d3.js Graphic)</p>
-  <p>Include: Show Forms of Related Concepts</p>
-</section>
+<table class="tables">
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ID</td>
+      <td>{{concept.id}}</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>{{concept.name}}</td>
+    </tr>
+    <tr>
+      <td>Display Name</td>
+      <td>{{concept.displayName}}</td>
+    </tr>
+    <tr>
+      <td>Associated Forms</td>
+      <td>
+        <ul>
+          <li ng-repeat="form in concept.forms">
+            <span>{{form.name}}</span>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Related Concepts</td>
+      <td>
+        <ul>
+          <li ng-repeat="concept in concept.relatedConcepts">
+            <span>{{concept.name}}</span>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Pending:</p>
+
+<p>Include: Show Related Concepts (This is where we will have a d3.js Graphic)</p>
+<p>Include: Show Forms of Related Concepts</p>

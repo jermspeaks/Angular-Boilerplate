@@ -200,6 +200,24 @@ a {
   text-decoration: none; }
 
 /* ============================================
+  Components
+============================================ */
+button.sm-button {
+  outline: none;
+  padding: 5px 10px;
+  margin: 10px 0; }
+
+button.m-button {
+  outline: none;
+  padding: 10px 20px;
+  margin: 10px 0; }
+
+button.lg-button {
+  outline: none;
+  padding: 20px 40px;
+  margin: 10px 0; }
+
+/* ============================================
   Main
 ============================================ */
 #main-header {
@@ -284,6 +302,13 @@ div.field {
 
 .concept-search-bar {
   margin: 20px 0; }
+
+section#concept-view-page {
+  padding: 5px; }
+  section#concept-view-page header span {
+    font-size: 24px; }
+  section#concept-view-page .concept-field {
+    margin: 10px 0; }
 
 /* ============================================
   Vendor: Refills
