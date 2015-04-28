@@ -25,15 +25,15 @@ exports.config = {
   // to the location of this config. If no other method of starting Selenium
   // Server is found, this will default to
   // node_modules/protractor/selenium/selenium-server...
-  seleniumServerJar: null,
+  // seleniumServerJar: null,
   // The port to start the Selenium Server on, or null if the server should
   // find its own unused port. Ignored if seleniumServerJar is null.
-  seleniumPort: null,
+  // seleniumPort: null,
   // Additional command line options to pass to selenium. For example,
   // if you need to change the browser timeout, use
   // seleniumArgs: ['-browserTimeout=60']
   // Ignored if seleniumServerJar is null.
-  seleniumArgs: [],
+  // seleniumArgs: [],
   // ChromeDriver location is used to help find the chromedriver binary.
   // This will be passed to the Selenium jar as the system property
   // webdriver.chrome.driver. If null, Selenium will
@@ -89,7 +89,7 @@ exports.config = {
   // run.
   suites: {
     // smoke: 'spec/smoketests/*.js',
-    full: 'tests/protractor/features/*.feature'
+    full: './tests/protractor/features/conceptMainPage.feature'
   },
 
   // ---------------------------------------------------------------------------
@@ -315,10 +315,10 @@ exports.config = {
   // Options to be passed to Cucumber.
   cucumberOpts: {
     // Require files before executing the features.
-    require: 'tests/protractor/step_definitions/*.js',
+    require: ['tests/protractor/step_definitions/*.js'],
     // Only execute the features or scenarios with tags matching @dev.
     // This may be an array of strings to specify multiple tags to include.
-    tags: '@dev',
+    // tags: '@dev',
     // How to format features (default: progress)
     format: 'pretty'
   }

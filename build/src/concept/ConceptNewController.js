@@ -23,6 +23,8 @@ module.exports = function($log, $scope) {
     // _______________
     // Scope Functions
 
+    // TODO add weights to forms
+
     $scope.addConcept = function() {
         $log.debug('Adding Concept Field');
 

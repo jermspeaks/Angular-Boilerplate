@@ -21,6 +21,42 @@
 var gulp = require('gulp'),
 	gutil = require('gulp-util');
 
+var filePath = { // TODO Flesh this filepath out further
+	lint: {
+		src: ['./build/src/**/*.js', './build/index.js', './build/routes.js']
+	},
+	js: {
+
+	},
+	vendor: {
+		src: ['./bower_components/**/*.js}'],
+		dest: './dist/js/lib.js',
+		dest_dir: './dist'
+	},
+	sass: {
+		src: ['./build/stylesheets/*.scss'],
+		dest: './dist/css/*.css',
+		dest_dir: './dist/css'
+	},
+	html: {
+		src: './build/templates/**/*.html',
+		dest: './build/.templates.js',
+		dest_dir: '.'
+	},
+	unit: {
+		src: [
+			'./bower_components/angular/angular.js',
+			'./bower_components/angular-*/angular-*.js',
+			'./build/js/lib.js',
+			'./build/js/app.js',
+			'./tests/karma/*.js'
+		]
+	},
+	e2e: {
+		src: 'tests/protractor/**/*.feature'
+	}
+};
+
 /*	===============================
 		Build & Watch
 	=============================== */
@@ -66,6 +102,7 @@ function process(watch) {
 		gulp.watch('./build/stylesheets/main.scss', ['styles']);
 		gulp.watch('./build/src/**/*.js', ['lint']);
 		gulp.watch(['./tests/karma/*.js', './dist/js/*.js'], ['test']);
+		gulp.watch(['./tests/protractor/**/*.js'], ['protractor-test']);
 	} else {
 		bundler = browserify('./build/index.js');
 		bundler.transform(debowerify);
@@ -77,11 +114,11 @@ function process(watch) {
 
 function processTemplates() {
 	console.log('processTemplates');
-	return gulp.src('./build/templates/**/*.html')
-		.pipe(templateCache('./build/.templates.js', {
+	return gulp.src(filePath.html.src)
+		.pipe(templateCache(filePath.html.dest, {
 			module: 'topicGraphEditor'
 		}))
-		.pipe(gulp.dest('.'));
+		.pipe(gulp.dest(filePath.html.dest_dir));
 }
 
 function processJavascript(bundler) {
@@ -175,6 +212,7 @@ gulp.task('styles', function() {
 	=============================== */
 
 var karma = require('gulp-karma');
+var protractor = require("gulp-protractor").protractor;
 
 gulp.task('test', function() {
 	// Be sure to return the stream
@@ -194,7 +232,16 @@ gulp.task('test', function() {
 });
 
 gulp.task('autotest', function() {
-	return gulp.watch(['./dist/js/app.js', './tests/spec/*.js'], ['test']);
+	return gulp.watch(['./dist/js/app.js', './tests/karma/*.js', './tests/protractor/**/*.js'], ['test', 'protractor-test']);
+});
+
+gulp.task('protractor-test', function() {
+	return gulp.src(["./tests/protractor/*.js"])
+	    .pipe(protractor({
+	        configFile: "protractor.config.js",
+	        args: ['--suite', 'full']
+	    }))
+	    .on('error', function(e) { throw e });
 });
 
 /*	===============================
