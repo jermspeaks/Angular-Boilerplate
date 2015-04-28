@@ -1,74 +1,93 @@
 'use strict';
 
 module.exports = function($log, $scope) {
-    // _______________
-    // Scope Variables
-    $scope.form = {
-        associatedForms: [{
-            id: 'Form 1'
-        }],
-        relatedConcepts: [{
-            id: 'Concept 1'
-        }]
-    };
+	// _______________
+	// Scope Variables
+	$scope.form = {
+		associatedForms: [{
+			id: 'Form 1'
+		}],
+		relatedConcepts: [{
+			id: 'Concept 1'
+		}]
+	};
 
-    $scope.supportedEntities = [{
-        name: 'Person'
-    }, {
-        name: 'Place'
-    }, {
-        name: 'Organization'
-    }, {
-        name: 'Event'
-    }];
+	$scope.supportedEntities = [{
+		name: 'Person'
+	}, {
+		name: 'Place'
+	}, {
+		name: 'Organization'
+	}, {
+		name: 'Event'
+	}];
 
-    $scope.blockedTypes = [{
-        name: 'Yes'
-    }, {
-        name: 'No'
-    }];
+	$scope.blockedTypes = [{
+		name: 'Yes'
+	}, {
+		name: 'No'
+	}];
 
-    $scope.form.entity = $scope.supportedEntities[0];
-    $scope.form.blocked = $scope.blockedTypes[1];
+	$scope.form.entity = $scope.supportedEntities[0];
+	$scope.form.blocked = $scope.blockedTypes[1];
 
-    // _______________
-    // Scope Functions
+	$scope.autocomplete = new google.maps.places.Autocomplete(
+		/** @type {HTMLInputElement} */
+		(document.getElementById('map-autocomplete')), {
+			types: ['geocode']
+		});
 
-    // TODO add weights to forms
+	google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
+		fetchLatLongData();
+	});
 
-    $scope.addConcept = function() {
-        $log.debug('Adding Concept Field');
+	// _______________
+	// Scope Functions
 
-        var newItemNo = $scope.form.relatedConcepts.length + 1;
+	// TODO add weights to forms
 
-        $scope.form.relatedConcepts.push({'id':'Form ' + newItemNo});
-    };
+	$scope.addConcept = function() {
+		$log.debug('Adding Concept Field');
 
-    $scope.deleteConcept = function(relatedConcept) {
-        $log.debug('Deleting Concept Field');
-        $scope.form.relatedConcepts = _.reject($scope.form.relatedConcepts, function(rConcept) {
-            return rConcept.$$hashKey === relatedConcept.$$hashKey;
-        });
-    };
+		var newItemNo = $scope.form.relatedConcepts.length + 1;
 
-    $scope.addForm = function() {
-        $log.debug('Adding Form Field');
+		$scope.form.relatedConcepts.push({
+			'id': 'Form ' + newItemNo
+		});
+	};
 
-        var newItemNo = $scope.form.associatedForms.length + 1;
+	$scope.deleteConcept = function(relatedConcept) {
+		$log.debug('Deleting Concept Field');
+		$scope.form.relatedConcepts = _.reject($scope.form.relatedConcepts, function(rConcept) {
+			return rConcept.$$hashKey === relatedConcept.$$hashKey;
+		});
+	};
 
-        $scope.form.associatedForms.push({'id':'Form ' + newItemNo});
-    };
+	$scope.addForm = function() {
+		$log.debug('Adding Form Field');
 
-    $scope.deleteForm = function(associatedForm) {
-        $log.debug('Deleting Form Field');
-        $scope.form.associatedForms = _.reject($scope.form.associatedForms, function(aForm) {
-            return aForm.$$hashKey === associatedForm.$$hashKey;
-        });
-    };
+		var newItemNo = $scope.form.associatedForms.length + 1;
 
-    $scope.submitNewConcept = function() {
-        $log.debug('Scope form data');
-        $log.debug($scope.form);
-    };
+		$scope.form.associatedForms.push({
+			'id': 'Form ' + newItemNo
+		});
+	};
+
+	$scope.deleteForm = function(associatedForm) {
+		$log.debug('Deleting Form Field');
+		$scope.form.associatedForms = _.reject($scope.form.associatedForms, function(aForm) {
+			return aForm.$$hashKey === associatedForm.$$hashKey;
+		});
+	};
+
+	$scope.submitNewConcept = function() {
+		$log.debug('Scope form data');
+		$log.debug($scope.form);
+	};
+
+    function fetchLatLongData() {
+        $scope.place = $scope.autocomplete.getPlace();
+        $scope.form.geoLocation = $scope.place.geometry.location.toString();
+    }
 
 };

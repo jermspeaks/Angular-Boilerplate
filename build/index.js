@@ -16,6 +16,9 @@ angular.module('topicGraphEditor', ['ui.router'])
     // Common Services
     .factory('RootScopeService', require('./src/common/RootScopeService'))
 
+    // Directives
+    // .directive('googleMaps', require('./src/common/directives/googleMaps'))
+
     // Customize
     // .run(require('./plugins'))
     // .run(require('./boot'))

@@ -43,6 +43,11 @@ button.m-button {
 button.lg-button {
   @include button-mixin(20px, 40px);
 }
+
+// Google Maps
+.gmnoprint img {
+    max-width: none;
+}
 /* ============================================
   Main
 ============================================ */

@@ -217,6 +217,9 @@ button.lg-button {
   padding: 20px 40px;
   margin: 10px 0; }
 
+.gmnoprint img {
+  max-width: none; }
+
 /* ============================================
   Main
 ============================================ */

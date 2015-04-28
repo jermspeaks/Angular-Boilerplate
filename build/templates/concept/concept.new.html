@@ -39,6 +39,16 @@
                 />
             </div> <!-- /.field -->
 
+            <div id="field">
+                <label for="select">GEO Coordinates</label>
+                <input
+                    id="map-autocomplete"
+                    placeholder="Autocomplete: Enter a place"
+                    ng-model="form.geoCoordinates"
+                    type="text"
+                    autofocus="autofocus"></input>
+            </div>
+
             <div class="field related-forms" data-ng-repeat="associatedform in form.associatedForms"> <!-- TODO Make these into form directives -->
                 <label for="associatedform" ng-show="$first">Associated Forms</label>
                 <!-- <section>
