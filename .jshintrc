@@ -21,6 +21,7 @@
   "globals"   : {
     "$"                    : true,
     "angular"              : true,
-    "chance"               : true
+    "chance"               : true,
+    "_"                    : true
   }
 }

@@ -15,10 +15,21 @@ module.exports = function($log, $scope) {
     $scope.supportedEntities = [{
         name: 'Person'
     }, {
-        name: 'Thing'
+        name: 'Place'
     }, {
-        name: 'Location'
+        name: 'Organization'
+    }, {
+        name: 'Event'
     }];
+
+    $scope.blockedTypes = [{
+        name: 'Yes'
+    }, {
+        name: 'No'
+    }];
+
+    $scope.form.entity = $scope.supportedEntities[0];
+    $scope.form.blocked = $scope.blockedTypes[1];
 
     // _______________
     // Scope Functions

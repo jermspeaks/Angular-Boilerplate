@@ -193,7 +193,7 @@ body {
 #container {
   background: white;
   overflow: hidden;
-  padding: 0 30px 30px 30px; }
+  padding: 0 30px 30px; }
 
 a {
   color: inherit;
@@ -238,7 +238,7 @@ button.lg-button {
       margin-right: 2.35765%;
       width: 48.82117%;
       display: inline;
-      margin: 10px 10px;
+      margin: 10px;
       padding: 25px 0;
       border: 1px solid black;
       border-radius: 10px;
@@ -296,7 +296,7 @@ div.field {
   .related-concepts button:last-child, .related-forms button:last-child {
     margin-right: 0; }
 .related-concepts button.delete-button, .related-forms button.delete-button {
-  background: #FF6666; }
+  background: #f66; }
 .related-concepts button.delete-button:hover, .related-forms button.delete-button:hover {
   background: red; }
 
@@ -331,7 +331,7 @@ form.search-bar {
     font-size: 1em;
     font-style: italic;
     margin: 0;
-    padding: 0.5em 0.5em;
+    padding: 0;
     position: relative;
     width: 100%; }
   form.search-bar button[type=submit] {
@@ -349,7 +349,7 @@ form.search-bar {
 
 .tables {
   border-collapse: separate;
-  border-left: 0px;
+  border-left: 0;
   border-radius: 3px;
   border-spacing: 0;
   border: 1px solid #ddd;
@@ -372,7 +372,7 @@ form.search-bar {
     border-bottom-right-radius: 3px; }
   .tables thead th {
     background-color: white;
-    border-bottom: 0px;
+    border-bottom: 0;
     border-left: 1px solid #ddd;
     padding: 0.75em 1em;
     text-align: left; }
@@ -381,7 +381,7 @@ form.search-bar {
   .tables tbody {
     background-color: #fcfcfc; }
     .tables tbody td {
-      border-bottom: 0px;
+      border-bottom: 0;
       border-left: 1px solid #ddd;
       border-top: 1px solid #ddd;
       padding: 0.75em 1em; }

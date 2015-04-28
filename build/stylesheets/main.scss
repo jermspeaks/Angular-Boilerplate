@@ -1,16 +1,13 @@
 /* ============================================
   Imports
 ============================================ */
-
 @import "bourbon";
 @import "assets/neat/neat";
 @import "assets/neat/neat-helpers";
 @import "assets/base/base";
-
 /* ============================================
   Globals
 ============================================ */
-
 body {
   font-family: 'Lato', sans-serif;
   line-height: 1;
@@ -20,47 +17,37 @@ body {
   margin: auto;
   background: #e7e5e0;
 }
-
 #container {
   background: white;
   overflow: hidden;
-  padding: 0 30px 30px 30px;
+  padding: 0 30px 30px;
 }
-
 a {
-  color:inherit;
+  color: inherit;
   text-decoration: none;
 }
-
 /* ============================================
   Components
 ============================================ */
-
 @mixin button-mixin($verticals, $sides) {
   outline: none;
   padding: $verticals $sides;
   margin: 10px 0;
 }
-
 button.sm-button {
   @include button-mixin(5px, 10px);
 }
-
 button.m-button {
   @include button-mixin(10px, 20px);
 }
-
 button.lg-button {
   @include button-mixin(20px, 40px);
 }
-
 /* ============================================
   Main
 ============================================ */
-
 // Menu Breakpoint
 $mobile-menu-item: new-breakpoint(max-width 960px);
-
 // Header
 #main-header {
   // @include linear-gradient(#1e5799, #2989d8);
@@ -69,7 +56,6 @@ $mobile-menu-item: new-breakpoint(max-width 960px);
   text-align: center;
   margin: 30px 0;
 }
-
 // Navigation
 #main-menu {
   ul {
@@ -81,7 +67,7 @@ $mobile-menu-item: new-breakpoint(max-width 960px);
       .main-menu-item {
         @include span-columns(6);
         display: inline;
-        margin: 10px 10px;
+        margin: 10px;
         padding: 25px 0;
         border: 1px solid black;
         border-radius: 10px;
@@ -105,45 +91,37 @@ $mobile-menu-item: new-breakpoint(max-width 960px);
     }
   }
 }
-
 /* ============================================
   Concept Forms
 ============================================ */
-
 .concept-header {
   font-size: 24px;
   font-weight: 500;
   text-align: center;
   margin: 30px 0;
 }
-
 div.field {
   @include row();
 }
-
-.related-concepts, .related-forms {
+.related-concepts,
+.related-forms {
   input[type=text] {
     @include span-columns(10);
   }
-
   button {
     @include span-columns(2);
     margin-right: 0;
   }
-
   button.delete-button {
-    background: #FF6666;
+    background: #f66;
   }
-
   button.delete-button:hover {
     background: darken(#FF6666, 20%);
   }
 }
-
 .concept-search-bar {
   margin: 20px 0;
 }
-
 section#concept-view-page {
   // border: 1px solid black;
   padding: 5px;
@@ -154,26 +132,21 @@ section#concept-view-page {
     margin: 10px 0;
   }
 }
-
 /* ============================================
   Vendor: Refills
   ============================================ */
-
 form.search-bar {
   ///////////////////////////////////////////////////////////////////////////////////
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;
   $base-line-height: 1.5em !default;
-  $action-color: #477DCA !default;
+  $action-color: #477dca !default;
   $dark-gray: #333 !default;
   //////////////////////////////////////////////////////////////////////////////////
-
   $search-bar-border-color: $base-border-color;
   $search-bar-border: 1px solid $search-bar-border-color;
   $search-bar-background: lighten($search-bar-border-color, 10%);
-
   position: relative;
-
   input[type=search] {
     @include appearance(none);
     // @include box-sizing(border-box);
@@ -186,11 +159,10 @@ form.search-bar {
     font-size: 1em;
     font-style: italic;
     margin: 0;
-    padding: ($base-spacing / 3) ($base-spacing / 3);
+    padding: 0;
     position: relative;
     width: 100%;
   }
-
   button[type=submit] {
     // @include button(flat, $action-color);
     @include position(absolute, 0em 0em 0em null);
@@ -198,23 +170,21 @@ form.search-bar {
     border-top-left-radius: 0;
     outline: none;
     padding: 5px 10px;
-
     img {
       height: 12px;
       opacity: 0.7;
     }
   }
 }
-
 .tables {
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;
   $base-line-height: 1.5em !default;
   $base-spacing: 1.5em !default;
-  $action-color: #477DCA !default;
+  $action-color: #477dca !default;
   $base-link-color: $action-color !default;
   $dark-gray: #333 !default;
-  $light-gray: #DDD !default;
+  $light-gray: #ddd !default;
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
   $base-font-color: $dark-gray !default;
@@ -226,18 +196,16 @@ form.search-bar {
   $table-stripe-background: darken($table-background, 2%);
   $table-stripe-background-hover: darken($table-stripe-background, 5%);
   $table-padding: 0.75em 1em;
-
   border-collapse: separate;
-  border-left: 0px;
+  border-left: 0;
   border-radius: $base-border-radius;
   border-spacing: 0;
   border: $table-border;
   width: 100%;
-
   tbody {
     background-color: $table-background;
-
-    tr:hover > td, tr:hover > th {
+    tr:hover > td,
+    tr:hover > th {
       background-color: $table-hover-background;
     }
     tr:nth-child(even) {
@@ -247,54 +215,44 @@ form.search-bar {
       }
     }
   }
-
   thead:first-of-type {
     tr:first-child > th:first-child {
       border-top-left-radius: $base-border-radius;
     }
-
     tr:first-child > th:last-child {
       border-top-right-radius: $base-border-radius;
     }
   }
-
   tbody:last-child {
     tr:last-child > td:first-child {
       border-bottom-left-radius: $base-border-radius;
     }
-
     tr:last-child > td:last-child {
       border-bottom-right-radius: $base-border-radius;
     }
   }
-
   thead {
     th {
       background-color: $table-header-background;
-      border-bottom: 0px;
+      border-bottom: 0;
       border-left: 1px solid $table-border-color;
       padding: $table-padding;
       text-align: left;
-
       &:first-child {
         border-left: none;
       }
     }
   }
-
   tbody {
     background-color: $table-background;
-
     td {
-      border-bottom: 0px;
+      border-bottom: 0;
       border-left: 1px solid $table-border-color;
       border-top: 1px solid $table-border-color;
       padding: $table-padding;
-
       &:first-child {
         border-left: none;
       }
-
       button {
         // @include button(flat, $action-color);
         display: inline-block;
@@ -305,7 +263,6 @@ form.search-bar {
         outline: none;
         padding: 0.3em 1em;
         width: 100%;
-
         @include media($medium-screen) {
           margin-bottom: 0;
           width: auto;

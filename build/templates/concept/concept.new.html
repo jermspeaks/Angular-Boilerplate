@@ -25,13 +25,13 @@
             </div> <!-- /.field -->
 
             <div class="field">
-                <label for="DisplayName">Concept Display Name</label>
+                <label for="Categories">Categories</label>
                 <input
-                    name="DisplayName"
+                    name="Categories"
                     type="text"
-                    id="DisplayName"
+                    id="Categories"
                     placeholder="Enter the concept display name"
-                    ng-model="form.displayName"
+                    ng-model="form.categories"
                     autocapitalize="off"
                     autocorrect="off"
                     autofocus="autofocus"
@@ -107,10 +107,35 @@
             </div> -->
 
             <div class="field">
-                <label for="select">Entity Type</label>
+                <label for="select">Concept Type</label>
                 <select class="global-date-selector custom"
                     ng-model="form.entity"
                     ng-options="entityType.name for entityType in supportedEntities"
+                    required
+                    ></select>
+            </div>
+
+            <div class="field" ng-if="form.entity.name === 'Event'">
+                <div class="field">
+                    <label for="eventName">Event Name</label>
+                    <input
+                        name="eventName"
+                        type="text"
+                        id="eventName"
+                        placeholder="Enter the event name"
+                        ng-model="form.eventName"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        autofocus="autofocus"
+                    />
+                </div> <!-- /.field -->
+            </div>
+
+            <div class="field">
+                <label for="select">Is Block Listed?</label>
+                <select class="global-date-selector custom"
+                    ng-model="form.blocked"
+                    ng-options="blockType.name for blockType in blockedTypes"
                     required
                     ></select>
             </div>
@@ -136,3 +161,28 @@
         </fieldset>
     </form>
 </section>
+
+<!--
+TODO
+
+Concept:
+
+Name
+Categories
+GEO Coordinates
+Concept Type
+Is Block Listed
+
+Form:
+
+Name
+Number of occurrences
+Number of times linked
+Linked probability
+
+Form to Concept link:
+
+Sense probability
+Number of occurrences
+
+-->
