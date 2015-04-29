@@ -99,7 +99,7 @@ function process(watch) {
 		});
 
 		gulp.watch('./build/templates/**/*.html', ['templates']);
-		gulp.watch('./build/stylesheets/main.scss', ['styles']);
+		gulp.watch('./build/stylesheets/*.scss', ['styles']);
 		gulp.watch('./build/src/**/*.js', ['lint']);
 		gulp.watch(['./tests/karma/*.js', './dist/js/*.js'], ['test']);
 		gulp.watch(['./tests/protractor/**/*.js'], ['protractor-test']);

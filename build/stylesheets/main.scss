@@ -5,6 +5,8 @@
 @import "assets/neat/neat";
 @import "assets/neat/neat-helpers";
 @import "assets/base/base";
+@import "components";
+
 /* ============================================
   Globals
 ============================================ */
@@ -29,25 +31,7 @@ a {
 /* ============================================
   Components
 ============================================ */
-@mixin button-mixin($verticals, $sides) {
-  outline: none;
-  padding: $verticals $sides;
-  margin: 10px 0;
-}
-button.sm-button {
-  @include button-mixin(5px, 10px);
-}
-button.m-button {
-  @include button-mixin(10px, 20px);
-}
-button.lg-button {
-  @include button-mixin(20px, 40px);
-}
 
-// Google Maps
-.gmnoprint img {
-    max-width: none;
-}
 /* ============================================
   Main
 ============================================ */
@@ -115,7 +99,8 @@ section#disabled-lat-long {
 }
 .related-concepts,
 .related-forms {
-  fieldset.form-field, .related-concepts-item {
+  fieldset.form-field,
+  .related-concepts-item {
     @include span-columns(10);
   }
   button {
@@ -132,7 +117,6 @@ section#disabled-lat-long {
 .concept-search-bar {
   margin: 20px 0;
 }
-
 /* ============================================
   Concept View Page
 ============================================ */

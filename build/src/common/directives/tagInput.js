@@ -9,7 +9,7 @@ module.exports = function($log, $parse) {
 		scope: {},
 		compile: function(element, attrs) {
 			var modelAccessor = $parse(attrs.ngModel);
-			var html = '<input name="tags" id="' + attrs.id + '" value="foo,bar,baz" />';
+			var html = '<input name="tags" id="' + attrs.id + '" value="" />';
 
 			var newElem = $(html);
 			element.replaceWith(newElem);
@@ -51,8 +51,8 @@ module.exports = function($log, $parse) {
 				}
 
 				$scope.options = {
-				   'height':'100px',
-				   'width':'300px',
+				   'height':'auto',
+				   'width':'auto',
 				   'defaultText':'Add a category',
 				   'onAddTag': onAddTag,
 				   'onRemoveTag':onRemoveTag
