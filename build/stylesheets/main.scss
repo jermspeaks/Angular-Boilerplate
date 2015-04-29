@@ -97,7 +97,7 @@ $mobile-menu-item: new-breakpoint(max-width 960px);
   }
 }
 /* ============================================
-  Concept Forms
+  Concept New/Edit Page
 ============================================ */
 .concept-header {
   font-size: 24px;
@@ -107,6 +107,11 @@ $mobile-menu-item: new-breakpoint(max-width 960px);
 }
 div.field {
   @include row();
+}
+section#disabled-lat-long {
+  .lat-long-coordinates {
+    @include span-columns(6);
+  }
 }
 .related-concepts,
 .related-forms {
@@ -127,6 +132,10 @@ div.field {
 .concept-search-bar {
   margin: 20px 0;
 }
+
+/* ============================================
+  Concept View Page
+============================================ */
 section#concept-view-page {
   // border: 1px solid black;
   padding: 5px;

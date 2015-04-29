@@ -49,8 +49,8 @@
                     type="text"
                     autofocus="autofocus"></input>
             </div>
-            <section id="disabled-lat-long">
-                <div id="field">
+            <section id="disabled-lat-long" ng-if="place">
+                <div class="lat-long-coordinates" id="field">
                     <label for="latitude">Latitude</label>
                     <input
                         name="latitude"
@@ -59,7 +59,7 @@
                         autofocus="autofocus"
                         disabled></input>
                 </div>
-                <div id="field">
+                <div class="lat-long-coordinates" id="field">
                     <label for="longitude">Longitude</label>
                     <input
                         name="longitude"
@@ -111,7 +111,7 @@
                             autofocus="autofocus"
                             required />
 
-                        <label for="associatedform">Linked probability</label>
+                        <label for="associatedform">Linked probability</label> <!-- TODO replace with sliders in its own section at the end of the form -->
                         <input type="text"
                             class="related-forms-item"
                             ng-model="associatedform.linkedProbability"
@@ -247,6 +247,8 @@
                     required
                     ></select>
             </div>
+
+
 
             <div class="button-bar group">
 

@@ -268,7 +268,7 @@ button.lg-button {
       transition: color 0.3s ease-in 0s, background 0.3s ease-in 0s; }
 
 /* ============================================
-  Concept Forms
+  Concept New/Edit Page
 ============================================ */
 .concept-header {
   font-size: 24px;
@@ -282,6 +282,14 @@ div.field {
     clear: both;
     content: "";
     display: table; }
+
+section#disabled-lat-long .lat-long-coordinates {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%; }
+  section#disabled-lat-long .lat-long-coordinates:last-child {
+    margin-right: 0; }
 
 .related-concepts fieldset.form-field, .related-concepts .related-concepts-item, .related-forms fieldset.form-field, .related-forms .related-concepts-item {
   float: left;
@@ -306,6 +314,9 @@ div.field {
 .concept-search-bar {
   margin: 20px 0; }
 
+/* ============================================
+  Concept View Page
+============================================ */
 section#concept-view-page {
   padding: 5px; }
   section#concept-view-page header span {
