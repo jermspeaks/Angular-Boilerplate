@@ -140,12 +140,14 @@ function processLibraries() {
 	var mainFiles = mainBowerFiles({
 		checkExistence: true
 	});
+
 	var jsFilter = filterByExtension('js');
 
 	if (!mainFiles.length) {
 		// No files found
 		return;
 	}
+
 	return gulp.src(mainFiles)
 		.pipe(jsFilter)
 		.pipe(concat('lib.js'))
