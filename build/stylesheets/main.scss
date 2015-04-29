@@ -110,7 +110,7 @@ div.field {
 }
 .related-concepts,
 .related-forms {
-  input[type=text] {
+  fieldset.form-field, .related-concepts-item {
     @include span-columns(10);
   }
   button {

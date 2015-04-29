@@ -12,6 +12,8 @@ module.exports = function($log, $scope) {
 		}]
 	};
 
+	$scope.form.defaultForm = {};
+
 	$scope.supportedEntities = [{
 		name: 'Person'
 	}, {
@@ -86,8 +88,28 @@ module.exports = function($log, $scope) {
 	};
 
     function fetchLatLongData() {
+		// Fetch Place Location data from Google
         $scope.place = $scope.autocomplete.getPlace();
-        $scope.form.geoLocation = $scope.place.geometry.location.toString();
+
+		/*jshint camelcase: false */
+		// Fetch address and update the form
+		$scope.address = $scope.place.formatted_address;
+		/*jshint camelcase: true */
+
+		// Split Lat/Long data into array
+		var latLongList = $scope.place.geometry.location.toString().split(/, /);
+
+		// Parse the array strings with regex for proper number format
+		latLongList = _.map(latLongList, function(/* @type String*/ coord) {
+			return coord.replace(/\(?(-?\d+\.\d+)\)?/, '$1');
+		});
+
+		// Set Lat/Long in form
+		$scope.form.latitude = parseFloat(latLongList[0]);
+		$scope.form.longitude = parseFloat(latLongList[1]);
+
+		// Apply changes for the view to update the changes in $scope.form object
+		$scope.$apply();
     }
 
 };

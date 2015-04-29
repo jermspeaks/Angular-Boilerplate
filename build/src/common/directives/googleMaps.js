@@ -10,13 +10,13 @@ module.exports = function($log) {
 		replace: true,
 		transclude: true,
 		template: '<div id="map" style="position: relative"></div>',
-		controller: function($scope, $element) {
+		controller: function($scope) {
 			function initialize() {
 				var mapOptions = {
 					zoom: 4,
 					center: new google.maps.LatLng(40.0000, -98.0000),
 					mapTypeId: google.maps.MapTypeId.TERRAIN
-				}
+				};
 
 				$scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
