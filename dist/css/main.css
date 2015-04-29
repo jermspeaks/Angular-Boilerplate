@@ -406,39 +406,40 @@ div.tagsinput {
   margin: 15px 0; }
   div.tagsinput:hover {
     border-color: #c4c4c4; }
-  div.tagsinput:focus {
-    border-color: #477dca;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(55, 112, 192, 0.7);
-    outline: none; }
-  div.tagsinput:disabled {
-    background-color: #f0f0f0;
-    cursor: not-allowed; }
-    div.tagsinput:disabled:hover {
-      border: 1px solid #ddd; }
   div.tagsinput span.tag {
     border: 1px solid #638421;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     display: block;
     float: left;
+    padding: 5px;
     text-decoration: none;
     background: #cde69c;
     color: #638421;
-    margin: 0 0 0 5px; }
+    margin: 0 5px 0 5px; }
     div.tagsinput span.tag a {
       font-weight: bold;
       color: #82ad2b;
       text-decoration: none; }
+  div.tagsinput span.tag:first-child {
+    margin: 0 5px 0 0; }
   div.tagsinput input {
     margin: 0 !important;
     border: 1px solid transparent;
-    padding: 5px;
+    padding: 5px 5px 5px 0;
     background: transparent;
-    color: #000;
+    color: #999 !important;
     outline: 0; }
+  div.tagsinput input:focus {
+    color: #000 !important; }
   div.tagsinput div {
     display: block;
     float: left; }
+
+div.input-focused {
+  border-color: #477dca !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(55, 112, 192, 0.7) !important;
+  outline: none !important; }
 
 .tags_clear {
   clear: both;
@@ -446,8 +447,8 @@ div.tagsinput {
   height: 0; }
 
 .not_valid {
-  background: #fbd8db;
-  color: #90111a; }
+  background: #fbd8db !important;
+  color: #90111a !important; }
 
 /* ============================================
   Globals
@@ -470,9 +471,6 @@ a {
   color: inherit;
   text-decoration: none; }
 
-/* ============================================
-  Components
-============================================ */
 /* ============================================
   Main
 ============================================ */

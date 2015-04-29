@@ -6,15 +6,19 @@ module.exports = function($log, $parse) {
 		restrict: 'E',
 		replace: true,
 		transclude: false,
-		scope: {},
+		scope: {
+			placeholder: '@?'
+		},
 		compile: function(element, attrs) {
 			var modelAccessor = $parse(attrs.ngModel);
-			var html = '<input name="tags" id="' + attrs.id + '" value="" />';
+			var html = '<input name="tags" id="' + attrs.id + '" value=""/>';
 
 			var newElem = $(html);
 			element.replaceWith(newElem);
 
-			return function ($scope, $element, $attrs, controller) { // Link Function
+			return function ($scope, $element) { // Link Function
+
+				$scope.placeholder = !!$scope.placeholder ? $scope.placeholder : 'Add';
 
 				/*
 					jQuery Tags Input Options
@@ -39,27 +43,36 @@ module.exports = function($log, $parse) {
 				function onAddTag() {
 					$scope.$apply(function (scope) {
 						var tag = [];
-						modelAccessor.assign(scope, tag)
+						modelAccessor.assign(scope, tag);
 					});
 				}
 
 				function onRemoveTag() {
 					$scope.$apply(function (scope) {
 						var tag = [];
-						modelAccessor.assign(scope, tag)
+						modelAccessor.assign(scope, tag);
 					});
 				}
 
 				$scope.options = {
 				   'height':'auto',
 				   'width':'auto',
-				   'defaultText':'Add a category',
+				   'defaultText': $scope.placeholder,
 				   'onAddTag': onAddTag,
 				   'onRemoveTag':onRemoveTag
 				};
 
-				$log.debug($element);
 	            $($element).tagsInput($scope.options);
+
+				$('#categories-tag_tag')
+					.focus(function() {
+						$('#categories-tag_tagsinput').addClass('input-focused');
+					})
+					.blur(function() {
+						$('#categories-tag_tagsinput').removeClass('input-focused');
+					})
+
+
 
 	            // scope.$watch(modelAccessor, function (val) {
 	            //    var date = new Date(val);

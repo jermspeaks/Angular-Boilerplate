@@ -26,7 +26,7 @@
 
             <div class="field">
                 <label for="Categories">Categories</label>
-                <input
+                <!-- <input
                     name="Categories"
                     type="text"
                     id="Categories"
@@ -36,9 +36,14 @@
                     autocorrect="off"
                     autofocus="autofocus"
                     required
-                />
+                /> -->
 
-                <tag-input id="categories-tag" ng-model="form.categories"></tag-input>
+                <tag-input
+                    id="categories-tag"
+                    name="Categories"
+                    ng-model="form.categories"
+                    placeholder="Add a category"
+                    required="true"></tag-input> <!-- TODO autofocus -->
             </div> <!-- /.field -->
 
             <div id="field"> <!-- TODO Make this, and the lat/long into a directive -->

@@ -155,7 +155,7 @@ function processLibraries() {
 }
 
 function processStyleSheets() {
-	var stylesheets = './build/stylesheets/*.scss';
+	var stylesheets = './build/stylesheets/main.scss';
 	return gulp.src(stylesheets)
 		.pipe(sass({
 			style: 'expanded',
