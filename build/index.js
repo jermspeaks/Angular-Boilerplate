@@ -18,6 +18,7 @@ angular.module('topicGraphEditor', ['ui.router'])
     // Directives
     // .directive('googleMaps', require('./src/common/directives/googleMaps'))
     .directive('tagInput', require('./src/common/directives/tagInput'))
+    .directive('conceptPreview', require('./src/common/directives/conceptPreview'))
 
     // Customize
     // .run(require('./plugins'))

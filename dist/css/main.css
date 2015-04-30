@@ -178,6 +178,96 @@ img, picture {
   margin: 0;
   max-width: 100%; }
 
+/* Refills: Search Bar */
+form.search-bar {
+  position: relative; }
+  form.search-bar input[type=search] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    -webkit-transition: border-color;
+    transition: border-color;
+    background-color: white;
+    border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    display: block;
+    font-size: 1em;
+    font-style: italic;
+    margin: 0;
+    padding: 5;
+    position: relative;
+    width: 100%; }
+  form.search-bar button[type=submit] {
+    position: absolute;
+    top: 0em;
+    right: 0em;
+    bottom: 0em;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    outline: none;
+    padding: 5px 10px; }
+    form.search-bar button[type=submit] img {
+      height: 12px;
+      opacity: 0.7; }
+
+/* Refills: Tables */
+.tables {
+  border-collapse: separate;
+  border-left: 0;
+  border-radius: 3px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+  width: 100%; }
+  .tables tbody {
+    background-color: #fcfcfc; }
+    .tables tbody tr:hover > td, .tables tbody tr:hover > th {
+      background-color: #efefef; }
+    .tables tbody tr:nth-child(even) {
+      background-color: #f7f7f7; }
+      .tables tbody tr:nth-child(even):hover > td {
+        background-color: #eaeaea; }
+  .tables thead:first-of-type tr:first-child > th:first-child {
+    border-top-left-radius: 3px; }
+  .tables thead:first-of-type tr:first-child > th:last-child {
+    border-top-right-radius: 3px; }
+  .tables tbody:last-child tr:last-child > td:first-child {
+    border-bottom-left-radius: 3px; }
+  .tables tbody:last-child tr:last-child > td:last-child {
+    border-bottom-right-radius: 3px; }
+  .tables thead th {
+    background-color: white;
+    border-bottom: 0;
+    border-left: 1px solid #ddd;
+    padding: 0.75em 1em;
+    text-align: left; }
+    .tables thead th:first-child {
+      border-left: none; }
+  .tables tbody {
+    background-color: #fcfcfc; }
+    .tables tbody td {
+      border-bottom: 0;
+      border-left: 1px solid #ddd;
+      border-top: 1px solid #ddd;
+      padding: 0.75em 1em; }
+      .tables tbody td:first-child {
+        border-left: none; }
+      .tables tbody td button {
+        display: inline-block;
+        font-size: 0.7em;
+        line-height: 1.5;
+        margin-bottom: 0.3em;
+        margin-right: 0.5em;
+        outline: none;
+        padding: 0.3em 1em;
+        width: 100%; }
+        @media screen and (min-width: 40em) {
+          .tables tbody td button {
+            margin-bottom: 0;
+            width: auto; } }
+
 /* ============================================
   Components
 ============================================ */
@@ -386,6 +476,21 @@ button.lg-button {
   max-width: none; }
 
 /* ============================================
+  d3 Concept Preview
+============================================ */
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px; }
+.node text {
+  font: 12px sans-serif; }
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px; }
+
+/* ============================================
   Tag Input
 ============================================ */
 div.tagsinput {
@@ -416,7 +521,7 @@ div.tagsinput {
     text-decoration: none;
     background: #cde69c;
     color: #638421;
-    margin: 0 5px 0 5px; }
+    margin: 0 5px; }
     div.tagsinput span.tag a {
       font-weight: bold;
       color: #82ad2b;
@@ -527,6 +632,12 @@ a {
   text-align: center;
   margin: 30px 0; }
 
+section#new-concept-viz {
+  margin: 10px 0; }
+  section#new-concept-viz header#new-concept-viz-header {
+    font-size: 24px;
+    font-weight: 500; }
+
 div.field {
   display: block; }
   div.field::after {
@@ -574,94 +685,3 @@ section#concept-view-page {
     font-size: 24px; }
   section#concept-view-page .concept-field {
     margin: 10px 0; }
-
-/* ============================================
-  Vendor: Refills
-  ============================================ */
-form.search-bar {
-  position: relative; }
-  form.search-bar input[type=search] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
-    appearance: none;
-    -webkit-transition: border-color;
-    transition: border-color;
-    background-color: white;
-    border-radius: 3px;
-    border-radius: 3px;
-    border: 1px solid #ddd;
-    display: block;
-    font-size: 1em;
-    font-style: italic;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    width: 100%; }
-  form.search-bar button[type=submit] {
-    position: absolute;
-    top: 0em;
-    right: 0em;
-    bottom: 0em;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    outline: none;
-    padding: 5px 10px; }
-    form.search-bar button[type=submit] img {
-      height: 12px;
-      opacity: 0.7; }
-
-.tables {
-  border-collapse: separate;
-  border-left: 0;
-  border-radius: 3px;
-  border-spacing: 0;
-  border: 1px solid #ddd;
-  width: 100%; }
-  .tables tbody {
-    background-color: #fcfcfc; }
-    .tables tbody tr:hover > td, .tables tbody tr:hover > th {
-      background-color: #efefef; }
-    .tables tbody tr:nth-child(even) {
-      background-color: #f7f7f7; }
-      .tables tbody tr:nth-child(even):hover > td {
-        background-color: #eaeaea; }
-  .tables thead:first-of-type tr:first-child > th:first-child {
-    border-top-left-radius: 3px; }
-  .tables thead:first-of-type tr:first-child > th:last-child {
-    border-top-right-radius: 3px; }
-  .tables tbody:last-child tr:last-child > td:first-child {
-    border-bottom-left-radius: 3px; }
-  .tables tbody:last-child tr:last-child > td:last-child {
-    border-bottom-right-radius: 3px; }
-  .tables thead th {
-    background-color: white;
-    border-bottom: 0;
-    border-left: 1px solid #ddd;
-    padding: 0.75em 1em;
-    text-align: left; }
-    .tables thead th:first-child {
-      border-left: none; }
-  .tables tbody {
-    background-color: #fcfcfc; }
-    .tables tbody td {
-      border-bottom: 0;
-      border-left: 1px solid #ddd;
-      border-top: 1px solid #ddd;
-      padding: 0.75em 1em; }
-      .tables tbody td:first-child {
-        border-left: none; }
-      .tables tbody td button {
-        display: inline-block;
-        font-size: 0.7em;
-        line-height: 1.5;
-        margin-bottom: 0.3em;
-        margin-right: 0.5em;
-        outline: none;
-        padding: 0.3em 1em;
-        width: 100%; }
-        @media screen and (min-width: 40em) {
-          .tables tbody td button {
-            margin-bottom: 0;
-            width: auto; } }

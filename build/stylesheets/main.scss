@@ -5,6 +5,7 @@
 @import "assets/neat/neat";
 @import "assets/neat/neat-helpers";
 @import "assets/base/base";
+@import "assets/refills/refills-custom";
 @import "components";
 
 /* ============================================
@@ -28,7 +29,22 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
+@mixin font-light($font-size) {
+  font-size: $font-size;
+  font-weight: 100;
+}
+@mixin font-medium($font-size) {
+  font-size: $font-size;
+  font-weight: 300;
+}
+@mixin font-medium-bold($font-size) {
+  font-size: $font-size;
+  font-weight: 500;
+}
+@mixin font-bold($font-size) {
+  font-size: $font-size;
+  font-weight: 600;
+}
 /* ============================================
   Main
 ============================================ */
@@ -81,11 +97,19 @@ $mobile-menu-item: new-breakpoint(max-width 960px);
   Concept New/Edit Page
 ============================================ */
 .concept-header {
-  font-size: 24px;
-  font-weight: 500;
+  @include font-medium-bold(24px);
   text-align: center;
   margin: 30px 0;
 }
+
+section#new-concept-viz {
+  margin: 10px 0;
+
+  header#new-concept-viz-header {
+    @include font-medium-bold(24px);
+  }
+}
+
 div.field {
   @include row();
 }
@@ -125,144 +149,5 @@ section#concept-view-page {
   }
   .concept-field {
     margin: 10px 0;
-  }
-}
-/* ============================================
-  Vendor: Refills
-  ============================================ */
-form.search-bar {
-  ///////////////////////////////////////////////////////////////////////////////////
-  $base-border-color: gainsboro !default;
-  $base-border-radius: 3px !default;
-  $base-line-height: 1.5em !default;
-  $action-color: #477dca !default;
-  $dark-gray: #333 !default;
-  //////////////////////////////////////////////////////////////////////////////////
-  $search-bar-border-color: $base-border-color;
-  $search-bar-border: 1px solid $search-bar-border-color;
-  $search-bar-background: lighten($search-bar-border-color, 10%);
-  position: relative;
-  input[type=search] {
-    @include appearance(none);
-    // @include box-sizing(border-box);
-    @include transition(border-color);
-    background-color: white;
-    border-radius: $base-border-radius;
-    border-radius: $base-border-radius;
-    border: 1px solid $base-border-color;
-    display: block;
-    font-size: 1em;
-    font-style: italic;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    width: 100%;
-  }
-  button[type=submit] {
-    // @include button(flat, $action-color);
-    @include position(absolute, 0em 0em 0em null);
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    outline: none;
-    padding: 5px 10px;
-    img {
-      height: 12px;
-      opacity: 0.7;
-    }
-  }
-}
-.tables {
-  $base-border-color: gainsboro !default;
-  $base-border-radius: 3px !default;
-  $base-line-height: 1.5em !default;
-  $base-spacing: 1.5em !default;
-  $action-color: #477dca !default;
-  $base-link-color: $action-color !default;
-  $dark-gray: #333 !default;
-  $light-gray: #ddd !default;
-  $medium-screen: em(640) !default;
-  $large-screen: em(860) !default;
-  $base-font-color: $dark-gray !default;
-  $table-border-color: $base-border-color;
-  $table-border: 1px solid $table-border-color;
-  $table-background: lighten($table-border-color, 12%);
-  $table-header-background: lighten($table-background, 10%);
-  $table-hover-background: darken($table-background, 5%);
-  $table-stripe-background: darken($table-background, 2%);
-  $table-stripe-background-hover: darken($table-stripe-background, 5%);
-  $table-padding: 0.75em 1em;
-  border-collapse: separate;
-  border-left: 0;
-  border-radius: $base-border-radius;
-  border-spacing: 0;
-  border: $table-border;
-  width: 100%;
-  tbody {
-    background-color: $table-background;
-    tr:hover > td,
-    tr:hover > th {
-      background-color: $table-hover-background;
-    }
-    tr:nth-child(even) {
-      background-color: $table-stripe-background;
-      &:hover > td {
-        background-color: $table-stripe-background-hover;
-      }
-    }
-  }
-  thead:first-of-type {
-    tr:first-child > th:first-child {
-      border-top-left-radius: $base-border-radius;
-    }
-    tr:first-child > th:last-child {
-      border-top-right-radius: $base-border-radius;
-    }
-  }
-  tbody:last-child {
-    tr:last-child > td:first-child {
-      border-bottom-left-radius: $base-border-radius;
-    }
-    tr:last-child > td:last-child {
-      border-bottom-right-radius: $base-border-radius;
-    }
-  }
-  thead {
-    th {
-      background-color: $table-header-background;
-      border-bottom: 0;
-      border-left: 1px solid $table-border-color;
-      padding: $table-padding;
-      text-align: left;
-      &:first-child {
-        border-left: none;
-      }
-    }
-  }
-  tbody {
-    background-color: $table-background;
-    td {
-      border-bottom: 0;
-      border-left: 1px solid $table-border-color;
-      border-top: 1px solid $table-border-color;
-      padding: $table-padding;
-      &:first-child {
-        border-left: none;
-      }
-      button {
-        // @include button(flat, $action-color);
-        display: inline-block;
-        font-size: 0.7em;
-        line-height: $base-line-height;
-        margin-bottom: 0.3em;
-        margin-right: 0.5em;
-        outline: none;
-        padding: 0.3em 1em;
-        width: 100%;
-        @include media($medium-screen) {
-          margin-bottom: 0;
-          width: auto;
-        }
-      }
-    }
   }
 }

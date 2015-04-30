@@ -1,7 +1,6 @@
 /* ============================================
   Components
 ============================================ */
-
 /* ============================================
   Imports
 ============================================ */
@@ -9,11 +8,9 @@
 @import "assets/neat/neat";
 @import "assets/neat/neat-helpers";
 @import "assets/base/base";
-
 /* ============================================
   Buttons
 ============================================ */
-
 @mixin button-mixin($verticals, $sides) {
   outline: none;
   padding: $verticals $sides;
@@ -28,19 +25,33 @@ button.m-button {
 button.lg-button {
   @include button-mixin(20px, 40px);
 }
-
 /* ============================================
   Google Maps
 ============================================ */
-
 .gmnoprint img {
   max-width: none;
 }
-
+/* ============================================
+  d3 Concept Preview
+============================================ */
+.node {
+  circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+  }
+  text {
+    font: 12px sans-serif;
+  }
+}
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
 /* ============================================
   Tag Input
 ============================================ */
-
 // Variables
 $tag-input-border: #a5d24a;
 $tag-input-background: #cde69c;
@@ -48,7 +59,6 @@ $tag-input-color: #638421;
 $tag-input-close-color: #82ad2b;
 $tag-input-invalid-color: #90111a;
 $tag-input-invalid-background: #fbd8db;
-
 // Styles
 div.tagsinput {
   background-color: $base-background-color;
@@ -65,11 +75,9 @@ div.tagsinput {
   width: 100%;
   overflow-y: auto;
   margin: 15px 0;
-
   &:hover {
     border-color: darken($base-border-color, 10%);
   }
-
   span.tag {
     border: 1px solid $tag-input-color;
     -moz-border-radius: 2px;
@@ -80,19 +88,16 @@ div.tagsinput {
     text-decoration: none;
     background: $tag-input-background;
     color: $tag-input-color;
-    margin: 0 5px 0 5px;
-
+    margin: 0 5px;
     a {
       font-weight: bold;
       color: $tag-input-close-color;
       text-decoration: none;
     }
   }
-
   span.tag:first-child {
     margin: 0 5px 0 0;
   }
-
   input {
     // width: auto;
     margin: 0 !important;
@@ -104,23 +109,19 @@ div.tagsinput {
     // margin-right: 5px;
     // margin-bottom: 5px;
   }
-
   input:focus {
     color: #000 !important;
   }
-
   div {
     display: block;
     float: left;
   }
 }
-
 div.input-focused {
   border-color: $action-color !important;
   box-shadow: $form-box-shadow-focus !important;
   outline: none !important;
 }
-
 .tags_clear {
   clear: both;
   width: 100%;

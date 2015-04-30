@@ -1,7 +1,7 @@
 'use strict';
 
 // Multi series bar chart
-module.exports = function($log, $parse) {
+module.exports = function($log) {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -11,15 +11,13 @@ module.exports = function($log, $parse) {
 			placeholder: '@?'
 		},
 		compile: function(element, attrs) {
-			// var modelAccessor = $parse(attrs.ngModel);
 			var html = '<input name="tags" id="' + attrs.id + '" value=""/>';
 
 			var newElem = $(html);
 			element.replaceWith(newElem);
 
-			return function ($scope, $element, $attrs) { // Link Function
+			return function ($scope, $element) { // Link Function
 				$scope.tags = [];
-				// modelAccessor($scope.tags);
 				$scope.placeholder = !!$scope.placeholder ? $scope.placeholder : 'Add';
 
 				/*
@@ -43,7 +41,7 @@ module.exports = function($log, $parse) {
 				*/
 
 				function onAddTag() {
-					$scope.$apply(function (scope) {
+					$scope.$apply(function () {
 						$scope.tags.push({
 							name: _.last($($element).val().split(','))
 						});
@@ -56,9 +54,8 @@ module.exports = function($log, $parse) {
 				}
 
 				function onRemoveTag() {
-					$scope.$apply(function (scope) {
-						var tag = [];
-						modelAccessor.assign(scope, tag);
+					$scope.$apply(function () {
+						// TODO
 					});
 				}
 
@@ -78,7 +75,7 @@ module.exports = function($log, $parse) {
 					})
 					.blur(function() {
 						$('#categories-tag_tagsinput').removeClass('input-focused');
-					})
+					});
 
 
 
@@ -89,10 +86,5 @@ module.exports = function($log, $parse) {
 
 	         };
 		},
-		// templateUrl: 'common/directive-tag-input',
-		// controller: function($scope) {
-		// 	$scope.model = {};
-		// 	$log.debug('yes?');
-		// }
 	};
 };

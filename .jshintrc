@@ -23,6 +23,7 @@
     "angular"              : true,
     "chance"               : true,
     "_"                    : true,
-    "google"               : true
+    "google"               : true,
+    "d3"                   : true
   }
 }
