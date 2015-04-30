@@ -7,17 +7,19 @@ module.exports = function($log, $parse) {
 		replace: true,
 		transclude: false,
 		scope: {
+			ngModel: '=',
 			placeholder: '@?'
 		},
 		compile: function(element, attrs) {
-			var modelAccessor = $parse(attrs.ngModel);
+			// var modelAccessor = $parse(attrs.ngModel);
 			var html = '<input name="tags" id="' + attrs.id + '" value=""/>';
 
 			var newElem = $(html);
 			element.replaceWith(newElem);
 
-			return function ($scope, $element) { // Link Function
-
+			return function ($scope, $element, $attrs) { // Link Function
+				$scope.tags = [];
+				// modelAccessor($scope.tags);
 				$scope.placeholder = !!$scope.placeholder ? $scope.placeholder : 'Add';
 
 				/*
@@ -42,8 +44,14 @@ module.exports = function($log, $parse) {
 
 				function onAddTag() {
 					$scope.$apply(function (scope) {
-						var tag = [];
-						modelAccessor.assign(scope, tag);
+						$scope.tags.push({
+							name: _.last($($element).val().split(','))
+						});
+
+						// modelAccessor.assign(scope, $scope.tags);
+						// $log.debug(modelAccessor);
+						$scope.ngModel = $scope.tags;
+						$log.debug($scope.ngModel);
 					});
 				}
 
