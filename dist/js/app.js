@@ -167,6 +167,7 @@ module.exports = function($log) {
 		this.forms.push({
 			'id': 'Form ' + newItemNo
 		});
+        // TODO Update Link
     };
 
     Form.prototype.deleteForm = function(associatedForm) {
@@ -175,6 +176,8 @@ module.exports = function($log) {
 		this.forms = _.reject(this.forms, function(aForm) {
 			return aForm.$$hashKey === associatedForm.$$hashKey;
 		});
+
+        // TODO Update Link
     };
 
     // Links
@@ -691,13 +694,6 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 	/* 	==============================
 			Related Concepts Partial
 		============================== */
-
-	// _______________
-	// Scope Variables
-
-	$scope.form.relatedConcepts = [{
-		id: 'Concept 1'
-	}];
 
 	// _______________
 	// Scope Functions

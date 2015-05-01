@@ -86,13 +86,6 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 		============================== */
 
 	// _______________
-	// Scope Variables
-
-	$scope.form.relatedConcepts = [{
-		id: 'Concept 1'
-	}];
-
-	// _______________
 	// Scope Functions
 
 	$scope.submitNewConcept = function() {

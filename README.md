@@ -43,7 +43,7 @@ Next Milestone:
 
 - [ ] Create Concept Form
     - [ ] Attributes
-        - [ ] Bug: Loading autocomplete for GEO Coordinates
+        - [x] Bug: Loading autocomplete for GEO Coordinates
         - [ ] Bug: Categories model not binding
     - [ ] Forms (add/edit)
         - [ ] Ability to autocomplete a form's name field with existing forms from other concepts
