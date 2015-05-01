@@ -24,7 +24,7 @@
                             type="text"
                             id="conceptName"
                             placeholder="Enter a concept name"
-                            ng-model="form.conceptName"
+                            ng-model="form.attributes.conceptName"
                             autocapitalize="off"
                             autocorrect="off"
                             autofocus="autofocus"
@@ -36,7 +36,7 @@
                 </div>
             </section>
 
-            <section class="concept-form-section" ng-if="form.conceptName">
+            <section class="concept-form-section" ng-if="form.attributes.conceptName">
                 <div id="concept-side-menu">
                     <ul class="menu">
                         <li class="side-menu-item" ng-repeat="item in sideMenu">
@@ -62,13 +62,3 @@
         </form>
     </section>
 </section>
-
-<!--
-TODO
-
-Form to Concept link:
-
-Sense probability
-Number of occurrences
-
--->

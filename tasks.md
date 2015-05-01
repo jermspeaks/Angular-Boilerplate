@@ -16,6 +16,7 @@
     - [ ] Related Concepts
         - [ ] Search Capability
         - [ ] Autocomplete in form field
+        - [ ] Move buttons to top. Can delete last related concept
     - [ ] General Refactor
         - [ ] Form "Model" regrouping
         - [ ] Separate Sections of Controllers for each partial form

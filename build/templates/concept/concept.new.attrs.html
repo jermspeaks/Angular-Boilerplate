@@ -16,7 +16,7 @@
                     required
                 /> -->
 
-      <tag-input id="categories-tag" name="Categories" ng-model="form.categories" placeholder="Add a category"></tag-input>
+      <tag-input id="categories-tag" name="Categories" ng-model="form.attributes.categories" placeholder="Add a category"></tag-input>
       <!-- TODO autofocus -->
 
     </div>
@@ -25,22 +25,22 @@
     <div id="field">
       <!-- TODO Make this, and the lat/long into a directive -->
       <label for="geoCoordinates">GEO Coordinates</label>
-      <input name="geoCoordinates" id="map-autocomplete" placeholder="Autocomplete: Enter a place" ng-model="form.address" type="text" autofocus="autofocus"></input>
+      <input name="geoCoordinates" id="map-autocomplete" placeholder="Autocomplete: Enter a place" ng-model="form.attributes.address" type="text" autofocus="autofocus"></input>
     </div>
     <section id="disabled-lat-long" ng-if="place">
       <div class="lat-long-coordinates" id="field">
         <label for="latitude">Latitude</label>
-        <input name="latitude" ng-model="form.latitude" type="text" autofocus="autofocus" disabled></input>
+        <input name="latitude" ng-model="form.attributes.latitude" type="text" autofocus="autofocus" disabled></input>
       </div>
       <div class="lat-long-coordinates" id="field">
         <label for="longitude">Longitude</label>
-        <input name="longitude" ng-model="form.longitude" type="text" autofocus="autofocus" disabled></input>
+        <input name="longitude" ng-model="form.attributes.longitude" type="text" autofocus="autofocus" disabled></input>
       </div>
     </section>
 
     <div class="field">
       <label for="select">Concept Type</label>
-      <select class="global-date-selector custom" ng-model="form.entity" ng-options="entityType.name for entityType in supportedEntities" required></select>
+      <select class="global-date-selector custom" ng-model="form.attributes.entity" ng-options="entityType.name for entityType in supportedEntities" required></select>
     </div>
 
     <div class="field" ng-if="form.entity.name === 'Event'">
@@ -53,7 +53,7 @@
 
     <div class="field">
       <label for="select">Is Block Listed?</label>
-      <select class="global-date-selector custom" ng-model="form.blocked" ng-options="blockType.name for blockType in blockedTypes" required></select>
+      <select class="global-date-selector custom" ng-model="form.attributes.blocked" ng-options="blockType.name for blockType in blockedTypes" required></select>
     </div>
     <!-- /.field -->
 

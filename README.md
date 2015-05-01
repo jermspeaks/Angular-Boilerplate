@@ -55,9 +55,11 @@ Next Milestone:
     - [ ] Related Concepts
         - [ ] Search Capability
         - [ ] Autocomplete in form field
+        - [ ] Move buttons to top. Can delete last related concept
     - [ ] General Refactor
         - [ ] Form "Model" regrouping
         - [ ] Separate Sections of Controllers for each partial form
+
 ___
 
 ### App Development
@@ -92,7 +94,7 @@ For development packages, we are using npm
 
 ### Project File Management
 
-#### Angular
+#### AngularJS
 
 The Angular project is broken up in the `build/src` folder, as well as three important files:
 

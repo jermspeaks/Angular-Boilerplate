@@ -15,6 +15,9 @@ angular.module('topicGraphEditor', ['ui.router'])
     // Common Services
     .factory('RootScopeService', require('./src/common/RootScopeService'))
 
+    // Common Models
+    .factory('FormService', require('./src/common/FormService'))
+
     // Directives
     // .directive('googleMaps', require('./src/common/directives/googleMaps'))
     .directive('tagInput', require('./src/common/directives/tagInput'))
