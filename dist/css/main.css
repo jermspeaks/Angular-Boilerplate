@@ -269,6 +269,27 @@ form.search-bar {
             width: auto; } }
 
 /* ============================================
+  Globals
+============================================ */
+body {
+  font-family: 'Lato', sans-serif;
+  line-height: 1;
+  font-size: 16px;
+  font-style: 400;
+  max-width: 1024px;
+  margin: auto;
+  background: #e7e5e0; }
+
+#container {
+  background: white;
+  overflow: hidden;
+  padding: 0 30px 30px; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+/* ============================================
   Components
 ============================================ */
 /* ============================================
@@ -556,27 +577,6 @@ div.input-focused {
   color: #90111a !important; }
 
 /* ============================================
-  Globals
-============================================ */
-body {
-  font-family: 'Lato', sans-serif;
-  line-height: 1;
-  font-size: 16px;
-  font-style: 400;
-  max-width: 1024px;
-  margin: auto;
-  background: #e7e5e0; }
-
-#container {
-  background: white;
-  overflow: hidden;
-  padding: 0 30px 30px; }
-
-a {
-  color: inherit;
-  text-decoration: none; }
-
-/* ============================================
   Main
 ============================================ */
 #main-header {
@@ -770,3 +770,24 @@ section#concept-view-page {
     font-size: 24px; }
   section#concept-view-page .concept-field {
     margin: 10px 0; }
+
+/* ============================================
+  Globals
+============================================ */
+body {
+  font-family: 'Lato', sans-serif;
+  line-height: 1;
+  font-size: 16px;
+  font-style: 400;
+  max-width: 1024px;
+  margin: auto;
+  background: #e7e5e0; }
+
+#container {
+  background: white;
+  overflow: hidden;
+  padding: 0 30px 30px; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
