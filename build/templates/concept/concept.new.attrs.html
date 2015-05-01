@@ -1,0 +1,80 @@
+<form>
+  <label for="Attributes" >Concept Attributes</label>
+  <fieldset class="conceptNewForm">
+
+    <div class="field">
+      <label for="Categories">Categories</label>
+      <!-- <input
+                    name="Categories"
+                    type="text"
+                    id="Categories"
+                    placeholder="Enter the concept display name"
+                    ng-model="form.categories"
+                    autocapitalize="off"
+                    autocorrect="off"
+                    autofocus="autofocus"
+                    required
+                /> -->
+
+      <tag-input id="categories-tag" name="Categories" ng-model="form.categories" placeholder="Add a category"></tag-input>
+      <!-- TODO autofocus -->
+
+    </div>
+    <!-- /.field -->
+
+    <div id="field">
+      <!-- TODO Make this, and the lat/long into a directive -->
+      <label for="geoCoordinates">GEO Coordinates</label>
+      <input name="geoCoordinates" id="map-autocomplete" placeholder="Autocomplete: Enter a place" ng-model="form.address" type="text" autofocus="autofocus"></input>
+    </div>
+    <section id="disabled-lat-long" ng-if="place">
+      <div class="lat-long-coordinates" id="field">
+        <label for="latitude">Latitude</label>
+        <input name="latitude" ng-model="form.latitude" type="text" autofocus="autofocus" disabled></input>
+      </div>
+      <div class="lat-long-coordinates" id="field">
+        <label for="longitude">Longitude</label>
+        <input name="longitude" ng-model="form.longitude" type="text" autofocus="autofocus" disabled></input>
+      </div>
+    </section>
+
+    <div class="field">
+      <label for="select">Concept Type</label>
+      <select class="global-date-selector custom" ng-model="form.entity" ng-options="entityType.name for entityType in supportedEntities" required></select>
+    </div>
+
+    <div class="field" ng-if="form.entity.name === 'Event'">
+      <div class="field">
+        <label for="eventName">Event Name</label>
+        <input name="eventName" type="text" id="eventName" placeholder="Enter the event name" ng-model="form.eventName" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+      </div>
+      <!-- /.field -->
+    </div>
+
+    <div class="field">
+      <label for="select">Is Block Listed?</label>
+      <select class="global-date-selector custom" ng-model="form.blocked" ng-options="blockType.name for blockType in blockedTypes" required></select>
+    </div>
+
+    <div class="field related-concepts" data-ng-repeat="relatedConcept in form.relatedConcepts">
+      <label for="relatedConcept" ng-show="$first">Related Concepts</label>
+      <input type="text" class="related-concepts-item" ng-model="relatedConcept.name" name="relatedConcept" placeholder="Enter the concept display name" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+      <button class="delete-button" type="button" type="value" ng-show="!$last" ng-click="deleteConcept(relatedConcept)">-</button>
+      <button type="button" type="value" ng-show="$last" ng-click="addConcept(relatedConcept)">+</button>
+    </div>
+    <!-- /.field -->
+
+    <div class="button-bar group">
+
+      <div class="small-6">
+        <div class="row">
+          <div class="large-3 medium-5 columns">
+            <input id="btn-submit" type="submit" value="Submit" ng-disabled="conceptNewForm.$invalid" class="button">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </fieldset>
+</form>

@@ -12,9 +12,20 @@ module.exports =
                     controller: 'ConceptOverviewController'
                 },
                 new: {
-                    url: 'concept/new',
-                    templateUrl: 'concept/concept.new.html',
-                    controller: 'ConceptNewController'
+                    overview: {
+                        url: 'concept/new',
+                        templateUrl: 'concept/concept.new.html',
+                        controller: 'ConceptNewController'
+                    },
+                    attrs: {
+                        templateUrl: 'concept/concept.new.attrs.html'
+                    },
+                    forms: {
+                        templateUrl: 'concept/concept.new.forms.html'
+                    },
+                    links: {
+                        templateUrl: 'concept/concept.new.links.html'
+                    }
                 },
                 search: {
                     url: 'concept/find',
@@ -48,7 +59,10 @@ module.exports =
 
         $stateProvider
             .state('concept', pages.concept.main)
-            .state('concept.new', pages.concept.new)
+            .state('concept.new', pages.concept.new.overview)
+            .state('concept.new.attrs', pages.concept.new.attrs)
+            .state('concept.new.forms', pages.concept.new.forms)
+            .state('concept.new.links', pages.concept.new.links)
             .state('concept.find', pages.concept.search)
             .state('concept.find.list', pages.concept.list)
             .state('concept.view', pages.concept.read)

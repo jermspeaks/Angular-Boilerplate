@@ -626,6 +626,89 @@ a {
 /* ============================================
   Concept New/Edit Page
 ============================================ */
+section#concept-label {
+  width: 50%;
+  margin: 0 auto; }
+  section#concept-label .concept-input-group {
+    width: 100%;
+    text-align: center; }
+  section#concept-label .concept-input-label {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 10px 0 0; }
+  section#concept-label .concept-input-field {
+    display: inline-block;
+    position: relative; }
+    section#concept-label .concept-input-field input {
+      font-size: 18px;
+      padding: 5px;
+      display: block; }
+    section#concept-label .concept-input-field input:focus {
+      outline: none; }
+
+.concept-form-section {
+  border-top: 1px solid #aaa;
+  padding-top: 10px; }
+  .concept-form-section #concept-side-menu {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%;
+    border: 1px solid #ddd;
+    margin-top: 20px; }
+    .concept-form-section #concept-side-menu:last-child {
+      margin-right: 0; }
+    .concept-form-section #concept-side-menu li.side-menu-item {
+      display: block;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid #a0a0a0; }
+      .concept-form-section #concept-side-menu li.side-menu-item::after {
+        clear: both;
+        content: "";
+        display: table; }
+      .concept-form-section #concept-side-menu li.side-menu-item button {
+        background-color: #f7f7f7;
+        color: black;
+        width: 100%;
+        border-radius: 0; }
+      .concept-form-section #concept-side-menu li.side-menu-item button:hover {
+        background-color: #999; }
+      .concept-form-section #concept-side-menu li.side-menu-item span {
+        display: block; }
+        .concept-form-section #concept-side-menu li.side-menu-item span::after {
+          clear: both;
+          content: "";
+          display: table; }
+      .concept-form-section #concept-side-menu li.side-menu-item:last-child {
+        border: none; }
+    .concept-form-section #concept-side-menu ul.submenu {
+      display: none; }
+    .concept-form-section #concept-side-menu li.side-submenu-item {
+      display: block;
+      border-bottom: 1px solid #a0a0a0; }
+      .concept-form-section #concept-side-menu li.side-submenu-item::after {
+        clear: both;
+        content: "";
+        display: table; }
+      .concept-form-section #concept-side-menu li.side-submenu-item button {
+        background-color: #c4c4c4;
+        color: black;
+        width: 100%;
+        border-radius: 0; }
+      .concept-form-section #concept-side-menu li.side-submenu-item button:hover {
+        background-color: #999; }
+      .concept-form-section #concept-side-menu li.side-submenu-item:last-child {
+        border-bottom: none; }
+  .concept-form-section #concept-partial-form {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 74.41059%; }
+    .concept-form-section #concept-partial-form:last-child {
+      margin-right: 0; }
+
 .concept-header {
   font-size: 24px;
   font-weight: 500;

@@ -1,8 +1,26 @@
 'use strict';
 
-module.exports = function($log, $scope) {
+module.exports = function($log, $scope, $state, $timeout) {
 	// _______________
 	// Scope Variables
+	$scope.sideMenu = [{
+		displayName: 'Attributes',
+		partial: 'concept.new.attrs',
+	}, {
+		displayName: 'Forms'
+	}, {
+		displayName: 'Related Concepts',
+		partial: 'concept.new.links',
+	}];
+
+	$scope.sideSubMenu = [{
+		displayName: 'Add/Edit Forms',
+		partial: 'concept.new.forms',
+	}, {
+		displayName: 'Concept to Form Links',
+		partial: 'concept.new.links',
+	}]
+
 	$scope.form = {
 		associatedForms: [{
 			id: 'Form 1'
@@ -11,40 +29,22 @@ module.exports = function($log, $scope) {
 			id: 'Concept 1'
 		}]
 	};
-
+	// Default Form
 	$scope.form.defaultForm = {};
-
-	$scope.supportedEntities = [{
-		name: 'Person'
-	}, {
-		name: 'Place'
-	}, {
-		name: 'Organization'
-	}, {
-		name: 'Event'
-	}];
-
-	$scope.blockedTypes = [{
-		name: 'Yes'
-	}, {
-		name: 'No'
-	}];
-
-	$scope.form.entity = $scope.supportedEntities[0];
-	$scope.form.blocked = $scope.blockedTypes[1];
-
-	$scope.autocomplete = new google.maps.places.Autocomplete(
-		/** @type {HTMLInputElement} */
-		(document.getElementById('map-autocomplete')), {
-			types: ['geocode']
-		});
-
-	google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
-		fetchLatLongData();
-	});
 
 	// _______________
 	// Scope Functions
+
+	$scope.switchForm = function(state) {
+		$log.debug('Form is Switched: %s', state);
+		$state.go(state)
+		// if (state === 'concept.new.attrs') loadAttributesForm();
+	};
+
+	$scope.editDropdown = function(e) {
+		$('.submenu').slideToggle('fast');  // apply the toggle to the ul
+		$('.submenu').parent().toggleClass('is-expanded');
+	}
 
 	// TODO add weights to forms
 
@@ -93,7 +93,7 @@ module.exports = function($log, $scope) {
 
 		/*jshint camelcase: false */
 		// Fetch address and update the form
-		$scope.address = $scope.place.formatted_address;
+		$scope.address = $scope.place.formatted_address ? $scope.place.formatted_address : $scope.place;
 		/*jshint camelcase: true */
 
 		// Split Lat/Long data into array
@@ -111,5 +111,50 @@ module.exports = function($log, $scope) {
 		// Apply changes for the view to update the changes in $scope.form object
 		$scope.$apply();
     }
+
+	function loadAttributesForm() {
+		// Supported Entities
+		$scope.supportedEntities = [{
+			name: 'Person'
+		}, {
+			name: 'Place'
+		}, {
+			name: 'Organization'
+		}, {
+			name: 'Event'
+		}];
+
+		// Block Types
+		$scope.blockedTypes = [{
+			name: 'Yes'
+		}, {
+			name: 'No'
+		}];
+
+		// Set Default Entities and Block Type
+		$scope.form.entity = $scope.supportedEntities[0];
+		$scope.form.blocked = $scope.blockedTypes[1];
+
+		// Set Autocomplete feature from Google
+		$scope.autocomplete = new google.maps.places.Autocomplete(
+			/** @type {HTMLInputElement} */
+			(document.getElementById('map-autocomplete')), {
+				types: ['geocode']
+			});
+
+		// Add event listener after autocomplete set
+		google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
+			fetchLatLongData();
+		});
+	}
+
+	$scope.$watch('form.conceptName', function() {
+		if ($scope.form.conceptName) {
+			$state.go('concept.new.attrs');
+			$timeout(function() {
+				loadAttributesForm();
+			});
+		}
+	});
 
 };

@@ -1,0 +1,51 @@
+<form>
+  <div id="field">
+    <label for="associatedform">Associated Forms</label>
+
+    <div class="field related-forms" data-ng-repeat="associatedform in form.associatedForms">
+      <!-- TODO Make these into form directives -->
+      <!-- <section>
+                    <span>Last entry for the form is always the same as the concept name. Disabled for editing.</span>
+                </section> -->
+      <fieldset class="form-field">
+        <label for="associatedform">Form Name</label>
+        <input type="text" class="related-forms-item" ng-model="associatedform.name" name="associatedForm" placeholder="Enter a form" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+
+        <label for="associatedform">Number of occurrences</label>
+        <input type="text" class="related-forms-item" ng-model="associatedform.occurenceCount" name="associatedForm" placeholder="" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+
+        <label for="associatedform">Number of times linked</label>
+        <input type="text" class="related-forms-item" ng-model="associatedform.linkedCount" name="associatedForm" placeholder="" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+
+        <label for="associatedform">Linked probability</label>
+        <!-- TODO replace with sliders in its own section at the end of the form -->
+        <input type="text" class="related-forms-item" ng-model="associatedform.linkedProbability" name="associatedForm" placeholder="Between 0 and 1" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+      </fieldset>
+      <button class="delete-button" type="button" type="value" ng-click="deleteForm(associatedform)">-</button>
+    </div>
+    <!-- /.field -->
+
+    <label for="associatedform">Default Associated Form (same as the concept name)</label>
+
+    <div class="field related-forms">
+      <!-- The default form is the concept name. TODO include an extra field to start with an additional form -->
+      <!-- <label for="associatedform" ng-show="form.associatedForms.length === 0">Associated Forms</label> -->
+      <fieldset class="form-field">
+        <label for="associatedform">Form Name</label>
+        <input class="related-forms-item" name="relatedForms" type="text" id="relatedForms" placeholder="Disabled: same as concept name" ng-model="form.conceptName" autocapitalize="off" autocorrect="off" autofocus="autofocus" required disabled />
+
+        <label for="associatedform">Number of occurrences</label>
+        <input type="text" class="related-forms-item" ng-model="form.defaultForm.occurenceCount" name="associatedForm" placeholder="" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+
+        <label for="associatedform">Number of times linked</label>
+        <input type="text" class="related-forms-item" ng-model="form.defaultForm.linkedCount" name="associatedForm" placeholder="" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+
+        <label for="associatedform">Linked probability</label>
+        <input type="text" class="related-forms-item" ng-model="form.defaultForm.linkedProbability" name="associatedForm" placeholder="Between 0 and 1" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+      </fieldset>
+      <button type="button" ng-click="addForm()">+</button>
+      <!-- TODO ng-click="addForm()" -->
+    </div>
+    <!-- /.field -->
+  </div>
+</form>
