@@ -179,6 +179,7 @@ $sub-menu-button-color: darken($menu-button-color, 20%);
         color: black;
         width: 100%;
         border-radius: 0;
+        @include font-medium(14px);
       }
 
       button:hover {

@@ -10,7 +10,7 @@ module.exports = function($log, $scope, $state, $timeout) {
 		displayName: 'Forms'
 	}, {
 		displayName: 'Related Concepts',
-		partial: 'concept.new.links',
+		partial: 'concept.new.relatedConcepts',
 	}];
 
 	$scope.sideSubMenu = [{
@@ -19,7 +19,7 @@ module.exports = function($log, $scope, $state, $timeout) {
 	}, {
 		displayName: 'Concept to Form Links',
 		partial: 'concept.new.links',
-	}]
+	}];
 
 	$scope.form = {
 		associatedForms: [{
@@ -37,14 +37,14 @@ module.exports = function($log, $scope, $state, $timeout) {
 
 	$scope.switchForm = function(state) {
 		$log.debug('Form is Switched: %s', state);
-		$state.go(state)
+		$state.go(state);
 		// if (state === 'concept.new.attrs') loadAttributesForm();
 	};
 
-	$scope.editDropdown = function(e) {
+	$scope.editDropdown = function() {
 		$('.submenu').slideToggle('fast');  // apply the toggle to the ul
 		$('.submenu').parent().toggleClass('is-expanded');
-	}
+	};
 
 	// TODO add weights to forms
 

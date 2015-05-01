@@ -68,24 +68,24 @@ module.exports = function($log) {
 					.append('svg:svg')
 					.attr('width', w)
 					.attr('height', h)
-					.append("svg:g")
-					.attr("class", "container")
-					.attr("transform", "translate(0,10)");
+					.append('svg:g')
+					.attr('class', 'container')
+					.attr('transform', 'translate(0,10)');
 					// .append('g').attr('class', 'links')
 					// .append('g').attr('class', 'nodes');
 
-				// Edges between nodes as a <path class="link" />
+				// Edges between nodes as a <path class='link' />
 				var link = d3.svg.diagonal()
 					.projection(function(d) {
 						return [d.x, d.y];
 					});
 
-				svg.selectAll("path.link")
+				svg.selectAll('path.link')
 					.data(links)
 					.enter()
-					.append("svg:path")
-					.attr("class", "link")
-					.attr("d", link);
+					.append('svg:path')
+					.attr('class', 'link')
+					.attr('d', link);
 
 
 				/*
@@ -95,28 +95,28 @@ module.exports = function($log) {
 				        <text />
 				    </g>
 				 */
-				var nodeGroup = svg.selectAll("g.node")
+				var nodeGroup = svg.selectAll('g.node')
 					.data(nodes)
 					.enter()
-					.append("svg:g")
-					.attr("class", "node")
-					.attr("transform", function(d) {
-						return "translate(" + d.x + "," + d.y + ")";
+					.append('svg:g')
+					.attr('class', 'node')
+					.attr('transform', function(d) {
+						return 'translate(' + d.x + ',' + d.y + ')';
 					});
 
-				nodeGroup.append("svg:circle")
-					.attr("class", "node-dot")
-					.attr("r", options.nodeRadius);
+				nodeGroup.append('svg:circle')
+					.attr('class', 'node-dot')
+					.attr('r', options.nodeRadius);
 
-				nodeGroup.append("svg:text")
-					.attr("text-anchor", function(d) {
-						return d.children ? "end" : "start";
+				nodeGroup.append('svg:text')
+					.attr('text-anchor', function(d) {
+						return d.children ? 'end' : 'start';
 					})
-					.attr("dx", function(d) {
+					.attr('dx', function(d) {
 						var gap = 2 * options.nodeRadius;
 						return d.children ? -gap : gap;
 					})
-					.attr("dy", 3)
+					.attr('dy', 3)
 					.text(function(d) {
 						return d.name;
 					});

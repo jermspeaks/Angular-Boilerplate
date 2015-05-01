@@ -1,0 +1,9 @@
+<label for="Related-Concepts">Related Concepts</label>
+<fieldset>
+  <div class="field related-concepts" data-ng-repeat="relatedConcept in form.relatedConcepts">
+    <label for="relatedConcept" ng-show="$first">Concept Name</label>
+    <input type="text" class="related-concepts-item" ng-model="relatedConcept.name" name="relatedConcept" placeholder="Enter the concept display name" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+    <button class="delete-button" type="button" type="value" ng-show="!$last" ng-click="deleteConcept(relatedConcept)">-</button>
+    <button type="button" type="value" ng-show="$last" ng-click="addConcept(relatedConcept)">+</button>
+  </div>
+</fieldset>

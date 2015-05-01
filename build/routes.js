@@ -23,6 +23,9 @@ module.exports =
                     forms: {
                         templateUrl: 'concept/concept.new.forms.html'
                     },
+                    relatedConcepts: {
+                        templateUrl: 'concept/concept.new.related-concepts.html'
+                    },
                     links: {
                         templateUrl: 'concept/concept.new.links.html'
                     }
@@ -63,6 +66,7 @@ module.exports =
             .state('concept.new.attrs', pages.concept.new.attrs)
             .state('concept.new.forms', pages.concept.new.forms)
             .state('concept.new.links', pages.concept.new.links)
+            .state('concept.new.relatedConcepts', pages.concept.new.relatedConcepts)
             .state('concept.find', pages.concept.search)
             .state('concept.find.list', pages.concept.list)
             .state('concept.view', pages.concept.read)
