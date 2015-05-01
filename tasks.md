@@ -1,6 +1,55 @@
 # Tasks
 
-- [ ] Project Set-up
+### Updated: 5/1/2015
+
+- [ ] Create Concept Form
+    - [ ] Attributes
+        - [ ] Bug: Loading autocomplete for GEO Coordinates
+        - [ ] Bug: Categories model not binding
+    - [ ] Forms (add/edit)
+        - [ ] Ability to autocomplete a form's name field with existing forms from other concepts
+        - [ ] Ability to choose not to autocomplete a form's name field
+        - [ ] Refactor model for first form to share same array as other forms (default form = concept name)
+    - [ ] Forms (links)
+        - [ ] For each added form, add it in a form field for link of form to concept
+        - [ ] Include each field for each link of form to concept form field
+    - [ ] Related Concepts
+        - [ ] Search Capability
+        - [ ] Autocomplete in form field
+    - [ ] General Refactor
+        - [ ] Form "Model" regrouping
+        - [ ] Separate Sections of Controllers for each partial form
+
+Haven't updated this area yet. Pending updates until "Create Concept Form" complete.
+
+- [ ] Gulp Tasks  
+    - [ ] Sprite generator
+    - [ ] Gulp-sass not to break builds when being watched
+    - [ ] `var filePath` replacement for all file paths
+- [ ] Search Concept
+    - [ ] View Concept attributes
+        - [ ] View associated forms
+    - [x] Options:
+        - [x] Delete
+            - [ ] Include deleting all associated pointers message to this concept
+    - [ ] View Articles associated with concept
+    - [ ] View Associated Concepts --> Graphical Visualization?
+    - [ ] View forms of the associated concepts
+- [ ] Edit Concept Form
+    - [x] Edit Concept Name
+        - [ ] Include warning of the risk of changing a concept name can alter concept graph results (and we don't want this). Instead, divert their attention to Display Name
+    - [x] Field to add/edit/delete existing, related concepts
+        - [ ] Options
+            - [x] addConcept()
+                - [ ] Ability to autocomplete this field
+    - [ ] Field to add/edit/delete existing, multiple forms
+        - [ ] Options
+            - [x] addForm()
+                - [ ] Ability to autocomplete this field
+
+### End: 5/1/2015
+
+- [x] Project Set-up
     - [x] .gitignore
     - [x] App Set-up
         - [x] npm installations
@@ -11,11 +60,13 @@
         - [x] Routing (UI Router)
         - [x] Sass
         - [x] Bourbon / Neat
-    - [ ] Test Set-up
-        - [ ] E2E w/ Selenium & Protractor
+    - [x] Test Set-up
+        - [x] E2E w/ Selenium & Protractor
         - [x] Unit w/ Jasmine
         - [x] JSHint
     - [x] Serve App With Gulp (better than `python -m SimpleHTTPServer`)
+- [ ] Gulp Tasks  
+    - [ ] Sprite generator
 - [ ] Create Concept Form
     - [x] Concept Name
     - [x] Display Name

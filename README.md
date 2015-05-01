@@ -17,6 +17,8 @@ You can serve the app via gulp with `gulp serve` on the open a browser to `local
 
 You can autoload tests via gulp with `gulp autotest`, which updates every time a file is changed in the build.
 
+For my own local environment, I have one terminal window serving `gulp watch`, another serving `gulp serve`, and another window for typical tasks like `git`. Errors I've noticed with `gulp watch` are that if there are changes to the `.scss` files that are incorrect, it will break the `gulp watch` build. This has been flagged as a task to do later.
+
 ___
 
 ### Installation:
@@ -37,26 +39,25 @@ See the full [master task list here](./tasks.md).
 
 Next Milestone:
 
-5/1/14
+5/5/14
 
-- [ ] Project Set-up
-    - [ ] Test Set-up
-        - [ ] E2E w/ Selenium & Protractor -> Not running
-    - [ ] Sprite generator
 - [ ] Create Concept Form
-    - [ ] Search for Related Concepts
-    - [ ] Field to add multiple related concepts
-        - [x] addConcept()
-        - [ ] Ability to autocomplete this field
-    - [ ] Field to add multiple forms
-        - [x] addForm()
-        - [ ] Ability to autocomplete this field
-        - [ ] Autofill first form to include the concept display name as a form
-- [ ] Search Concept
-    - [ ] View Articles associated with concept
-    - [ ] View Associated Concepts --> Graphical Visualization?
-    - [ ] View forms of the associated concepts
-
+    - [ ] Attributes
+        - [ ] Bug: Loading autocomplete for GEO Coordinates
+        - [ ] Bug: Categories model not binding
+    - [ ] Forms (add/edit)
+        - [ ] Ability to autocomplete a form's name field with existing forms from other concepts
+        - [ ] Ability to choose not to autocomplete a form's name field
+        - [ ] Refactor model for first form to share same array as other forms (default form = concept name)
+    - [ ] Forms (links)
+        - [ ] For each added form, add it in a form field for link of form to concept
+        - [ ] Include each field for each link of form to concept form field
+    - [ ] Related Concepts
+        - [ ] Search Capability
+        - [ ] Autocomplete in form field
+    - [ ] General Refactor
+        - [ ] Form "Model" regrouping
+        - [ ] Separate Sections of Controllers for each partial form
 ___
 
 ### App Development
@@ -76,16 +77,42 @@ For development packages, we are using npm
     * gulp-concat
     * gulp-embedlr
     * gulp-filter
+    * gulp-jshint
     * gulp-livereload
     * gulp-minify-css
     * gulp-rename
     * gulp-sass
     * gulp-util
+    * jshint-stylish
     * main-bower-files
     * node-bourbon
     * tiny-lr
     * vinyl-source-stream
     * watchify
+
+### Project File Management
+
+#### Angular
+
+The Angular project is broken up in the `build/src` folder, as well as three important files:
+
+    * `build/index.js`
+    * `build/routes.js`
+    * `build/.templates.js`
+
+The main project is build in the `index.js` file, so every Angular dependency goes here, including third party vendors. Configurations also go here, as well as every controller, service, and directive file.
+
+##### Routes
+
+In the `routes.js` file, you will find the pages broken up into one large object as well as the `$stateProvider`, which includes what the route paths and state names are.
+
+##### Templates
+
+This is built through a gulp task. Every change to a template file will automatically build and enter to the `.templates.js` file.
+
+#### Sass/CSS
+
+Styles are broken down in its own folder, `build/stylesheets`. This includes the `main.scss` file that imports everything else. Vendors go into its own folder, as well as the different pages. Also, reusable common components are placed in the `components.scss` file. They are all build by the `gulp styles` task and are watched in the `gulp watch` task. As said before, if you're utilizing `gulp watch`, there's an error that if you break the sass build, it will also quit out of the gulp task.
 
 ___
 
@@ -119,6 +146,8 @@ npm install
 * karma-jasmine
 * karma-phantomjs-launcher
 * karma-spec-reporter
+* gulp-jasmine
+* gulp-karma
 
 ##### Load Tests
 
@@ -136,11 +165,15 @@ Testing Packages:
 * cucumber
 * chai
 * chai-as-expected
+* gulp-protractor
 
 npm Packages:
 
 ```shell
 # Main Folder
+# Run Server
+gulp server
+# Another terminal window
 gulp protractor
 ```
 
@@ -152,12 +185,17 @@ For 3rd party libraries, we are using bower for package management
 
 * angular
 * lodash
-* ui-router
+* angular-ui-router
 * jQuery
+* chance
+* jquery.tagsinput
+* d3
 
 ___
 
 ### Requirements:
+
+![Topic Graph Diagram](https://github.com/reverb/concepts-load/blob/master/topic_graph.png)
 
 * User should be able to create, read, update, and delete a concept or form
 * When relating forms to concepts, there should be a way to give equal or custom weights to the forms
