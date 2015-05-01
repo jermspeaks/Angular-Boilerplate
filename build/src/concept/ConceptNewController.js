@@ -100,65 +100,11 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 		$log.debug($scope.form);
 	};
 
-	// function fetchLatLongData() {
-	// 	// Fetch Place Location data from Google
-	//
-	// 	/*jshint camelcase: false */
-	// 	// Fetch address and update the form
-	// 	// $scope.form.attributes.address = $scope.place.formatted_address ? $scope.place.formatted_address : $scope.place;
-	//
-	// 	/*jshint camelcase: true */
-	//
-	// 	// Split Lat/Long data into array
-	// 	var latLongList = $scope.place.geometry.location.toString().split(/, /);
-	// 	$log.debug(latLongList);
-	//
-	// 	// Parse the array strings with regex for proper number format
-	// 	latLongList = _.map(latLongList, function( /* @type String*/ coord) {
-	// 		return coord.replace(/\(?(-?\d+\.\d+)\)?/, '$1');
-	// 	});
-	//
-	// 	// Set Lat/Long in form
-	// 	$scope.form.attributes.latitude = parseFloat(latLongList[0]);
-	// 	$scope.form.attributes.longitude = parseFloat(latLongList[1]);
-	//
-	// 	// Apply changes for the view to update the changes in $scope.form object
-	// 	$scope.$apply();
-	// }
-
-	// function createAutocomplete() {
-	// 	// Set Autocomplete feature from Google
-	// 	$scope.autocomplete = new google.maps.places.Autocomplete(
-	// 		/** @type {HTMLInputElement} */
-	// 		(document.getElementById('map-autocomplete')), {
-	// 			types: ['geocode']
-	// 		});
-	// }
-	//
-	// function loadMappingInput() {
-	// 	// Add event listener after autocomplete set
-	// 	google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
-	//
-	// 		// fetchLatLongData();
-	// 	});
-	// }
 
 	$scope.$watch('form.attributes.conceptName', function() { // On Concept Name Change
 		if ($scope.form.attributes.conceptName) {
 			$scope.form.forms[0].name = $scope.form.attributes.conceptName; // Set Default Form Name
 			$state.go('concept.new.attrs'); // Go to concept.new.attrs state
-			$timeout(function() {
-				// createAutocomplete();
-				// loadMappingInput(); // Reload autocomplete map element listener
-			});
 		}
 	});
-
-	$scope.$watch('place', function() {
-		if($scope.place) {
-			$log.debug('Fetch New Place')
-			fetchLatLongData();
-		}
-	});
-
 };

@@ -30,10 +30,21 @@
                             autofocus="autofocus"
                             required
                         />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
                     </div>
+                    <div class="button-bar group" ng-if="form.attributes.conceptName" style="float:right;">
+
+                        <div class="small-6">
+                            <div class="row">
+                                <div class="large-3 medium-5 columns">
+                                    <input id="btn-submit" type="submit" value="Submit" ng-disabled="conceptNewForm.$invalid" class="button">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="clear:both;"></div>
                 </div>
+
             </section>
 
             <section class="concept-form-section" ng-if="form.attributes.conceptName">
