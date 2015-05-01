@@ -48,7 +48,7 @@ Next Milestone:
     - [ ] Forms (add/edit)
         - [ ] Ability to autocomplete a form's name field with existing forms from other concepts
         - [ ] Ability to choose not to autocomplete a form's name field
-        - [ ] Refactor model for first form to share same array as other forms (default form = concept name)
+        - [x] Refactor model for first form to share same array as other forms (default form = concept name)
     - [ ] Forms (links)
         - [ ] For each added form, add it in a form field for link of form to concept
         - [ ] Include each field for each link of form to concept form field

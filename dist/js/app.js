@@ -20,7 +20,7 @@ angular.module('topicGraphEditor', ['ui.router'])
     .factory('FormService', require('./src/common/FormService'))
 
     // Directives
-    // .directive('googleMaps', require('./src/common/directives/googleMaps'))
+    .directive('googleMapsAutocomplete', require('./src/common/directives/googleMapsAutocomplete'))
     .directive('tagInput', require('./src/common/directives/tagInput'))
     .directive('conceptPreview', require('./src/common/directives/conceptPreview'))
 
@@ -32,15 +32,15 @@ angular.module('topicGraphEditor', ['ui.router'])
 
 require('templates');
 
-},{"./routes":3,"./src/common/FormService":4,"./src/common/RootScopeService":5,"./src/common/directives/conceptPreview":6,"./src/common/directives/tagInput":7,"./src/concept/ConceptEditController":8,"./src/concept/ConceptNewController":9,"./src/concept/ConceptOverviewController":10,"./src/concept/ConceptSearchController":11,"./src/concept/ConceptSearchResultsController":12,"./src/concept/ConceptViewController":13,"templates":2}],2:[function(require,module,exports){
+},{"./routes":3,"./src/common/FormService":4,"./src/common/RootScopeService":5,"./src/common/directives/conceptPreview":6,"./src/common/directives/googleMapsAutocomplete":7,"./src/common/directives/tagInput":8,"./src/concept/ConceptEditController":9,"./src/concept/ConceptNewController":10,"./src/concept/ConceptOverviewController":11,"./src/concept/ConceptSearchController":12,"./src/concept/ConceptSearchResultsController":13,"./src/concept/ConceptViewController":14,"templates":2}],2:[function(require,module,exports){
 (function (global){
 ; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 angular.module("topicGraphEditor").run(["$templateCache", function($templateCache) {$templateCache.put("common/directive-tag-input.html","<div class=\"tag-input\">\n\n</div>\n");
 $templateCache.put("concept/concept.delete.html","<header class=\"concept-header\">\n    <span>Delete a concept</span>\n</header>\n\n\n<p>FORM PENDING</p>\n");
 $templateCache.put("concept/concept.html","<header id=\"main-header\">\n    <span><a ui-sref=\"concept\">Reverb Topic Graph Editor</a></span>\n</header>\n\n<div ui-view>\n    <section id=\"main-menu\">\n        <ul>\n            <li ng-repeat=\"edit in model.editors\">\n                <a ui-sref=\"{{edit.link}}\"><div class=\"main-menu-item\"><span>{{edit.displayName}}</span></div></a>\n            </li>\n        </ul>\n    </section>\n</div>\n");
-$templateCache.put("concept/concept.new.attrs.html","<form>\n  <label for=\"Attributes\" >Concept Attributes</label>\n  <fieldset class=\"conceptNewForm\">\n\n    <div class=\"field\">\n      <label for=\"Categories\">Categories</label>\n      <!-- <input\n                    name=\"Categories\"\n                    type=\"text\"\n                    id=\"Categories\"\n                    placeholder=\"Enter the concept display name\"\n                    ng-model=\"form.categories\"\n                    autocapitalize=\"off\"\n                    autocorrect=\"off\"\n                    autofocus=\"autofocus\"\n                    required\n                /> -->\n\n      <tag-input id=\"categories-tag\" name=\"Categories\" ng-model=\"form.attributes.categories\" placeholder=\"Add a category\"></tag-input>\n      <!-- TODO autofocus -->\n\n    </div>\n    <!-- /.field -->\n\n    <div id=\"field\">\n      <!-- TODO Make this, and the lat/long into a directive -->\n      <label for=\"geoCoordinates\">GEO Coordinates</label>\n      <input name=\"geoCoordinates\" id=\"map-autocomplete\" placeholder=\"Autocomplete: Enter a place\" ng-model=\"form.attributes.address\" type=\"text\" autofocus=\"autofocus\"></input>\n    </div>\n    <section id=\"disabled-lat-long\" ng-if=\"place\">\n      <div class=\"lat-long-coordinates\" id=\"field\">\n        <label for=\"latitude\">Latitude</label>\n        <input name=\"latitude\" ng-model=\"form.attributes.latitude\" type=\"text\" autofocus=\"autofocus\" disabled></input>\n      </div>\n      <div class=\"lat-long-coordinates\" id=\"field\">\n        <label for=\"longitude\">Longitude</label>\n        <input name=\"longitude\" ng-model=\"form.attributes.longitude\" type=\"text\" autofocus=\"autofocus\" disabled></input>\n      </div>\n    </section>\n\n    <div class=\"field\">\n      <label for=\"select\">Concept Type</label>\n      <select class=\"global-date-selector custom\" ng-model=\"form.attributes.entity\" ng-options=\"entityType.name for entityType in supportedEntities\" required></select>\n    </div>\n\n    <div class=\"field\" ng-if=\"form.entity.name === \'Event\'\">\n      <div class=\"field\">\n        <label for=\"eventName\">Event Name</label>\n        <input name=\"eventName\" type=\"text\" id=\"eventName\" placeholder=\"Enter the event name\" ng-model=\"form.eventName\" autocapitalize=\"off\" autocorrect=\"off\" autofocus=\"autofocus\" />\n      </div>\n      <!-- /.field -->\n    </div>\n\n    <div class=\"field\">\n      <label for=\"select\">Is Block Listed?</label>\n      <select class=\"global-date-selector custom\" ng-model=\"form.attributes.blocked\" ng-options=\"blockType.name for blockType in blockedTypes\" required></select>\n    </div>\n    <!-- /.field -->\n\n    <div class=\"button-bar group\">\n\n      <div class=\"small-6\">\n        <div class=\"row\">\n          <div class=\"large-3 medium-5 columns\">\n            <input id=\"btn-submit\" type=\"submit\" value=\"Submit\" ng-disabled=\"conceptNewForm.$invalid\" class=\"button\">\n          </div>\n        </div>\n      </div>\n\n    </div>\n\n  </fieldset>\n</form>\n");
+$templateCache.put("concept/concept.new.attrs.html","<form>\n  <label for=\"Attributes\" >Concept Attributes</label>\n  <fieldset class=\"conceptNewForm\">\n\n    <div class=\"field\">\n      <label for=\"Categories\">Categories</label>\n      <!-- <input\n                    name=\"Categories\"\n                    type=\"text\"\n                    id=\"Categories\"\n                    placeholder=\"Enter the concept display name\"\n                    ng-model=\"form.categories\"\n                    autocapitalize=\"off\"\n                    autocorrect=\"off\"\n                    autofocus=\"autofocus\"\n                    required\n                /> -->\n\n      <tag-input id=\"categories-tag\" name=\"Categories\" ng-model=\"form.attributes.categories\" placeholder=\"Add a category\"></tag-input>\n      <!-- TODO autofocus -->\n\n    </div>\n    <!-- /.field -->\n\n    <div id=\"field\">\n      <!-- TODO Make this, and the lat/long into a directive -->\n      <label for=\"geoCoordinates\">GEO Coordinates</label>\n      <input google-maps-autocomplete name=\"geoCoordinates\" id=\"map-autocomplete\" placeholder=\"Autocomplete: Enter a place\" ng-model=\"form.attributes.address\" latitude=\"form.attributes.latitude\" longitude=\"form.attributes.longitude\" type=\"text\" autofocus=\"autofocus\"></input>\n    </div>\n    <section id=\"disabled-lat-long\" ng-if=\"form.attributes.latitude && form.attributes.longitude\">\n      <div class=\"lat-long-coordinates\" id=\"field\">\n        <label for=\"latitude\">Latitude</label>\n        <input name=\"latitude\" ng-model=\"form.attributes.latitude\" type=\"text\" autofocus=\"autofocus\" disabled></input>\n      </div>\n      <div class=\"lat-long-coordinates\" id=\"field\">\n        <label for=\"longitude\">Longitude</label>\n        <input name=\"longitude\" ng-model=\"form.attributes.longitude\" type=\"text\" autofocus=\"autofocus\" disabled></input>\n      </div>\n    </section>\n\n    <div class=\"field\">\n      <label for=\"select\">Concept Type</label>\n      <select class=\"global-date-selector custom\" ng-model=\"form.attributes.entity\" ng-options=\"entityType.name for entityType in supportedEntities\" required></select>\n    </div>\n\n    <div class=\"field\" ng-if=\"form.entity.name === \'Event\'\">\n      <div class=\"field\">\n        <label for=\"eventName\">Event Name</label>\n        <input name=\"eventName\" type=\"text\" id=\"eventName\" placeholder=\"Enter the event name\" ng-model=\"form.eventName\" autocapitalize=\"off\" autocorrect=\"off\" autofocus=\"autofocus\" />\n      </div>\n      <!-- /.field -->\n    </div>\n\n    <div class=\"field\">\n      <label for=\"select\">Is Block Listed?</label>\n      <select class=\"global-date-selector custom\" ng-model=\"form.attributes.blocked\" ng-options=\"blockType.name for blockType in blockedTypes\" required></select>\n    </div>\n    <!-- /.field -->\n\n    <div class=\"button-bar group\">\n\n      <div class=\"small-6\">\n        <div class=\"row\">\n          <div class=\"large-3 medium-5 columns\">\n            <input id=\"btn-submit\" type=\"submit\" value=\"Submit\" ng-disabled=\"conceptNewForm.$invalid\" class=\"button\">\n          </div>\n        </div>\n      </div>\n\n    </div>\n\n  </fieldset>\n</form>\n");
 $templateCache.put("concept/concept.new.forms.html","<div id=\"field\">\n  <label for=\"associatedform\">Associated Forms</label>\n\n  <div class=\"field related-forms\" data-ng-repeat=\"associatedform in form.forms\">\n    <!-- TODO Make these into form directives -->\n    <!-- <section>\n                    <span>Last entry for the form is always the same as the concept name. Disabled for editing.</span>\n                </section> -->\n    <fieldset class=\"form-field\">\n      <label ng-if=\"associatedform.tag\" for=\"associatedform\">Form Name (Default)</label>\n      <label ng-if=\"!associatedform.tag\" for=\"associatedform\">Form Name</label>\n      <!-- Default Form form.attributes.conceptName -->\n      <input ng-if=\"associatedform.tag\" type=\"text\" class=\"related-forms-item\" ng-model=\"associatedform.name\" name=\"associatedForm\" placeholder=\"Disabled: same as concept name\" autocapitalize=\"off\" autocorrect=\"off\" autofocus=\"autofocus\" disabled/>\n      <input ng-if=\"!associatedform.tag\" type=\"text\" class=\"related-forms-item\" ng-model=\"associatedform.name\" name=\"associatedForm\" placeholder=\"Enter a form\" autocapitalize=\"off\" autocorrect=\"off\" autofocus=\"autofocus\" />\n\n      <label for=\"associatedform\">Number of occurrences</label>\n      <input type=\"text\" class=\"related-forms-item\" ng-model=\"associatedform.occurenceCount\" name=\"associatedForm\" placeholder=\"\" autocapitalize=\"off\" autocorrect=\"off\" autofocus=\"autofocus\" />\n\n      <label for=\"associatedform\">Number of times linked</label>\n      <input type=\"text\" class=\"related-forms-item\" ng-model=\"associatedform.linkedCount\" name=\"associatedForm\" placeholder=\"\" autocapitalize=\"off\" autocorrect=\"off\" autofocus=\"autofocus\" />\n\n      <label for=\"associatedform\">Linked probability</label>\n      <!-- TODO replace with sliders in its own section at the end of the form -->\n      <input type=\"text\" class=\"related-forms-item\" ng-model=\"associatedform.linkedProbability\" name=\"associatedForm\" placeholder=\"Between 0 and 1\" autocapitalize=\"off\" autocorrect=\"off\" autofocus=\"autofocus\" />\n    </fieldset>\n    <button class=\"add-form-button\" type=\"button\" ng-click=\"form.addForm()\">+</button>\n    <button class=\"delete-button delete-form-button\" ng-if=\"!associatedform.tag\" type=\"button\" type=\"value\" ng-click=\"form.deleteForm(associatedform)\">-</button>\n  </div>\n</div>\n");
-$templateCache.put("concept/concept.new.html","<header class=\"concept-header\">\n    <span>Create a new concept</span>\n</header>\n\n<section>\n    <!-- <section id=\"new-concept-viz\" ng-if=\"form.conceptName\">\n        <header id=\"new-concept-viz-header\">{{form.conceptName}}</header>\n        <section>\n            <concept-preview concept-data=\"form\"></concept-preview>\n        </section>\n    </section> -->\n\n    <section>\n        <form name=\"conceptNewForm\" ng-submit=\"submitNewConcept(conceptNewForm.$valid)\" novalidate>\n            <section id=\"concept-label\">\n                <div class=\"concept-input-group\">\n                    <div class=\"concept-input-label\">\n                        <span>Concept: </span>\n                    </div>\n\n                    <div class=\"concept-input-field\">\n                        <input\n                            name=\"conceptName\"\n                            type=\"text\"\n                            id=\"conceptName\"\n                            placeholder=\"Enter a concept name\"\n                            ng-model=\"form.attributes.conceptName\"\n                            autocapitalize=\"off\"\n                            autocorrect=\"off\"\n                            autofocus=\"autofocus\"\n                            required\n                        />\n                        <span class=\"highlight\"></span>\n                        <span class=\"bar\"></span>\n                    </div>\n                </div>\n            </section>\n\n            <section class=\"concept-form-section\" ng-if=\"form.attributes.conceptName\">\n                <div id=\"concept-side-menu\">\n                    <ul class=\"menu\">\n                        <li class=\"side-menu-item\" ng-repeat=\"item in sideMenu\">\n                            <span ng-if=\"item.displayName === \'Forms\'\">\n                                <button class=\"side-menu-btn edit-button\" ng-click=\"editDropdown()\">{{item.displayName}}</button>\n                                <ul class=\"submenu\">\n                                    <li class=\"side-submenu-item\" ng-repeat=\"subItem in sideSubMenu\">\n                                        <button class=\"side-submenu-btn\" ng-click=\"switchForm(subItem.partial)\">{{subItem.displayName}}</button>\n                                    </li>\n                                </ul>\n                            </span>\n                            <span ng-if=\"item.displayName !== \'Forms\'\">\n                                <button class=\"side-menu-btn\" ng-click=\"switchForm(item.partial)\">{{item.displayName}}</button>\n                            </span>\n                        </li>\n                    </ul>\n                </div>\n\n                <div id=\"concept-partial-form\">\n                    <div ui-view></div>\n                </div>\n            </section>\n        </form>\n    </section>\n</section>\n");
+$templateCache.put("concept/concept.new.html","<header class=\"concept-header\">\n    <span>Create a new concept</span>\n</header>\n\n<section>\n    <!-- <section id=\"new-concept-viz\" ng-if=\"form.conceptName\">\n        <header id=\"new-concept-viz-header\">{{form.conceptName}}</header>\n        <section>\n            <concept-preview concept-data=\"form\"></concept-preview>\n        </section>\n    </section> -->\n\n    <section>\n        <form name=\"conceptNewForm\" ng-submit=\"submitNewConcept(conceptNewForm.$valid)\" novalidate>\n            <section id=\"concept-label\">\n                <div class=\"concept-input-group\">\n                    <div class=\"concept-input-label\">\n                        <span>Concept: </span>\n                    </div>\n\n                    <div class=\"concept-input-field\">\n                        <input\n                            name=\"conceptName\"\n                            type=\"text\"\n                            id=\"conceptName\"\n                            placeholder=\"Enter a concept name\"\n                            ng-model=\"form.attributes.conceptName\"\n                            autocapitalize=\"off\"\n                            autocorrect=\"off\"\n                            autofocus=\"autofocus\"\n                            required\n                        />\n                        <span class=\"highlight\"></span>\n                        <span class=\"bar\"></span>\n                    </div>\n                </div>\n            </section>\n\n            <section class=\"concept-form-section\" ng-if=\"form.attributes.conceptName\">\n                <div id=\"concept-side-menu\">\n                    <ul class=\"menu\">\n                        <li class=\"side-menu-item\" ng-repeat=\"item in sideMenu\">\n                            <span ng-if=\"item.displayName === \'Forms\'\">\n                                <button class=\"side-menu-btn edit-button\" type=\"button\" ng-click=\"editDropdown()\">{{item.displayName}}</button>\n                                <ul class=\"submenu\">\n                                    <li class=\"side-submenu-item\" ng-repeat=\"subItem in sideSubMenu\">\n                                        <button class=\"side-submenu-btn\" type=\"button\" ng-click=\"switchForm(subItem.partial)\">{{subItem.displayName}}</button>\n                                    </li>\n                                </ul>\n                            </span>\n                            <span ng-if=\"item.displayName !== \'Forms\'\">\n                                <button class=\"side-menu-btn\" ng-click=\"switchForm(item.partial)\">{{item.displayName}}</button>\n                            </span>\n                        </li>\n                    </ul>\n                </div>\n\n                <div id=\"concept-partial-form\">\n                    <div ui-view></div>\n                </div>\n            </section>\n        </form>\n    </section>\n</section>\n");
 $templateCache.put("concept/concept.new.links.html","<label for=\"Related-Concepts\">Concept To Link Relations</label>\n<fieldset>\n    <div class=\"sense-probability\" id=\"field\">\n      <label for=\"senseProbability\">Sense Probability</label>\n      <input name=\"senseProbability\" ng-model=\"form.senseProbability\" type=\"text\" autofocus=\"autofocus\" disabled></input>\n    </div>\n\n    <div class=\"total-occurrences\" id=\"field\">\n      <label for=\"totalOccurrences\">Number of occurrences</label>\n      <input name=\"totalOccurrences\" ng-model=\"form.numberOfOccurrences\" type=\"text\" autofocus=\"autofocus\" disabled></input>\n    </div>\n</fieldset>\n");
 $templateCache.put("concept/concept.new.related-concepts.html","<label for=\"Related-Concepts\">Related Concepts</label>\n<fieldset>\n  <div class=\"field related-concepts\" data-ng-repeat=\"relatedConcept in form.relatedConcepts\">\n    <label for=\"relatedConcept\" ng-show=\"$first\">Concept Name</label>\n    <input type=\"text\" class=\"related-concepts-item\" ng-model=\"relatedConcept.name\" name=\"relatedConcept\" placeholder=\"Enter the concept display name\" autocapitalize=\"off\" autocorrect=\"off\" autofocus=\"autofocus\" />\n    <button class=\"delete-button\" type=\"button\" type=\"value\" ng-show=\"!$last\" ng-click=\"form.deleteConcept(relatedConcept)\">-</button>\n    <button type=\"button\" type=\"value\" ng-show=\"$last\" ng-click=\"form.addConcept(relatedConcept)\">+</button>\n  </div>\n</fieldset>\n");
 $templateCache.put("concept/concept.search.html","<header class=\"concept-header\">\n    <span>Search for a concept</span>\n</header>\n\n<section class=\"concept-search-bar\">\n  <form name=\"conceptSearchForm\" class=\"search-bar\" role=\"search\" ng-submit=\"search(conceptSearchForm.$valid)\" novalidate>\n    <input type=\"search\" placeholder=\"Enter Search\" ng-model=\"searchQuery\" required/>\n    <button class=\"search-submit\" type=\"submit\">\n      <img src=\"https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png\" alt=\"Search Icon\">\n    </button>\n  </form>\n</section>\n\n<section>\n  <div ui-view></div>\n</section>\n");
@@ -135,12 +135,10 @@ module.exports =
 'use strict';
 
 module.exports = function($log) {
-    var form, Form;
-
     // IDEA: Might be able to utilize local session caching to save data in case user refreshes page
 
     // Cache for Form Fields
-    Form = function(attrs, forms, links, relatedConcepts) {
+    var Form = function(attrs, forms, links, relatedConcepts) {
         // Attributes Object
         this.attributes = attrs || {
             conceptName: ''
@@ -400,6 +398,53 @@ module.exports = function($log) {
 // Multi series bar chart
 module.exports = function($log) {
 	return {
+		restrict: 'A',
+		require: 'ngModel',
+		scope: {
+            ngModel: '=',
+			latitude: '=?',
+			longitude: '=?'
+        },
+		link: function(scope, element, attrs, model) {
+			var options = {
+				types: ['geocode']
+			};
+			scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+
+			google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+                fetchLatLongData();
+			});
+
+			function fetchLatLongData() {
+				// Fetch Place Location data from Google
+				var place = scope.gPlace.getPlace();
+
+				// Split Lat/Long data into array
+				var latLongList = place.geometry.location.toString().split(/, /);
+
+				// Parse the array strings with regex for proper number format
+				latLongList = _.map(latLongList, function( /* @type String*/ coord) {
+					return coord.replace(/\(?(-?\d+\.\d+)\)?/, '$1');
+				});
+
+				// Set Lat/Long in form
+				scope.$apply(function() {
+					scope.latitude = parseFloat(latLongList[0]);
+					scope.longitude = parseFloat(latLongList[1]);
+                    model.$setViewValue(element.val());
+                });
+			}
+		}
+
+	};
+};
+
+},{}],8:[function(require,module,exports){
+'use strict';
+
+// Multi series bar chart
+module.exports = function($log) {
+	return {
 		restrict: 'E',
 		replace: true,
 		transclude: false,
@@ -486,7 +531,7 @@ module.exports = function($log) {
 	};
 };
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 module.exports = function($log, $scope, $state, RootScopeService) {
@@ -559,11 +604,11 @@ module.exports = function($log, $scope, $state, RootScopeService) {
 
 };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 module.exports = function($log, $scope, $state, $timeout, FormService) {
-
+	$log.debug('ConceptNewController');
 	/* 	==============================
 			Main Page
 		============================== */
@@ -571,10 +616,7 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 	// _______________
 	// Scope Variables
 
-	$scope.form = new FormService;
-
-	$log.debug('Form Example');
-	$log.debug($scope.form);
+	$scope.form = new FormService();
 
 	// Menu Items
 	$scope.sideMenu = [{
@@ -603,7 +645,7 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 	$scope.switchForm = function(state) {
 		$log.debug('Form is Switched: %s', state);
 		$state.go(state);
-		// if (state === 'concept.new.attrs') loadAttributesForm();
+		$log.debug($scope.form);
 	};
 
 	$scope.editDropdown = function() {
@@ -614,6 +656,28 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 	/* 	==============================
 			Attributes Partial
 		============================== */
+
+	// Supported Entities
+	$scope.supportedEntities = [{
+		name: 'Person'
+	}, {
+		name: 'Place'
+	}, {
+		name: 'Organization'
+	}, {
+		name: 'Event'
+	}];
+
+	// Block Types
+	$scope.blockedTypes = [{
+		name: 'Yes'
+	}, {
+		name: 'No'
+	}];
+
+	// Set Default Entities and Block Type
+	$scope.form.attributes.entity = $scope.supportedEntities[0];
+	$scope.form.attributes.blocked = $scope.blockedTypes[1];
 
 	/* 	==============================
 			Forms (Add/Edit) Partial
@@ -638,120 +702,75 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 	// _______________
 	// Scope Functions
 
-	// $scope.addConcept = function() {
-	// 	$log.debug('Adding Concept Field');
-	//
-	// 	var newItemNo = $scope.form.relatedConcepts.length + 1;
-	//
-	// 	$scope.form.relatedConcepts.push({
-	// 		'id': 'Form ' + newItemNo
-	// 	});
-	// };
-	//
-	// $scope.deleteConcept = function(relatedConcept) {
-	// 	$log.debug('Deleting Concept Field');
-	// 	$scope.form.relatedConcepts = _.reject($scope.form.relatedConcepts, function(rConcept) {
-	// 		return rConcept.$$hashKey === relatedConcept.$$hashKey;
-	// 	});
-	// };
-	//
-	//
-	// $scope.addForm = function() {
-	// 	$log.debug('Adding Form Field');
-	//
-	// 	var newItemNo = $scope.form.associatedForms.length + 1;
-	//
-	// 	$scope.form.associatedForms.push({
-	// 		'id': 'Form ' + newItemNo
-	// 	});
-	// };
-	//
-	// $scope.deleteForm = function(associatedForm) {
-	// 	$log.debug('Deleting Form Field');
-	// 	$scope.form.associatedForms = _.reject($scope.form.associatedForms, function(aForm) {
-	// 		return aForm.$$hashKey === associatedForm.$$hashKey;
-	// 	});
-	// };
-
 	$scope.submitNewConcept = function() {
 		$log.debug('Scope form data');
 		$log.debug($scope.form);
 	};
 
-	function fetchLatLongData() {
-		// Fetch Place Location data from Google
-		$scope.place = $scope.autocomplete.getPlace();
+	// function fetchLatLongData() {
+	// 	// Fetch Place Location data from Google
+	//
+	// 	/*jshint camelcase: false */
+	// 	// Fetch address and update the form
+	// 	// $scope.form.attributes.address = $scope.place.formatted_address ? $scope.place.formatted_address : $scope.place;
+	//
+	// 	/*jshint camelcase: true */
+	//
+	// 	// Split Lat/Long data into array
+	// 	var latLongList = $scope.place.geometry.location.toString().split(/, /);
+	// 	$log.debug(latLongList);
+	//
+	// 	// Parse the array strings with regex for proper number format
+	// 	latLongList = _.map(latLongList, function( /* @type String*/ coord) {
+	// 		return coord.replace(/\(?(-?\d+\.\d+)\)?/, '$1');
+	// 	});
+	//
+	// 	// Set Lat/Long in form
+	// 	$scope.form.attributes.latitude = parseFloat(latLongList[0]);
+	// 	$scope.form.attributes.longitude = parseFloat(latLongList[1]);
+	//
+	// 	// Apply changes for the view to update the changes in $scope.form object
+	// 	$scope.$apply();
+	// }
 
-		/*jshint camelcase: false */
-		// Fetch address and update the form
-		$scope.address = $scope.place.formatted_address ? $scope.place.formatted_address : $scope.place;
-		/*jshint camelcase: true */
+	// function createAutocomplete() {
+	// 	// Set Autocomplete feature from Google
+	// 	$scope.autocomplete = new google.maps.places.Autocomplete(
+	// 		/** @type {HTMLInputElement} */
+	// 		(document.getElementById('map-autocomplete')), {
+	// 			types: ['geocode']
+	// 		});
+	// }
+	//
+	// function loadMappingInput() {
+	// 	// Add event listener after autocomplete set
+	// 	google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
+	//
+	// 		// fetchLatLongData();
+	// 	});
+	// }
 
-		// Split Lat/Long data into array
-		var latLongList = $scope.place.geometry.location.toString().split(/, /);
-
-		// Parse the array strings with regex for proper number format
-		latLongList = _.map(latLongList, function( /* @type String*/ coord) {
-			return coord.replace(/\(?(-?\d+\.\d+)\)?/, '$1');
-		});
-
-		// Set Lat/Long in form
-		$scope.form.attributes.latitude = parseFloat(latLongList[0]);
-		$scope.form.attributes.longitude = parseFloat(latLongList[1]);
-
-		// Apply changes for the view to update the changes in $scope.form object
-		$scope.$apply();
-	}
-
-	function loadAttributesForm() {
-		// Supported Entities
-		$scope.supportedEntities = [{
-			name: 'Person'
-		}, {
-			name: 'Place'
-		}, {
-			name: 'Organization'
-		}, {
-			name: 'Event'
-		}];
-
-		// Block Types
-		$scope.blockedTypes = [{
-			name: 'Yes'
-		}, {
-			name: 'No'
-		}];
-
-		// Set Default Entities and Block Type
-		$scope.form.attributes.entity = $scope.supportedEntities[0];
-		$scope.form.attributes.blocked = $scope.blockedTypes[1];
-
-		// Set Autocomplete feature from Google
-		$scope.autocomplete = new google.maps.places.Autocomplete(
-			/** @type {HTMLInputElement} */
-			(document.getElementById('map-autocomplete')), {
-				types: ['geocode']
-			});
-
-		// Add event listener after autocomplete set
-		google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
-			fetchLatLongData();
-		});
-	}
-
-	$scope.$watch('form.attributes.conceptName', function() {
+	$scope.$watch('form.attributes.conceptName', function() { // On Concept Name Change
 		if ($scope.form.attributes.conceptName) {
-			$scope.form.forms[0].name = $scope.form.attributes.conceptName;
-			$state.go('concept.new.attrs');
+			$scope.form.forms[0].name = $scope.form.attributes.conceptName; // Set Default Form Name
+			$state.go('concept.new.attrs'); // Go to concept.new.attrs state
 			$timeout(function() {
-				loadAttributesForm();
+				// createAutocomplete();
+				// loadMappingInput(); // Reload autocomplete map element listener
 			});
+		}
+	});
+
+	$scope.$watch('place', function() {
+		if($scope.place) {
+			$log.debug('Fetch New Place')
+			fetchLatLongData();
 		}
 	});
 
 };
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 module.exports = function($log, $scope) {
@@ -780,7 +799,7 @@ module.exports = function($log, $scope) {
 
 };
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 module.exports = function($log, $scope, $state, $location, RootScopeService) {
@@ -846,7 +865,7 @@ module.exports = function($log, $scope, $state, $location, RootScopeService) {
 
 };
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 module.exports = function($log, $scope, $state, $stateParams) {
@@ -901,7 +920,7 @@ module.exports = function($log, $scope, $state, $stateParams) {
 
 };
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 module.exports = function($log, $scope, $state, RootScopeService) {

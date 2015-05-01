@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function($log, $scope, $state, $timeout, FormService) {
-
+	$log.debug('ConceptNewController');
 	/* 	==============================
 			Main Page
 		============================== */
@@ -9,10 +9,7 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 	// _______________
 	// Scope Variables
 
-	$scope.form = new FormService;
-
-	$log.debug('Form Example');
-	$log.debug($scope.form);
+	$scope.form = new FormService();
 
 	// Menu Items
 	$scope.sideMenu = [{
@@ -41,7 +38,7 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 	$scope.switchForm = function(state) {
 		$log.debug('Form is Switched: %s', state);
 		$state.go(state);
-		// if (state === 'concept.new.attrs') loadAttributesForm();
+		$log.debug($scope.form);
 	};
 
 	$scope.editDropdown = function() {
@@ -52,6 +49,28 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 	/* 	==============================
 			Attributes Partial
 		============================== */
+
+	// Supported Entities
+	$scope.supportedEntities = [{
+		name: 'Person'
+	}, {
+		name: 'Place'
+	}, {
+		name: 'Organization'
+	}, {
+		name: 'Event'
+	}];
+
+	// Block Types
+	$scope.blockedTypes = [{
+		name: 'Yes'
+	}, {
+		name: 'No'
+	}];
+
+	// Set Default Entities and Block Type
+	$scope.form.attributes.entity = $scope.supportedEntities[0];
+	$scope.form.attributes.blocked = $scope.blockedTypes[1];
 
 	/* 	==============================
 			Forms (Add/Edit) Partial
@@ -76,114 +95,69 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 	// _______________
 	// Scope Functions
 
-	// $scope.addConcept = function() {
-	// 	$log.debug('Adding Concept Field');
-	//
-	// 	var newItemNo = $scope.form.relatedConcepts.length + 1;
-	//
-	// 	$scope.form.relatedConcepts.push({
-	// 		'id': 'Form ' + newItemNo
-	// 	});
-	// };
-	//
-	// $scope.deleteConcept = function(relatedConcept) {
-	// 	$log.debug('Deleting Concept Field');
-	// 	$scope.form.relatedConcepts = _.reject($scope.form.relatedConcepts, function(rConcept) {
-	// 		return rConcept.$$hashKey === relatedConcept.$$hashKey;
-	// 	});
-	// };
-	//
-	//
-	// $scope.addForm = function() {
-	// 	$log.debug('Adding Form Field');
-	//
-	// 	var newItemNo = $scope.form.associatedForms.length + 1;
-	//
-	// 	$scope.form.associatedForms.push({
-	// 		'id': 'Form ' + newItemNo
-	// 	});
-	// };
-	//
-	// $scope.deleteForm = function(associatedForm) {
-	// 	$log.debug('Deleting Form Field');
-	// 	$scope.form.associatedForms = _.reject($scope.form.associatedForms, function(aForm) {
-	// 		return aForm.$$hashKey === associatedForm.$$hashKey;
-	// 	});
-	// };
-
 	$scope.submitNewConcept = function() {
 		$log.debug('Scope form data');
 		$log.debug($scope.form);
 	};
 
-	function fetchLatLongData() {
-		// Fetch Place Location data from Google
-		$scope.place = $scope.autocomplete.getPlace();
+	// function fetchLatLongData() {
+	// 	// Fetch Place Location data from Google
+	//
+	// 	/*jshint camelcase: false */
+	// 	// Fetch address and update the form
+	// 	// $scope.form.attributes.address = $scope.place.formatted_address ? $scope.place.formatted_address : $scope.place;
+	//
+	// 	/*jshint camelcase: true */
+	//
+	// 	// Split Lat/Long data into array
+	// 	var latLongList = $scope.place.geometry.location.toString().split(/, /);
+	// 	$log.debug(latLongList);
+	//
+	// 	// Parse the array strings with regex for proper number format
+	// 	latLongList = _.map(latLongList, function( /* @type String*/ coord) {
+	// 		return coord.replace(/\(?(-?\d+\.\d+)\)?/, '$1');
+	// 	});
+	//
+	// 	// Set Lat/Long in form
+	// 	$scope.form.attributes.latitude = parseFloat(latLongList[0]);
+	// 	$scope.form.attributes.longitude = parseFloat(latLongList[1]);
+	//
+	// 	// Apply changes for the view to update the changes in $scope.form object
+	// 	$scope.$apply();
+	// }
 
-		/*jshint camelcase: false */
-		// Fetch address and update the form
-		$scope.address = $scope.place.formatted_address ? $scope.place.formatted_address : $scope.place;
-		/*jshint camelcase: true */
+	// function createAutocomplete() {
+	// 	// Set Autocomplete feature from Google
+	// 	$scope.autocomplete = new google.maps.places.Autocomplete(
+	// 		/** @type {HTMLInputElement} */
+	// 		(document.getElementById('map-autocomplete')), {
+	// 			types: ['geocode']
+	// 		});
+	// }
+	//
+	// function loadMappingInput() {
+	// 	// Add event listener after autocomplete set
+	// 	google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
+	//
+	// 		// fetchLatLongData();
+	// 	});
+	// }
 
-		// Split Lat/Long data into array
-		var latLongList = $scope.place.geometry.location.toString().split(/, /);
-
-		// Parse the array strings with regex for proper number format
-		latLongList = _.map(latLongList, function( /* @type String*/ coord) {
-			return coord.replace(/\(?(-?\d+\.\d+)\)?/, '$1');
-		});
-
-		// Set Lat/Long in form
-		$scope.form.attributes.latitude = parseFloat(latLongList[0]);
-		$scope.form.attributes.longitude = parseFloat(latLongList[1]);
-
-		// Apply changes for the view to update the changes in $scope.form object
-		$scope.$apply();
-	}
-
-	function loadAttributesForm() {
-		// Supported Entities
-		$scope.supportedEntities = [{
-			name: 'Person'
-		}, {
-			name: 'Place'
-		}, {
-			name: 'Organization'
-		}, {
-			name: 'Event'
-		}];
-
-		// Block Types
-		$scope.blockedTypes = [{
-			name: 'Yes'
-		}, {
-			name: 'No'
-		}];
-
-		// Set Default Entities and Block Type
-		$scope.form.attributes.entity = $scope.supportedEntities[0];
-		$scope.form.attributes.blocked = $scope.blockedTypes[1];
-
-		// Set Autocomplete feature from Google
-		$scope.autocomplete = new google.maps.places.Autocomplete(
-			/** @type {HTMLInputElement} */
-			(document.getElementById('map-autocomplete')), {
-				types: ['geocode']
-			});
-
-		// Add event listener after autocomplete set
-		google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
-			fetchLatLongData();
-		});
-	}
-
-	$scope.$watch('form.attributes.conceptName', function() {
+	$scope.$watch('form.attributes.conceptName', function() { // On Concept Name Change
 		if ($scope.form.attributes.conceptName) {
-			$scope.form.forms[0].name = $scope.form.attributes.conceptName;
-			$state.go('concept.new.attrs');
+			$scope.form.forms[0].name = $scope.form.attributes.conceptName; // Set Default Form Name
+			$state.go('concept.new.attrs'); // Go to concept.new.attrs state
 			$timeout(function() {
-				loadAttributesForm();
+				// createAutocomplete();
+				// loadMappingInput(); // Reload autocomplete map element listener
 			});
+		}
+	});
+
+	$scope.$watch('place', function() {
+		if($scope.place) {
+			$log.debug('Fetch New Place')
+			fetchLatLongData();
 		}
 	});
 

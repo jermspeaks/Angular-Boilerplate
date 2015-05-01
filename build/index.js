@@ -19,7 +19,7 @@ angular.module('topicGraphEditor', ['ui.router'])
     .factory('FormService', require('./src/common/FormService'))
 
     // Directives
-    // .directive('googleMaps', require('./src/common/directives/googleMaps'))
+    .directive('googleMapsAutocomplete', require('./src/common/directives/googleMapsAutocomplete'))
     .directive('tagInput', require('./src/common/directives/tagInput'))
     .directive('conceptPreview', require('./src/common/directives/conceptPreview'))
 

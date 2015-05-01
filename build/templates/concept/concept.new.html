@@ -41,10 +41,10 @@
                     <ul class="menu">
                         <li class="side-menu-item" ng-repeat="item in sideMenu">
                             <span ng-if="item.displayName === 'Forms'">
-                                <button class="side-menu-btn edit-button" ng-click="editDropdown()">{{item.displayName}}</button>
+                                <button class="side-menu-btn edit-button" type="button" ng-click="editDropdown()">{{item.displayName}}</button>
                                 <ul class="submenu">
                                     <li class="side-submenu-item" ng-repeat="subItem in sideSubMenu">
-                                        <button class="side-submenu-btn" ng-click="switchForm(subItem.partial)">{{subItem.displayName}}</button>
+                                        <button class="side-submenu-btn" type="button" ng-click="switchForm(subItem.partial)">{{subItem.displayName}}</button>
                                     </li>
                                 </ul>
                             </span>

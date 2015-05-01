@@ -25,9 +25,9 @@
     <div id="field">
       <!-- TODO Make this, and the lat/long into a directive -->
       <label for="geoCoordinates">GEO Coordinates</label>
-      <input name="geoCoordinates" id="map-autocomplete" placeholder="Autocomplete: Enter a place" ng-model="form.attributes.address" type="text" autofocus="autofocus"></input>
+      <input google-maps-autocomplete name="geoCoordinates" id="map-autocomplete" placeholder="Autocomplete: Enter a place" ng-model="form.attributes.address" latitude="form.attributes.latitude" longitude="form.attributes.longitude" type="text" autofocus="autofocus"></input>
     </div>
-    <section id="disabled-lat-long" ng-if="place">
+    <section id="disabled-lat-long" ng-if="form.attributes.latitude && form.attributes.longitude">
       <div class="lat-long-coordinates" id="field">
         <label for="latitude">Latitude</label>
         <input name="latitude" ng-model="form.attributes.latitude" type="text" autofocus="autofocus" disabled></input>

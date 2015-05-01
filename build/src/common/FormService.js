@@ -1,12 +1,10 @@
 'use strict';
 
 module.exports = function($log) {
-    var form, Form;
-
     // IDEA: Might be able to utilize local session caching to save data in case user refreshes page
 
     // Cache for Form Fields
-    Form = function(attrs, forms, links, relatedConcepts) {
+    var Form = function(attrs, forms, links, relatedConcepts) {
         // Attributes Object
         this.attributes = attrs || {
             conceptName: ''
