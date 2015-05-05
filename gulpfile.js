@@ -279,6 +279,8 @@ gulp.task('serve', function() {
 	server.listen(serverport);
 	// Start live reload
 	lrserver.listen(livereloadport);
+
+	console.log('Serving on port 5000');
 	// Run the watch task, to keep taps on changes
 	// gulp.watch('watch');
 });

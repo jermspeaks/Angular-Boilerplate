@@ -11,6 +11,7 @@ module.exports = function($log) {
 			longitude: '=?'
         },
 		link: function(scope, element, attrs, model) {
+			$log.debug('Google Maps Autocomplete');
 			var options = {
 				types: ['geocode']
 			};

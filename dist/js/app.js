@@ -409,6 +409,7 @@ module.exports = function($log) {
 			longitude: '=?'
         },
 		link: function(scope, element, attrs, model) {
+			$log.debug('Google Maps Autocomplete');
 			var options = {
 				types: ['geocode']
 			};
@@ -456,14 +457,67 @@ module.exports = function($log) {
 			placeholder: '@?'
 		},
 		compile: function(element, attrs) {
-			var html = '<input name="tags" id="' + attrs.id + '" value=""/>';
+			var html = '<input name="tags" id="' + attrs.id + '"/>';
 
 			var newElem = $(html);
 			element.replaceWith(newElem);
 
-			return function ($scope, $element) { // Link Function
-				$scope.tags = [];
-				$scope.placeholder = !!$scope.placeholder ? $scope.placeholder : 'Add';
+			return function($scope, $element) { // Link Function
+				function initialize() {
+					$scope.tags = [];
+
+					// Check if ngModel is empty or not
+					if ($scope.ngModel) {
+						if ($scope.ngModel.length > 0) {
+							// $scope.$apply(function() {
+								// Set Tags to ngModel
+							// });
+							$scope.tags = $scope.ngModel;
+						}
+					}
+
+					// Initialize Placeholder
+					$scope.placeholder = !!$scope.placeholder ? $scope.placeholder : 'Add';
+
+					// Tag Input Options
+					$scope.options = {
+						'height': 'auto',
+						'width': 'auto',
+						'defaultText': $scope.placeholder,
+						'onAddTag': onAddTag,
+						'onRemoveTag': onRemoveTag
+					};
+
+					// Create Tag Input
+					$($element).tagsInput($scope.options);
+
+					// Import Tags
+					if ($scope.tags.length > 0) {
+						var string = _.chain($scope.tags)
+							.map(function(tag) {
+								return tag.name;
+							})
+							.join(',')
+							.value();
+
+						$log.debug('Value of the string');
+						$log.debug(string);
+						$($element).importTags(string);
+
+					}
+
+					// Set Tag input event handlers
+					$('#categories-tag_tag')
+						.focus(function() {
+							$('#categories-tag_tagsinput').addClass('input-focused');
+						})
+						.blur(function() {
+							$('#categories-tag_tagsinput').removeClass('input-focused');
+						});
+
+					//
+
+				}
 
 				/*
 					jQuery Tags Input Options
@@ -486,7 +540,7 @@ module.exports = function($log) {
 				*/
 
 				function onAddTag() {
-					$scope.$apply(function () {
+					$scope.$apply(function() {
 						$scope.tags.push({
 							name: _.last($($element).val().split(','))
 						});
@@ -498,38 +552,21 @@ module.exports = function($log) {
 					});
 				}
 
-				function onRemoveTag() {
-					$scope.$apply(function () {
+				function onRemoveTag(name) {
+					$scope.$apply(function() {
 						// TODO
+						// $log.debug('Remove:');
+						// $log.debug(name);
+						$scope.tags = _.reject($scope.tags, function(tag) {
+							return tag.name === name;
+						});
+						$scope.ngModel = $scope.tags;
 					});
 				}
 
-				$scope.options = {
-				   'height':'auto',
-				   'width':'auto',
-				   'defaultText': $scope.placeholder,
-				   'onAddTag': onAddTag,
-				   'onRemoveTag':onRemoveTag
-				};
+				initialize();
 
-	            $($element).tagsInput($scope.options);
-
-				$('#categories-tag_tag')
-					.focus(function() {
-						$('#categories-tag_tagsinput').addClass('input-focused');
-					})
-					.blur(function() {
-						$('#categories-tag_tagsinput').removeClass('input-focused');
-					});
-
-
-
-	            // scope.$watch(modelAccessor, function (val) {
-	            //    var date = new Date(val);
-	            //    element.tagsInput("setDate", date);
-	            // });
-
-	         };
+			}; // End of Return
 		},
 	};
 };
