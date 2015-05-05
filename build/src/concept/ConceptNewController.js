@@ -81,6 +81,12 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 			Forms (Links) Partial
 		============================== */
 
+	$scope.$watch('form.forms', function() {
+		$scope.form.forms.forEach(function(form, index){
+			$scope.form.links[index].displayName = $scope.form.forms[index].name
+		});
+	});
+
 	/* 	==============================
 			Related Concepts Partial
 		============================== */

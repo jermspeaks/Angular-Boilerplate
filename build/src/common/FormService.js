@@ -16,7 +16,12 @@ module.exports = function($log) {
             name: ''
         }];
 
-        this.links = links || [];
+        this.links = links || [{
+            tag: 'default',
+            id: 'Form 1',
+            senseProbability: 0,
+            occurrenceCount: 0
+        }];
 
         this.relatedConcepts = relatedConcepts || [{
             id: 'Concept 1'
@@ -33,7 +38,8 @@ module.exports = function($log) {
 		this.forms.push({
 			'id': 'Form ' + newItemNo
 		});
-        // TODO Update Link
+
+        this.addLink();
     };
 
     Form.prototype.deleteForm = function(associatedForm) {
@@ -43,10 +49,28 @@ module.exports = function($log) {
 			return aForm.$$hashKey === associatedForm.$$hashKey;
 		});
 
-        // TODO Update Link
+        this.deleteLink(associatedForm);
     };
 
     // Links
+
+    Form.prototype.addLink = function() {
+        $log.debug('Adding Link Field');
+
+        var newItemNo = this.links.length + 1;
+
+		this.links.push({
+			'id': 'Form ' + newItemNo
+		});
+    };
+
+    Form.prototype.deleteLink = function(associatedForm) {
+        $log.debug('Deleting Link Field');
+
+        this.links = _.reject(this.forms, function(aForm) {
+			return aForm.$$hashKey === associatedForm.$$hashKey;
+		});
+    };
 
     // Related Concepts
     Form.prototype.addConcept = function() {

@@ -1,12 +1,18 @@
 <label for="Related-Concepts">Concept To Link Relations</label>
 <fieldset>
-    <div class="sense-probability" id="field">
-      <label for="senseProbability">Sense Probability</label>
-      <input name="senseProbability" ng-model="form.senseProbability" type="text" autofocus="autofocus" disabled></input>
+    <div ng-repeat="link in form.links">
+        <label>{{form.forms[$index].name}}</label>
+        <fieldset>
+            <div class="sense-probability" id="field">
+              <label for="senseProbability">Sense Probability</label>
+              <input name="senseProbability" ng-model="link.senseProbability" type="text" autofocus="autofocus" disabled></input>
+            </div>
+
+            <div class="total-occurrences" id="field">
+              <label for="totalOccurrences">Number of occurrences</label>
+              <input name="totalOccurrences" ng-model="link.occurrenceCount" type="text" autofocus="autofocus" disabled></input>
+            </div>
+        </fieldset>
     </div>
 
-    <div class="total-occurrences" id="field">
-      <label for="totalOccurrences">Number of occurrences</label>
-      <input name="totalOccurrences" ng-model="form.numberOfOccurrences" type="text" autofocus="autofocus" disabled></input>
-    </div>
 </fieldset>
