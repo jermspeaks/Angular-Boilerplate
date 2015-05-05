@@ -457,87 +457,81 @@ module.exports = function($log) {
 			placeholder: '@?'
 		},
 		compile: function(element, attrs) {
-			var html = '<input name="tags" id="' + attrs.id + '"/>';
+			// Create HTML Element (replacement to template)
+			function createHTMLElement() {
+				var html = '<input name="tags" id="' + attrs.id + '"/>';
+				var newElem = $(html);
+				element.replaceWith(newElem);
+			}
 
-			var newElem = $(html);
-			element.replaceWith(newElem);
+			createHTMLElement();
 
 			return function($scope, $element) { // Link Function
 				function initialize() {
+					// Initialize Tags
 					$scope.tags = [];
-
-					// Check if ngModel is empty or not
-					if ($scope.ngModel) {
-						if ($scope.ngModel.length > 0) {
-							// $scope.$apply(function() {
-								// Set Tags to ngModel
-							// });
-							$scope.tags = $scope.ngModel;
-						}
-					}
-
 					// Initialize Placeholder
 					$scope.placeholder = !!$scope.placeholder ? $scope.placeholder : 'Add';
 
+					// Check if ngModel is empty or not
+					function checkModel() {
+						if ($scope.ngModel) {
+							if ($scope.ngModel.length > 0) {
+								// $scope.$apply(function() {
+									// Set Tags to ngModel
+								// });
+								$scope.tags = $scope.ngModel;
+							}
+						}
+					}
+
 					// Tag Input Options
-					$scope.options = {
-						'height': 'auto',
-						'width': 'auto',
-						'defaultText': $scope.placeholder,
-						'onAddTag': onAddTag,
-						'onRemoveTag': onRemoveTag
-					};
+					function createTagInput() {
+						// jQuery Tags Input Options: https://github.com/xoxco/jQuery-Tags-Input
+						$scope.options = {
+							'height': 'auto',
+							'width': 'auto',
+							'defaultText': $scope.placeholder,
+							'onAddTag': onAddTag,
+							'onRemoveTag': onRemoveTag
+						};
 
-					// Create Tag Input
-					$($element).tagsInput($scope.options);
+						// Create Tag Input
+						$($element).tagsInput($scope.options);
+					}
 
-					// Import Tags
-					if ($scope.tags.length > 0) {
-						var string = _.chain($scope.tags)
-							.map(function(tag) {
-								return tag.name;
-							})
-							.join(',')
-							.value();
 
-						$log.debug('Value of the string');
-						$log.debug(string);
-						$($element).importTags(string);
+					// Import Tags if tags exist
+					function importTags() {
+						if ($scope.tags.length > 0) {
+							var string = _.chain($scope.tags)
+								.map(function(tag) {
+									return tag.name;
+								})
+								.join(',')
+								.value();
 
+							$($element).importTags(string);
+						}
 					}
 
 					// Set Tag input event handlers
-					$('#categories-tag_tag')
-						.focus(function() {
-							$('#categories-tag_tagsinput').addClass('input-focused');
-						})
-						.blur(function() {
-							$('#categories-tag_tagsinput').removeClass('input-focused');
-						});
-
-					//
-
-				}
-
-				/*
-					jQuery Tags Input Options
-					{
-					   'autocomplete_url': url_to_autocomplete_api,
-					   'autocomplete': { option: value, option: value},
-					   'height':'100px',
-					   'width':'300px',
-					   'interactive':true,
-					   'defaultText':'add a tag',
-					   'onAddTag':callback_function,
-					   'onRemoveTag':callback_function,
-					   'onChange' : callback_function,
-					   'delimiter': [',',';'],
-					   'removeWithBackspace' : true,
-					   'minChars' : 0,
-					   'maxChars' : 0, //if not provided there is no limit
-					   'placeholderColor' : '#666666'
+					function setTagInputEvents() {
+						$('#categories-tag_tag')
+							.focus(function() {
+								$('#categories-tag_tagsinput').addClass('input-focused');
+							})
+							.blur(function() {
+								$('#categories-tag_tagsinput').removeClass('input-focused');
+							});
 					}
-				*/
+
+					// Initialize Functions
+					checkModel();
+					createTagInput();
+					importTags();
+					setTagInputEvents();
+				}
 
 				function onAddTag() {
 					$scope.$apply(function() {
