@@ -1,4 +1,10 @@
 /* ============================================
+  Imports
+============================================ */
+
+@import '../components';
+
+/* ============================================
   Concept New/Edit Page
 ============================================ */
 section#concept-label {
@@ -143,6 +149,16 @@ section#disabled-lat-long {
     background: darken(#FF6666, 20%);
   }
 }
+
+label.concept-name-label {
+  float: left;
+}
+
+button.add-related-concept-button {
+  margin-top: 0 !important;
+  float: right;
+}
+
 .concept-search-bar {
   margin: 20px 0;
 }

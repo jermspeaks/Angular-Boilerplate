@@ -44,21 +44,22 @@ Next Milestone:
 - [ ] Create Concept Form
     - [ ] Attributes
         - [x] Bug: Loading autocomplete for GEO Coordinates
-        - [ ] Bug: Categories model not binding
+        - [x] Bug: Categories model not binding
     - [ ] Forms (add/edit)
         - [ ] Ability to autocomplete a form's name field with existing forms from other concepts
         - [ ] Ability to choose not to autocomplete a form's name field
         - [x] Refactor model for first form to share same array as other forms (default form = concept name)
-    - [ ] Forms (links)
-        - [ ] For each added form, add it in a form field for link of form to concept
-        - [ ] Include each field for each link of form to concept form field
+    - [x] Forms (links)
+        - [x] For each added form, add it in a form field for link of form to concept
+        - [x] Include each field for each link of form to concept form field
     - [ ] Related Concepts
         - [ ] Search Capability
         - [ ] Autocomplete in form field
-        - [ ] Move buttons to top. Can delete last related concept
+        - [x] Move buttons to top. Can delete last related concept
     - [ ] General Refactor
-        - [ ] Form "Model" regrouping
-        - [ ] Separate Sections of Controllers for each partial form
+        - [x] Form "Model" regrouping
+        - [x] Separate Sections of Controllers for each partial form
+        - [ ] Check if form object conforms to spec when submitted
 
 ___
 

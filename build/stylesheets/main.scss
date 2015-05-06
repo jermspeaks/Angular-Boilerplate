@@ -36,19 +36,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-@mixin font-light($font-size) {
-  font-size: $font-size;
-  font-weight: 100;
-}
-@mixin font-medium($font-size) {
-  font-size: $font-size;
-  font-weight: 300;
-}
-@mixin font-medium-bold($font-size) {
-  font-size: $font-size;
-  font-weight: 500;
-}
-@mixin font-bold($font-size) {
-  font-size: $font-size;
-  font-weight: 600;
-}

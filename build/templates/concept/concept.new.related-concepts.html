@@ -1,9 +1,15 @@
 <label for="Related-Concepts">Related Concepts</label>
 <fieldset>
-  <div class="field related-concepts" data-ng-repeat="relatedConcept in form.relatedConcepts">
-    <label for="relatedConcept" ng-show="$first">Concept Name</label>
-    <input type="text" class="related-concepts-item" ng-model="relatedConcept.name" name="relatedConcept" placeholder="Enter the concept display name" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
-    <button class="delete-button" type="button" type="value" ng-show="!$last" ng-click="form.deleteConcept(relatedConcept)">-</button>
-    <button type="button" type="value" ng-show="$last" ng-click="form.addConcept(relatedConcept)">+</button>
-  </div>
+  <section>
+    <label for="relatedConcept" class="concept-name-label">Concept Name</label>
+    <button class="sm-button add-related-concept-button" type="button" type="value" ng-click="form.addConcept(relatedConcept)">Add Related Concept</button>
+    <div class="clear-float"></div>
+  </section>
+  
+  <section>
+    <div class="field related-concepts" data-ng-repeat="relatedConcept in form.relatedConcepts">
+      <input type="text" class="related-concepts-item" ng-model="relatedConcept.name" name="relatedConcept" placeholder="Enter the concept display name" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+      <button class="delete-button" type="button" type="value" ng-click="form.deleteConcept(relatedConcept)">-</button>
+    </div>
+  </section>
 </fieldset>

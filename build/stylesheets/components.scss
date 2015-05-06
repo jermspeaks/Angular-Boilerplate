@@ -9,6 +9,26 @@
 @import "assets/neat/neat-helpers";
 @import "assets/base/base";
 /* ============================================
+  Fonts
+============================================ */
+@mixin font-light($font-size) {
+  font-size: $font-size;
+  font-weight: 100;
+}
+@mixin font-medium($font-size) {
+  font-size: $font-size;
+  font-weight: 300;
+}
+@mixin font-medium-bold($font-size) {
+  font-size: $font-size;
+  font-weight: 500;
+}
+@mixin font-bold($font-size) {
+  font-size: $font-size;
+  font-weight: 600;
+}
+
+/* ============================================
   Buttons
 ============================================ */
 @mixin button-mixin($verticals, $sides) {
@@ -24,6 +44,13 @@ button.m-button {
 }
 button.lg-button {
   @include button-mixin(20px, 40px);
+}
+
+/* ============================================
+  Clear Floats
+============================================ */
+.clear-float {
+  clear: both;
 }
 /* ============================================
   Google Maps
