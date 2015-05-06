@@ -42,7 +42,7 @@ Next Milestone:
 5/5/14
 
 - [ ] Create Concept Form
-    - [ ] Attributes
+    - [x] Attributes
         - [x] Bug: Loading autocomplete for GEO Coordinates
         - [x] Bug: Categories model not binding
     - [ ] Forms (add/edit)

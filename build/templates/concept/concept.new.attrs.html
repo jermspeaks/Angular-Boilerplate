@@ -1,61 +1,82 @@
-<form>
-  <label for="Attributes" >Concept Attributes</label>
-  <fieldset class="conceptNewForm">
+<label for="Attributes">
+  Concept Attributes</label>
+<fieldset class="conceptNewForm">
 
+  <div class="field">
+    <label for="Categories">Categories</label>
+
+    <tag-input id="categories-tag"
+      name="Categories"
+      ng-model="form.attributes.categories"
+      placeholder="Add a category"></tag-input>
+
+  </div>
+  <!-- /.field -->
+
+  <div id="field">
+    <label for="geoCoordinates">GEO Coordinates</label>
+    <input google-maps-autocomplete
+      name="geoCoordinates"
+      id="map-autocomplete"
+      placeholder="Autocomplete: Enter a place"
+      ng-model="form.attributes.address"
+      latitude="form.attributes.latitude"
+      longitude="form.attributes.longitude"
+      type="text"
+      autofocus="autofocus"></input>
+  </div>
+
+  <section id="disabled-lat-long" ng-if="form.attributes.latitude && form.attributes.longitude">
+    <div class="lat-long-coordinates" id="field">
+      <label for="latitude">Latitude</label>
+      <input id="new-form-latitude"
+        name="latitude"
+        ng-model="form.attributes.latitude"
+        type="text"
+        autofocus="autofocus"
+        disabled></input>
+    </div>
+    <div class="lat-long-coordinates" id="field">
+      <label for="longitude">Longitude</label>
+      <input id="new-form-longitude"
+        name="longitude"
+        ng-model="form.attributes.longitude"
+        type="text"
+        autofocus="autofocus"
+        disabled></input>
+    </div>
+  </section>
+
+  <div class="field">
+    <label for="select">Concept Type</label>
+    <select class="global-date-selector custom"
+      ng-model="form.attributes.entity"
+      ng-options="entityType.name for entityType in supportedEntities"
+      required></select>
+  </div>
+
+  <div class="field" ng-if="form.entity.name === 'Event'">
     <div class="field">
-      <label for="Categories">Categories</label>
-      <!-- <input
-                    name="Categories"
-                    type="text"
-                    id="Categories"
-                    placeholder="Enter the concept display name"
-                    ng-model="form.categories"
-                    autocapitalize="off"
-                    autocorrect="off"
-                    autofocus="autofocus"
-                    required
-                /> -->
-
-      <tag-input id="categories-tag" name="Categories" ng-model="form.attributes.categories" placeholder="Add a category"></tag-input>
-      <!-- TODO autofocus -->
-
+      <label for="eventName">Event Name</label>
+      <input id="new-form-event-name"
+        name="eventName"
+        type="text"
+        placeholder="Enter the event name"
+        ng-model="form.eventName"
+        autocapitalize="off"
+        autocorrect="off"
+        autofocus="autofocus" />
     </div>
     <!-- /.field -->
+  </div>
 
-    <div id="field">
-      <!-- TODO Make this, and the lat/long into a directive -->
-      <label for="geoCoordinates">GEO Coordinates</label>
-      <input google-maps-autocomplete name="geoCoordinates" id="map-autocomplete" placeholder="Autocomplete: Enter a place" ng-model="form.attributes.address" latitude="form.attributes.latitude" longitude="form.attributes.longitude" type="text" autofocus="autofocus"></input>
-    </div>
-    <section id="disabled-lat-long" ng-if="form.attributes.latitude && form.attributes.longitude">
-      <div class="lat-long-coordinates" id="field">
-        <label for="latitude">Latitude</label>
-        <input name="latitude" ng-model="form.attributes.latitude" type="text" autofocus="autofocus" disabled></input>
-      </div>
-      <div class="lat-long-coordinates" id="field">
-        <label for="longitude">Longitude</label>
-        <input name="longitude" ng-model="form.attributes.longitude" type="text" autofocus="autofocus" disabled></input>
-      </div>
-    </section>
+  <div class="field">
+    <label for="select">Is Block Listed?</label>
+    <select class="global-date-selector custom"
+      ng-model="form.attributes.blocked"
+      ng-options="blockType.name for blockType in blockedTypes"
+      required></select>
+  </div>
+  <!-- /.field -->
 
-    <div class="field">
-      <label for="select">Concept Type</label>
-      <select class="global-date-selector custom" ng-model="form.attributes.entity" ng-options="entityType.name for entityType in supportedEntities" required></select>
-    </div>
-
-    <div class="field" ng-if="form.entity.name === 'Event'">
-      <div class="field">
-        <label for="eventName">Event Name</label>
-        <input name="eventName" type="text" id="eventName" placeholder="Enter the event name" ng-model="form.eventName" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
-      </div>
-      <!-- /.field -->
-    </div>
-
-    <div class="field">
-      <label for="select">Is Block Listed?</label>
-      <select class="global-date-selector custom" ng-model="form.attributes.blocked" ng-options="blockType.name for blockType in blockedTypes" required></select>
-    </div>
-    <!-- /.field -->
-
-  </fieldset>
-</form>
+</fieldset>

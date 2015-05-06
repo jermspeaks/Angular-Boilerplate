@@ -38,7 +38,6 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 	$scope.switchForm = function(state) {
 		$log.debug('Form is Switched: %s', state);
 		$state.go(state);
-		$log.debug($scope.form);
 	};
 
 	$scope.editDropdown = function() {
@@ -83,7 +82,7 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 
 	$scope.$watch('form.forms', function() {
 		$scope.form.forms.forEach(function(form, index){
-			$scope.form.links[index].displayName = $scope.form.forms[index].name
+			$scope.form.links[index].displayName = $scope.form.forms[index].name;
 		});
 	});
 
@@ -97,6 +96,7 @@ module.exports = function($log, $scope, $state, $timeout, FormService) {
 	$scope.submitNewConcept = function() {
 		$log.debug('Scope form data');
 		$log.debug($scope.form);
+		// Include Validations here
 	};
 
 

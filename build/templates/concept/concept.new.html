@@ -11,7 +11,7 @@
     </section> -->
 
     <section>
-        <form name="conceptNewForm" ng-submit="submitNewConcept(conceptNewForm.$valid)" novalidate>
+        <form name="conceptNewForm" novalidate>
             <section id="concept-label">
                 <div class="concept-input-group">
                     <div class="concept-input-label">
@@ -28,19 +28,18 @@
                             autocapitalize="off"
                             autocorrect="off"
                             autofocus="autofocus"
+                            minlength="3"
                             required
                         />
                     </div>
+
+                    <div class="ng-messages" ng-messages="conceptNewForm.conceptName.$error" ng-if="conceptNewForm.conceptName.$dirty && conceptNewForm.conceptName.$invalid">
+                        <div ng-message="required">A Concept is Required to start the form</div>
+                        <div ng-message="minlength">The concept must be at least 3 characters</div>
+                    </div>
+
                     <div class="button-bar group" ng-if="form.attributes.conceptName" style="float:right;">
-
-                        <div class="small-6">
-                            <div class="row">
-                                <div class="large-3 medium-5 columns">
-                                    <input id="btn-submit" type="submit" value="Submit" ng-disabled="conceptNewForm.$invalid" class="button">
-                                </div>
-                            </div>
-                        </div>
-
+                        <input id="btn-submit" type="submit" value="Submit" ng-disabled="conceptNewForm.$invalid" class="button" ng-click="submitNewConcept(conceptNewForm.$valid)">
                     </div>
                     <div style="clear:both;"></div>
                 </div>

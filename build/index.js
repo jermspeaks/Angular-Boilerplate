@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('topicGraphEditor', ['ui.router'])
+angular.module('topicGraphEditor', ['ui.router', 'ngMessages'])
     // Configuration
     .config(require('./routes'))
 

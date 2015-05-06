@@ -3,7 +3,7 @@
 ### Updated: 5/6/2015
 
 - [ ] Create Concept Form
-    - [ ] Attributes
+    - [x] Attributes
         - [x] Bug: Loading autocomplete for GEO Coordinates
         - [x] Bug: Categories model not binding
     - [ ] Forms (add/edit)
