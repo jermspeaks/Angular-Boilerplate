@@ -5,11 +5,26 @@
     <button class="sm-button add-related-concept-button" type="button" type="value" ng-click="form.addConcept(relatedConcept)">Add Related Concept</button>
     <div class="clear-float"></div>
   </section>
-  
+
   <section>
     <div class="field related-concepts" data-ng-repeat="relatedConcept in form.relatedConcepts">
-      <input type="text" class="related-concepts-item" ng-model="relatedConcept.name" name="relatedConcept" placeholder="Enter the concept display name" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
-      <button class="delete-button" type="button" type="value" ng-click="form.deleteConcept(relatedConcept)">-</button>
+      <div ng-init="relatedConcept.conceptName='name'+$index"></div>
+      <div class="field">
+        <input type="text"
+          class="related-concepts-item"
+          ng-model="relatedConcept.name"
+          name="{{relatedConcept.conceptName}}"
+          placeholder="Enter the concept display name"
+          autocapitalize="off"
+          autocorrect="off"
+          autofocus="autofocus"
+          required />
+        <button class="delete-button" type="button" type="value" ng-click="form.deleteConcept(relatedConcept)">-</button>
+      </div>
+
+      <div class="ng-messages" ng-messages="conceptNewForm[relatedConcept.conceptName].$error" ng-if="conceptNewForm[relatedConcept.conceptName].$dirty && conceptNewForm[relatedConcept.conceptName].$invalid">
+        <div ng-message="required">Related concept name is required.</div>
+      </div>
     </div>
   </section>
 </fieldset>
