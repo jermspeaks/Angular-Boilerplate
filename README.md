@@ -63,35 +63,11 @@ Next Milestone:
 
 ___
 
-### App Development
+### Packages
 
-For development packages, we are using npm
+[Full package List](./packages.md).
 
-* bower
-* brfs
-* gulp
-    * browserify
-    * browserify-shim
-    * connect-livereload
-    * debowerify
-    * express
-    * gulp-angular-templatecache
-    * gulp-autoprefixer
-    * gulp-concat
-    * gulp-embedlr
-    * gulp-filter
-    * gulp-jshint
-    * gulp-livereload
-    * gulp-minify-css
-    * gulp-rename
-    * gulp-sass
-    * gulp-util
-    * jshint-stylish
-    * main-bower-files
-    * node-bourbon
-    * tiny-lr
-    * vinyl-source-stream
-    * watchify
+Includes Development, Production, and Testing
 
 ### Project File Management
 
@@ -99,9 +75,9 @@ For development packages, we are using npm
 
 The Angular project is broken up in the `build/src` folder, as well as three important files:
 
-    * `build/index.js`
-    * `build/routes.js`
-    * `build/.templates.js`
+* `build/index.js`
+* `build/routes.js`
+* `build/.templates.js`
 
 The main project is build in the `index.js` file, so every Angular dependency goes here, including third party vendors. Configurations also go here, as well as every controller, service, and directive file.
 
@@ -133,25 +109,6 @@ bower install # For Angular-mocks
 npm install
 ```
 
-##### Testing Packages:
-
-* karma
-* jasmine
-
-##### Bower Packages:
-
-* angular-mocks
-
-##### npm Packages:
-
-* jasmine-core
-* karma
-* karma-jasmine
-* karma-phantomjs-launcher
-* karma-spec-reporter
-* gulp-jasmine
-* gulp-karma
-
 ##### Load Tests
 
 ```shell
@@ -161,16 +118,7 @@ gulp karma
 
 #### E2E Testing
 
-Testing Packages:
-
-* protractor
-* selenium
-* cucumber
-* chai
-* chai-as-expected
-* gulp-protractor
-
-npm Packages:
+Loading the tests:
 
 ```shell
 # Main Folder
@@ -179,20 +127,6 @@ gulp server
 # Another terminal window
 gulp protractor
 ```
-
-___
-
-#### Production
-
-For 3rd party libraries, we are using bower for package management
-
-* angular
-* lodash
-* angular-ui-router
-* jQuery
-* chance
-* jquery.tagsinput
-* d3
 
 ___
 
