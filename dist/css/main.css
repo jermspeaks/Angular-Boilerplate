@@ -478,7 +478,8 @@ button.lg-button {
 .ng-messages {
   font-size: 12px;
   font-weight: 500;
-  color: red; }
+  color: red;
+  margin: 0 0 10px 0; }
 
 /* ============================================
   Clear Floats
@@ -832,7 +833,8 @@ button.lg-button {
 .ng-messages {
   font-size: 12px;
   font-weight: 500;
-  color: red; }
+  color: red;
+  margin: 0 0 10px 0; }
 
 /* ============================================
   Clear Floats

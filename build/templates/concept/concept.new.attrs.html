@@ -55,7 +55,7 @@
       required></select>
   </div>
 
-  <div class="field" ng-if="form.entity.name === 'Event'">
+  <div class="field" ng-if="form.attributes.entity.name === 'Event'">
     <div class="field">
       <label for="eventName">Event Name</label>
       <input id="new-form-event-name"
@@ -65,7 +65,12 @@
         ng-model="form.eventName"
         autocapitalize="off"
         autocorrect="off"
-        autofocus="autofocus" />
+        autofocus="autofocus"
+        required />
+    </div>
+
+    <div class="ng-messages" ng-messages="conceptNewForm.eventName.$error" ng-if="conceptNewForm.eventName.$dirty && conceptNewForm.eventName.$invalid">
+      <div ng-message="required">An event name is required.</div>
     </div>
     <!-- /.field -->
   </div>

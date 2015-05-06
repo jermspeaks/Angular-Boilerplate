@@ -2,28 +2,90 @@
   <label for="associatedform">Associated Forms</label>
 
   <div class="field related-forms" data-ng-repeat="associatedform in form.forms">
-    <!-- TODO Make these into form directives -->
-    <!-- <section>
-                    <span>Last entry for the form is always the same as the concept name. Disabled for editing.</span>
-                </section> -->
+    <div ng-init="associatedform.associatedFormName='aFormName'+$index"></div>
+    <div ng-init="associatedform.occurrenceCountName='oCount'+$index"></div>
+    <div ng-init="associatedform.linkCountName='lCount'+$index"></div>
+    <div ng-init="associatedform.linkedProbabilityName='lProb'+$index"></div>
     <fieldset class="form-field">
       <label ng-if="associatedform.tag" for="associatedform">Form Name (Default)</label>
       <label ng-if="!associatedform.tag" for="associatedform">Form Name</label>
-      <!-- Default Form form.attributes.conceptName -->
-      <input ng-if="associatedform.tag" type="text" class="related-forms-item" ng-model="associatedform.name" name="associatedForm" placeholder="Disabled: same as concept name" autocapitalize="off" autocorrect="off" autofocus="autofocus" disabled/>
-      <input ng-if="!associatedform.tag" type="text" class="related-forms-item" ng-model="associatedform.name" name="associatedForm" placeholder="Enter a form" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
 
-      <label for="associatedform">Number of occurrences</label>
-      <input type="text" class="related-forms-item" ng-model="associatedform.occurenceCount" name="associatedForm" placeholder="" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+      <!-- Default Form form.attributes.conceptName -->
+      <input ng-if="associatedform.tag"
+        type="text"
+        class="related-forms-item"
+        ng-model="associatedform.name"
+        name="associatedForm"
+        placeholder="Disabled: same as concept name"
+        autocapitalize="off"
+        autocorrect="off"
+        autofocus="autofocus"
+        disabled />
+
+      <input ng-if="!associatedform.tag"
+        type="text"
+        class="related-forms-item"
+        ng-model="associatedform.name"
+        name="{{associatedform.associatedFormName}}"
+        placeholder="Enter a form"
+        autocapitalize="off"
+        autocorrect="off"
+        autofocus="autofocus"
+        required />
+
+      <div class="ng-messages" ng-messages="conceptNewForm[associatedform.associatedFormName].$error" ng-if="conceptNewForm[associatedform.associatedFormName].$dirty && conceptNewForm[associatedform.associatedFormName].$invalid">
+        <div ng-message="required">A form name is required.</div>
+      </div>
+
+      <label for="occurrenceCount">Number of occurrences</label>
+      <input type="number"
+        class="related-forms-item"
+        ng-model="associatedform.occurenceCount"
+        name="{{associatedform.occurrenceCountName}}"
+        placeholder=""
+        autocapitalize="off"
+        autocorrect="off"
+        autofocus="autofocus"
+        required />
+
+      <div class="ng-messages" ng-messages="conceptNewForm[associatedform.occurrenceCountName].$error" ng-if="conceptNewForm[associatedform.occurrenceCountName].$dirty && conceptNewForm[associatedform.occurrenceCountName].$invalid">
+        <div ng-message="required">A number of occurrences is required.</div>
+      </div>
 
       <label for="associatedform">Number of times linked</label>
-      <input type="text" class="related-forms-item" ng-model="associatedform.linkedCount" name="associatedForm" placeholder="" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+      <input type="number"
+        class="related-forms-item"
+        ng-model="associatedform.linkedCount"
+        name="{{associatedform.linkCountName}}"
+        placeholder=""
+        autocapitalize="off"
+        autocorrect="off"
+        autofocus="autofocus"
+        required />
+      <div class="ng-messages" ng-messages="conceptNewForm[associatedform.linkCountName].$error" ng-if="conceptNewForm[associatedform.linkCountName].$dirty && conceptNewForm[associatedform.linkCountName].$invalid">
+        <div ng-message="required">Linked Count is required.</div>
+      </div>
 
       <label for="associatedform">Linked probability</label>
-      <!-- TODO replace with sliders in its own section at the end of the form -->
-      <input type="text" class="related-forms-item" ng-model="associatedform.linkedProbability" name="associatedForm" placeholder="Between 0 and 1" autocapitalize="off" autocorrect="off" autofocus="autofocus" />
+      <input type="number"
+        class="related-forms-item"
+        ng-model="associatedform.linkedProbability"
+        name="{{associatedform.linkedProbabilityName}}"
+        placeholder=""
+        autocapitalize="off"
+        autocorrect="off"
+        autofocus="autofocus"
+        required />
+      <div class="ng-messages" ng-messages="conceptNewForm[associatedform.linkedProbabilityName].$error" ng-if="conceptNewForm[associatedform.linkedProbabilityName].$dirty && conceptNewForm[associatedform.linkedProbabilityName].$invalid">
+        <div ng-message="required">Linked probability is required.</div>
+      </div>
+
     </fieldset>
     <button class="add-form-button" type="button" ng-click="form.addForm()">+</button>
-    <button class="delete-button delete-form-button" ng-if="!associatedform.tag" type="button" type="value" ng-click="form.deleteForm(associatedform)">-</button>
+    <button class="delete-button delete-form-button"
+      ng-if="!associatedform.tag"
+      type="button"
+      type="value"
+      ng-click="form.deleteForm(associatedform)">-</button>
   </div>
 </div>

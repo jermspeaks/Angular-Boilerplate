@@ -13,7 +13,10 @@ module.exports = function($log) {
         this.forms = forms || [{
             tag: 'default',
             id: 'Form 1',
-            name: ''
+            name: '',
+            occurenceCount: 0,
+            linkedCount: 0,
+            linkedProbability: 0
         }];
 
         this.links = links || [{
@@ -36,7 +39,10 @@ module.exports = function($log) {
 		var newItemNo = this.forms.length + 1;
 
 		this.forms.push({
-			'id': 'Form ' + newItemNo
+			'id': 'Form ' + newItemNo,
+            occurenceCount: 0,
+            linkedCount: 0,
+            linkedProbability: 0
 		});
 
         this.addLink();
@@ -60,7 +66,9 @@ module.exports = function($log) {
         var newItemNo = this.links.length + 1;
 
 		this.links.push({
-			'id': 'Form ' + newItemNo
+			'id': 'Form ' + newItemNo,
+            senseProbability: 0,
+            occurrenceCount: 0
 		});
     };
 

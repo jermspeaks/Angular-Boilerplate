@@ -52,6 +52,7 @@ button.lg-button {
 .ng-messages {
   @include font-medium-bold(12px);
   color: red;
+  margin: 0 0 10px 0;
 }
 /* ============================================
   Clear Floats
