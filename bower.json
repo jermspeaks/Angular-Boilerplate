@@ -1,11 +1,11 @@
 {
-  "name": "topic-graph-editor",
+  "name": "Angular-Boilerplate",
   "version": "1.0.0",
-  "homepage": "https://github.com/reverb/topic-graph-editor",
+  "homepage": "https://github.com/jermspeaks/Angular-Boilerplate",
   "authors": [
     "Jeremy Wong <jermspeaks@gmail.com>"
   ],
-  "description": "UI to edit topic graph",
+  "description": "An Angular Boilerplate",
   "main": "index.js",
   "keywords": [
     "editor"

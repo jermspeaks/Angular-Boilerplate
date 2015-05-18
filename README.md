@@ -1,7 +1,7 @@
-Topic Graph Editor
+Angular Boilerplate
 ==================
 
-UI to edit topic graph. To get started, install following the directions below.
+Forked from another project, this is an Angular boilerplate. (v. 1.3.5)
 
 ___
 
@@ -30,36 +30,6 @@ gulp serve
 ```
 
 Open browser to `localhost:5000`.
-
-___
-
-### Tasks:
-
-See the full [master task list here](./tasks.md).
-
-Next Milestone:
-
-5/5/14
-
-- [ ] Create Concept Form
-    - [x] Attributes
-        - [x] Bug: Loading autocomplete for GEO Coordinates
-        - [x] Bug: Categories model not binding
-    - [ ] Forms (add/edit)
-        - [ ] Ability to autocomplete a form's name field with existing forms from other concepts
-        - [ ] Ability to choose not to autocomplete a form's name field
-        - [x] Refactor model for first form to share same array as other forms (default form = concept name)
-    - [x] Forms (links)
-        - [x] For each added form, add it in a form field for link of form to concept
-        - [x] Include each field for each link of form to concept form field
-    - [ ] Related Concepts
-        - [ ] Search Capability
-        - [ ] Autocomplete in form field
-        - [x] Move buttons to top. Can delete last related concept
-    - [ ] General Refactor
-        - [x] Form "Model" regrouping
-        - [x] Separate Sections of Controllers for each partial form
-        - [ ] Check if form object conforms to spec when submitted
 
 ___
 
@@ -127,20 +97,3 @@ gulp server
 # Another terminal window
 gulp protractor
 ```
-
-___
-
-### Requirements:
-
-![Topic Graph Diagram](https://github.com/reverb/concepts-load/blob/master/topic_graph.png)
-
-* User should be able to create, read, update, and delete a concept or form
-* When relating forms to concepts, there should be a way to give equal or custom weights to the forms
-* Should show related concepts
-* Should show related forms
-* Should be able to add connections to related concepts
-* Should be able to add forms to this concept after shown the related forms
-* User should be able to search for other concepts or forms, and come back with their respective relations to other concepts and forms
-    * e.g. Search Furious 7 should return forms such as "Fast and the Furious", "Fast and Furious", etc. as well as concepts such as "Vin Diesel", "Paul Walker", etc.
-* Editor
-    * Search for a Concept or Form and have the ability to edit its attributes, which as the same as the ones you see in Create

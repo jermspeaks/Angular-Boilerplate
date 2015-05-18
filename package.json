@@ -1,14 +1,14 @@
 {
-  "name": "topic-graph-editor",
+  "name": "Angular-Boilerplate",
   "version": "1.0.0",
-  "description": "UI to edit topic graph",
+  "description": "Angular Boilerplate",
   "main": "index.js",
   "scripts": {
     "test": "npm start"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/reverb/topic-graph-editor.git"
+    "url": "https://github.com/jermspeaks/Angular-Boilerplate.git"
   },
   "keywords": [
     "editor"
@@ -27,9 +27,9 @@
   "author": "Jeremy Wong (jeremy@helloreverb.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/reverb/topic-graph-editor/issues"
+    "url": "https://github.com/jermspeaks/Angular-Boilerplate/issues"
   },
-  "homepage": "https://github.com/reverb/topic-graph-editor",
+  "homepage": "https://github.com/jermspeaks/Angular-Boilerplate",
   "devDependencies": {
     "bower": "^1.4.1",
     "brfs": "^1.4.0",
