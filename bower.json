@@ -34,8 +34,8 @@
   "overrides": {
     "jquery.tagsinput": {
       "main": [
-        "jquery.tagsinput.js",
-        "jquery.tagsinput.css"
+        "src/jquery.tagsinput.js",
+        "src/jquery.tagsinput.css"
       ]
     }
   }
