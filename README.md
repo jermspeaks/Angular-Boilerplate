@@ -31,7 +31,11 @@ ___
 ### Installation:
 ```shell
 npm install # May need sudo here
+# Install bower globally
+npm install -g bower
 bower install
+# Install gulp globalls
+npm install -g gulp
 gulp dist
 gulp serve
 ```
