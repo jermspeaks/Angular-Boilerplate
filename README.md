@@ -5,6 +5,13 @@ Forked from another project, this is an Angular boilerplate. (v. 1.3.5)
 
 ___
 
+### Todo:
+
+* Change HTML to Jade Templates
+* Replace Browserify with Webpack
+
+___
+
 ### Local Development:
 
 All development is in the `build` folder, and results are built in the `dist` folder.
