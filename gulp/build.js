@@ -6,6 +6,8 @@
 
 var gulp = require('gulp'),
 	gutil = require('gulp-util'),
+	webpack = require("webpack"),
+	WebpackDevServer = require("webpack-dev-server"),
 	filePath = require('./../paths')(),
   	watchify = require('watchify'),
 	// File Compilation
@@ -122,6 +124,10 @@ function jsHint() {
 		.pipe(jshint.reporter(stylish));
 }
 
+function processWebpack() {
+	return; //TODO http://webpack.github.io/docs/usage-with-gulp.html
+}
+
 // Build entire project
 gulp.task('dist', ['templates', 'styles', 'library', 'lint', 'build']);
 
@@ -153,4 +159,8 @@ gulp.task('library', function() {
 // Build styles
 gulp.task('styles', function() {
 	return processStyleSheets();
+});
+
+gulp.task('webpack', function() {
+	return processWebpack();
 });
